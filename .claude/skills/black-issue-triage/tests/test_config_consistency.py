@@ -164,7 +164,10 @@ def test_copilot_engine_uses_student_pat_not_org_billing():
     assert not re.search(r"^\s*copilot-requests:", md, re.M)
     assert "COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}" in lock
     assert "copilot-requests: write" not in lock.split("\n  agent:\n")[1].split("\n  conclusion:\n")[0]
-    assert "COPILOT_MODEL: gpt-5-mini" in lock
+    md_model = re.search(r"^  model: (\S+)$", md, re.M).group(1)
+    # agent and threat-detection jobs both use the pinned model
+    assert lock.count(f"COPILOT_MODEL: {md_model}") == 2
+    assert set(re.findall(r"COPILOT_MODEL: (\S+)", lock)) == {md_model}
     # inference goes through the AWF API proxy; no direct Copilot/GitHub egress for the agent
     domains = json.loads(re.search(r'"allowDomains":(\[[^\]]*\])', lock).group(1))
     assert not [d for d in domains if "github" in d or "copilot" in d]

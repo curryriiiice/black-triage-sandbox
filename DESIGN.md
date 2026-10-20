@@ -72,7 +72,7 @@ All framework issues are now disabled (`report-failure-as-issue`, `report-failed
 | Least privilege | Impl.+Tested (static) | `permissions: {}`; agent `contents/issues: read` |
 | Safe outputs | Impl.+Tested (static) | comment ≤1; labels 1 call ≤4, allow/block lists |
 | Human approval | Impl. (config) / Not needed (run) | CODEOWNERS; outputs reversible |
-| Budgets | Impl., untested | 10 min, 30 turns, 150/1500 AIC, 3 runs/h/user |
+| Budgets | Impl., untested | 10 min, 30 turns, 150/1000 AIC, 3 runs/h/user |
 | Audit trail | Impl., untested | logs, `gh aw audit`, artifacts, footer run link |
 | Kill switch | Impl., untested | `vars.TRIAGE_AGENT_ENABLED` (fail-closed), cancel, `stop-after` |
 | Drift detection | Impl. (config) / Proposed (golden) | `skill-tests.yml`; golden reruns |
@@ -101,7 +101,7 @@ pinned, so an upgrade is a reviewed commit with a golden rerun before merge (`CO
 silent provider change to a pinned ID needs the proposed monthly rerun (manual).
 **Q3. 300 issues in a week (~43/day).** The engine concurrency group serialises agent jobs, so
 bursts queue. A single account gets 3 issues triaged per hour (`user-rate-limit`). Each run is
-capped at 150 AIC. After 1500 AIC in 24 h, activation skips the agent and the remaining issues
+capped at 150 AIC. After 1000 AIC in 24 h, activation skips the agent and the remaining issues
 wait for humans. Credits per run: TODO(after tester report).
 **Q4. A tool returns malicious instructions.** No GitHub token, no MCP except safe outputs, egress
 only to `defaults`/PyPI, shell only the two scripts plus read-only commands. Worst case: wrong
@@ -113,17 +113,18 @@ Actions → run → Cancel. Optional: Actions → workflow → ⋯ → Disable. 
 
 ## 6. Unresolved
 - Not yet seen end to end: the prefetch `noop` short-circuit, `queue: max`, Copilot's skill
-  auto-discovery, and gpt-5-mini's triage quality. `skill_audit.jsonl` lives in writable `/tmp`.
-- Duplicate ranking is lexical; spam detection may flag terse non-English reports;
-  `TRIAGE_REPLAY_MODE` is for the sandbox evaluation only and must stay unset in production.
-- The workspace `.git` pack holds all blobs; the agent has no `git` to decompress them.
+  auto-discovery, the model's triage quality, and whether it must be enabled in the model picker.
+  `skill_audit.jsonl` lives in writable `/tmp`.
+- Lexical duplicate ranking; spam false positives on terse non-English reports; `.git` still holds
+  blobs (no `git` tool); `TRIAGE_REPLAY_MODE` is sandbox-only.
 
 ## 7. Agent bill of materials
-- **Model:** `gpt-5-mini` via GitHub Copilot, pinned (`engine.model`), also for threat detection.
-  It is the cheapest Copilot Pro model in gh-aw's catalog (input 2.5e-7, output 2e-6 USD/token);
-  `claude-haiku-4.5` is the fallback if golden quality is poor. Engine: Copilot CLI 1.0.96
-  (compiler-pinned), gh-aw v0.92.0, AWF 0.28.57. Secret: `COPILOT_GITHUB_TOKEN`, which is excluded
-  from the agent container (`--exclude-env`) and used by the AWF API proxy.
+- **Model:** `claude-sonnet-5.5` via Copilot, pinned for agent and threat detection. The first pin
+  `gpt-5-mini` was missing from the live catalog (`awf-reflect.json`, run 39379635338); always
+  check ids there. Catalog price $2/$10 per M tokens ≈ $0.3/run (est.), so ~25 runs fit Pro's
+  1000-credit base; `claude-haiku-4.5` ($1/$5) is the fallback. Copilot CLI 1.0.96, gh-aw v0.92.0,
+  AWF 0.28.57. Secret `COPILOT_GITHUB_TOKEN` is excluded from the agent container and held by the
+  AWF proxy.
 - **Instructions:** `issue-triage.md` body, `SKILL.md`, `references/label_guide.md`, `AGENTS.md`.
 - **Tools/MCP:** shell = the two scripts + read-only defaults (`cat`, `grep`, …); `safeoutputs`
   MCP (labels, comment, noop, missing-tool/data, report-incomplete). No GitHub MCP, web or edit.
