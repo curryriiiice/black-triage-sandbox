@@ -10,12 +10,12 @@
 
 The `issue-triage` agentic workflow (`.github/workflows/issue-triage.md`) runs end to end
 on GitHub Actions in this sandbox repository. Each historical upstream issue is replayed
-1. Actions secret `ANTHROPIC_API_KEY` (a workspace-scoped key for gh-aw's `claude` engine, model `claude-sonnet-5-5`). The round-1 smoke runs 3–5 temporarily used the `copilot` engine with `COPILOT_GITHUB_TOKEN`.
+as a new sandbox issue. The labels and comment the agent produces are compared with an
 expected outcome that was written down **before** the run.
 
 ## One-time setup (sandbox only)
 
-1. Actions secret `COPILOT_GITHUB_TOKEN` (the engine credential for gh-aw's `copilot` engine, model `gpt-5-mini`; round-1 smoke runs on the `claude` engine used `ANTHROPIC_API_KEY`).
+1. Actions secret `ANTHROPIC_API_KEY` (a workspace-scoped key for gh-aw's `claude` engine, model `claude-sonnet-5-5`). The round-1 smoke runs 3–5 temporarily used the `copilot` engine with `COPILOT_GITHUB_TOKEN`.
 2. Repository variables:
    - `TRIAGE_AGENT_ENABLED=true`: the kill switch. Any other value, or deleting it, stops all runs.
    - `TRIAGE_REPLAY_MODE=true`: lets the prefetch step read the replay header (below).
@@ -119,12 +119,11 @@ permalinks and retrieval timestamps are in `raw/<n>/meta.json`.
   than the event (e.g. they may not describe Python 3.14/3.15 syntax).
 - `repro_black.py` refuses Black releases newer than the replay header's
   `original_created_at`, and duplicate candidates come only from earlier sandbox issues.
-- **Golden files are kept off `main` during runs.** The agent job checks out `main` in full
-  and the agent has repo-wide Read/Grep, so `raw/`, `cases.json` and `expected.md` on
-  `main` would let it read the answers. They are committed and pushed on the branch
-  `golden-r1` before any run (commit timestamp = proof) and merged into `main` only after
-  the runs. (The same problem affects `analysis/need/black_issues_raw.json`, which is on
-  `main` and holds final labels and close reasons; reported to the builder.)
+  Known gap (round 1, c06): Black's *dependencies* still resolve to today's versions.
+- **Golden files never reach the agent.** They were committed on branch `golden-r1` before any
+  run (commit timestamp = proof) and merged into `main` after the runs. Since `d62d231` the
+  agent job uses a sparse checkout (`.claude/ .github/ docs/ src/`) and a fail-closed pre-agent
+  step deletes `analysis/`, `evals/` and `DESIGN.md`. No round-1 transcript reads those paths.
 
 ### Neutralisation (hard rule: no backlinks or pings to upstream or real people)
 
@@ -144,7 +143,7 @@ python3 -I evals/golden/scripts/fetch_upstream.py evals/golden/raw 4782 4791 484
 # 1. rebuild pre-event inputs and the expected table
 python3 -I evals/golden/scripts/build_cases.py evals/golden/raw evals/golden/cases.json evals/golden/cases
 python3 -I evals/golden/scripts/render_expected.py evals/golden/cases.json evals/golden/expected.md
-# 2. preconditions: secret COPILOT_GITHUB_TOKEN set; TRIAGE_AGENT_ENABLED=true; TRIAGE_REPLAY_MODE=true
+# 2. preconditions: secret ANTHROPIC_API_KEY set; TRIAGE_AGENT_ENABLED=true; TRIAGE_REPLAY_MODE=true
 gh secret list -R curryriiiice/black-triage-sandbox
 gh variable list -R curryriiiice/black-triage-sandbox
 # 3. replay in order: create the issue, wait for its run, collect logs/artifacts/audit/cost

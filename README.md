@@ -17,7 +17,7 @@ nothing here is sent upstream.
 | AI-contribution policy | `CONTRIBUTING.md` |
 | Review ownership | `.github/CODEOWNERS` |
 | Deterministic CI for the skill and config drift | `.github/workflows/skill-tests.yml` |
-| Golden evaluation (inputs, expected, actual, logs) | `evals/golden/` (start with `evals/golden/README.md`) |
+| Golden evaluation (inputs, expected, actual, logs) | `evals/golden/` (reproduce: `evals/golden/README.md`; results: `evals/golden/results.md`, round 1: 15 PASS / 1 PARTIAL / 3 FAIL) |
 | Design justification, governance, bill of materials | `DESIGN.md` |
 
 ## How it works (one paragraph)
