@@ -134,6 +134,8 @@ pre-agent-steps:
       TRIAGE_REPO: ${{ github.repository }}
       TRIAGE_ISSUE_NUMBER: ${{ github.event.issue.number || github.event.inputs.issue_number }}
       TRIAGE_REPLAY_MODE: ${{ vars.TRIAGE_REPLAY_MODE }}
+      # Lets the step write a `noop` for skipped issues so the harness never starts the model.
+      GH_AW_SAFE_OUTPUTS: ${{ steps.set-runtime-paths.outputs.GH_AW_SAFE_OUTPUTS }}
     run: python3 .claude/skills/black-issue-triage/scripts/prefetch_context.py --out /tmp/gh-aw/agent/triage
 
 post-steps:
