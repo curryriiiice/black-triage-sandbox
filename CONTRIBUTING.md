@@ -41,4 +41,4 @@ ways: an AI agent triages every new issue, and the project receives AI-generated
   from a code owner (`.github/CODEOWNERS`), and the `skill-tests` CI must pass.
 - After a change to the workflow, skill, or model, rerun the golden cases in `evals/golden/`
   (see `evals/golden/README.md`). Record the results before merging.
-- Never commit secrets. The engine credential lives only in the `COPILOT_GITHUB_TOKEN` Actions secret.
+- Never commit secrets. The engine credential lives only in the `ANTHROPIC_API_KEY` Actions secret.

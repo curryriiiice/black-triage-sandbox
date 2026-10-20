@@ -102,7 +102,7 @@ def test_scrub_step_runs_after_checkout_and_before_agent():
     i_checkout = job.index("name: Checkout repository (gh-aw default)")
     i_scrub = job.index(SCRUB_STEP)
     i_prefetch = job.index("Prefetch triage context")
-    i_agent = job.index("name: Execute GitHub Copilot CLI")
+    i_agent = job.index("name: Execute Claude Code CLI")
     assert i_checkout < i_scrub < i_prefetch < i_agent
     # nothing may re-materialise repository files between the scrub and the agent
     between = job[i_scrub:i_agent]
@@ -156,25 +156,26 @@ def test_no_framework_authored_issues():
     assert "issues: write" not in perms
 
 
-def test_copilot_engine_uses_student_pat_not_org_billing():
+def test_claude_engine_pinned_model_and_budgets():
     md = WF_MD.read_text()
     lock = WF_LOCK.read_text()
-    assert re.search(r"^  id: copilot$", md, re.M)
-    # copilot-requests: write would make gh-aw ignore COPILOT_GITHUB_TOKEN (auth docs)
-    assert not re.search(r"^\s*copilot-requests:", md, re.M)
-    assert "COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}" in lock
-    assert "copilot-requests: write" not in lock.split("\n  agent:\n")[1].split("\n  conclusion:\n")[0]
+    assert re.search(r"^  id: claude$", md, re.M)
     md_model = re.search(r"^  model: (\S+)$", md, re.M).group(1)
+    assert md_model == "claude-sonnet-5-5"
     # agent and threat-detection jobs both use the pinned model
-    assert lock.count(f"COPILOT_MODEL: {md_model}") == 2
-    assert set(re.findall(r"COPILOT_MODEL: (\S+)", lock)) == {md_model}
-    # inference goes through the AWF API proxy; no direct Copilot/GitHub egress for the agent
+    assert re.findall(r"ANTHROPIC_MODEL: (\S+)", lock) == [md_model, md_model]
+    assert "ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}" in lock
+    # $25 top-up guard (1 AIC = $0.01): worst case per run = agent + detection cap <= $1
+    caps = [int(x) for x in re.findall(r'"maxAiCredits":(\d+)', lock)]
+    assert sorted(caps) == [20, 70] and sum(caps) * 25 <= 2500
+    assert re.search(r"^max-daily-ai-credits: (\d+)$", md, re.M).group(1) == "800"
+    # no direct egress to model providers or GitHub from the agent (inference via AWF proxy)
     domains = json.loads(re.search(r'"allowDomains":(\[[^\]]*\])', lock).group(1))
-    assert not [d for d in domains if "github" in d or "copilot" in d]
+    assert not [d for d in domains if "github" in d or "anthropic" in d]
 
 
-def test_skill_is_discoverable_by_copilot():
-    """Copilot CLI discovers project skills in .claude/skills; the checkout must include it."""
+def test_skill_is_discoverable():
+    """Claude Code discovers project skills in .claude/skills; the checkout must include it."""
     job = _agent_job(WF_LOCK.read_text())
     assert "            .claude/\n" in job
     skill = (SKILL_DIR / "SKILL.md").read_text()

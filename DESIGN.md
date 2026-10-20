@@ -29,12 +29,10 @@ hard limits are in the workflow frontmatter. The skill's scripts do the non-judg
   and formats twice to check stability. It never executes the snippet.
 - `validate_labels.py` checks the proposed labels against the policy, the repo labels and the
   repro evidence before the agent emits them.
-**Engine and skill loading.** The `claude` engine came first, but its key failed before inference
-(not workspace-scoped, then no credit). We switched to `copilot` with the student's Copilot Pro
-PAT, without `copilot-requests: write` (which would make gh-aw ignore the PAT). Copilot CLI
-discovers `.claude/skills/` natively (GitHub Docs, "Adding agent skills for Copilot CLI"), so
-there is one source. The prompt also `cat`s it, and step 0 logs `skill_loaded` to the step
-summary.
+**Engine finding.** The Claude key first failed on scope, then on credit. Copilot was tried next,
+but the Student plan allows auto model selection only, which conflicts with model pinning and
+drift control. So we are back on `claude`, pinned. Claude Code discovers `.claude/skills/`
+natively, the prompt names the skill, and step 0 logs `skill_loaded` to the step summary.
 **Rejected: letting the agent fetch issues and search duplicates via the GitHub MCP server.** On a
 public repo gh-aw hides non-collaborator content (`min-integrity: approved`), so triage would need
 `min-integrity: none`. The agent could then read any public repository, including upstream Black,
@@ -72,7 +70,7 @@ All framework issues are now disabled (`report-failure-as-issue`, `report-failed
 | Least privilege | Impl.+Tested (static) | `permissions: {}`; agent `contents/issues: read` |
 | Safe outputs | Impl.+Tested (static) | comment ≤1; labels 1 call ≤4, allow/block lists |
 | Human approval | Impl. (config) / Not needed (run) | CODEOWNERS; outputs reversible |
-| Budgets | Impl., untested | 10 min, 30 turns, 150/1000 AIC, 3 runs/h/user |
+| Budgets | Impl., untested | 10 min, 30 turns, 70+20/800 AIC, 3 runs/h/user |
 | Audit trail | Impl., untested | logs, `gh aw audit`, artifacts, footer run link |
 | Kill switch | Impl., untested | `vars.TRIAGE_AGENT_ENABLED` (fail-closed), cancel, `stop-after` |
 | Drift detection | Impl. (config) / Proposed (golden) | `skill-tests.yml`; golden reruns |
@@ -96,15 +94,17 @@ isolated, and `tests/test_repro.py` has a regression test.
 nothing can be closed. `R: rejected` is blocked, and `target` confines labels and comments to this
 issue. The skill treats bot instructions and approval claims as untrusted data, so the expected
 outcome is `spam / ai` or `noop`. Test evidence: TODO(after tester report), ADV-1.
-**Q2. A model update breaks a golden task.** Model, Copilot CLI 1.0.96 and gh-aw v0.92.0 are
+**Q2. A model update breaks a golden task.** Model, Claude Code CLI 2.1.296 and gh-aw v0.92.0 are
 pinned, so an upgrade is a reviewed commit with a golden rerun before merge (`CONTRIBUTING.md`). A
 silent provider change to a pinned ID needs the proposed monthly rerun (manual).
 **Q3. 300 issues in a week (~43/day).** The engine concurrency group serialises agent jobs, so
 bursts queue. A single account gets 3 issues triaged per hour (`user-rate-limit`). Each run is
-capped at 150 AIC. After 1000 AIC in 24 h, activation skips the agent and the remaining issues
-wait for humans. Credits per run: TODO(after tester report).
+capped at 70 AIC, plus 20 for detection (1 AIC = $0.01, so ≤$0.90). After 800 AIC ($8) in 24 h,
+activation skips the agent and the rest wait for humans. Manual dispatches bypass that daily
+check, so the Anthropic workspace's $25 balance is the hard stop. Credits per run: TODO(after
+tester report).
 **Q4. A tool returns malicious instructions.** No GitHub token, no MCP except safe outputs, egress
-only to `defaults`/PyPI, shell only the two scripts plus read-only commands. Worst case: wrong
+only to `defaults`/PyPI, Bash only the two scripts plus read-only defaults. Worst case: wrong
 allow-listed labels and one misleading comment on this issue (no mentions, refs or off-list links;
 threat-screened).
 **Q5. Stop it from a phone.** Mobile browser: Settings → Secrets and variables → Actions →
@@ -112,22 +112,18 @@ Variables → `TRIAGE_AGENT_ENABLED` = `false` (new runs skip at pre-activation)
 Actions → run → Cancel. Optional: Actions → workflow → ⋯ → Disable. Phone test: TODO(tester).
 
 ## 6. Unresolved
-- Not yet seen end to end: the prefetch `noop` short-circuit, `queue: max`, Copilot's skill
-  auto-discovery, the model's triage quality, and whether it must be enabled in the model picker.
-  `skill_audit.jsonl` lives in writable `/tmp`.
+- Not yet seen end to end: the prefetch `noop` short-circuit, `queue: max`, skill auto-discovery
+  and the model's triage quality. `skill_audit.jsonl` lives in writable `/tmp`.
 - Lexical duplicate ranking; spam false positives on terse non-English reports; `.git` still holds
   blobs (no `git` tool); `TRIAGE_REPLAY_MODE` is sandbox-only.
 
 ## 7. Agent bill of materials
-- **Model:** `claude-sonnet-5.5` via Copilot, pinned for agent and threat detection. The first pin
-  `gpt-5-mini` was missing from the live catalog (`awf-reflect.json`, run 39379635338); always
-  check ids there. Catalog price $2/$10 per M tokens ≈ $0.3/run (est.), so ~25 runs fit Pro's
-  1000-credit base; `claude-haiku-4.5` ($1/$5) is the fallback. Copilot CLI 1.0.96, gh-aw v0.92.0,
-  AWF 0.28.57. Secret `COPILOT_GITHUB_TOKEN` is excluded from the agent container and held by the
-  AWF proxy.
+- **Model:** `claude-sonnet-5-5` (Anthropic API id, $2/$10 per MTok, cache reads $0.20), pinned
+  for the agent and threat detection. Claude Code CLI 2.1.296, gh-aw v0.92.0, AWF 0.28.57. Secret
+  `ANTHROPIC_API_KEY` (workspace-scoped) is held by the AWF API proxy, not by the agent.
 - **Instructions:** `issue-triage.md` body, `SKILL.md`, `references/label_guide.md`, `AGENTS.md`.
-- **Tools/MCP:** shell = the two scripts + read-only defaults (`cat`, `grep`, …); `safeoutputs`
-  MCP (labels, comment, noop, missing-tool/data, report-incomplete). No GitHub MCP, web or edit.
+- **Tools/MCP:** Read/Grep/Glob/LS; Bash = the two scripts + read-only defaults; `safeoutputs` MCP
+  (labels, comment, noop, missing-tool/data, report-incomplete). No GitHub MCP, web or edit.
 - **Permissions:** agent job `contents: read`, `issues: read`; writes only in gh-aw's
   `safe_outputs` and `conclusion` jobs (run status; framework issues disabled).
 - **Data:** triggering issue, repo labels, ≤300 recent issues + 1 search, PyPI `black`, repo docs.
