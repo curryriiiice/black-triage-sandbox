@@ -1,0 +1,1 @@
+Unexpected error with Black 25.11.0 when fmt: off and fmt: on are used within block of comments

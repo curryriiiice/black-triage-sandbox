@@ -1,0 +1,12 @@
+textwrap.dedent(
+    """\
+    This is a
+    multiline string
+"""
+)
+
+MULTILINE = """
+foobar
+""".replace(
+    "\n", ""
+)

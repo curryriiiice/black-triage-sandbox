@@ -1,0 +1,35 @@
+{
+  "issue": 7,
+  "skipped_before_agent": false,
+  "skip_reason": null,
+  "event_counts": {
+    "prefetch": 1,
+    "skill_loaded": 1,
+    "repro": 2,
+    "validate_labels": 1
+  },
+  "agent_ran_skill_scripts": true,
+  "skill_loaded_marker": true,
+  "repro_outcomes": [
+    "refused",
+    "not_equivalent"
+  ],
+  "last_validation": {
+    "duplicate_of": null,
+    "errors": [],
+    "event": "validate_labels",
+    "final_labels": [
+      "C: crash",
+      "F: comments"
+    ],
+    "ok": true,
+    "proposed": [
+      "T: bug",
+      "C: crash",
+      "F: comments"
+    ],
+    "skill": "black-issue-triage",
+    "ts": "2026-10-20T07:11:46Z",
+    "version": "1.0.0"
+  }
+}

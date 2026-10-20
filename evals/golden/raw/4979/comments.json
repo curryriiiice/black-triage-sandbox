@@ -1,0 +1,49 @@
+[
+  {
+    "url": "https://api.github.com/repos/psf/black/issues/comments/3836584650",
+    "html_url": "https://github.com/psf/black/issues/4979#issuecomment-3836584650",
+    "issue_url": "https://api.github.com/repos/psf/black/issues/4979",
+    "id": 3836584650,
+    "node_id": "IC_kwDOB3dpmM7kraLK",
+    "user": {
+      "login": "cobaltt7",
+      "id": 61329810,
+      "node_id": "MDQ6VXNlcjYxMzI5ODEw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61329810?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cobaltt7",
+      "html_url": "https://github.com/cobaltt7",
+      "followers_url": "https://api.github.com/users/cobaltt7/followers",
+      "following_url": "https://api.github.com/users/cobaltt7/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cobaltt7/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cobaltt7/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cobaltt7/subscriptions",
+      "organizations_url": "https://api.github.com/users/cobaltt7/orgs",
+      "repos_url": "https://api.github.com/users/cobaltt7/repos",
+      "events_url": "https://api.github.com/users/cobaltt7/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cobaltt7/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "created_at": "2026-02-02T17:17:36Z",
+    "updated_at": "2026-02-02T17:17:36Z",
+    "body": "Duplicate of #4963, which has already been fixed. We'll probably release a 26.2.0 soon",
+    "author_association": "COLLABORATOR",
+    "pin": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/psf/black/issues/comments/3836584650/reactions",
+      "total_count": 2,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 2,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "performed_via_github_app": null,
+    "minimized": null
+  }
+]

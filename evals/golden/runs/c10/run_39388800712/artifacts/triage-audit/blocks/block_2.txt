@@ -1,0 +1,9 @@
+❯ black --version
+black, 26.3.0 (compiled: yes)
+Python (CPython) 3.14.3
+
+❯ black 1.py
+error: cannot format 1.py: Cannot parse: 1:5: lazy import random
+
+Oh no! 💥 💔 💥
+1 file failed to reformat.

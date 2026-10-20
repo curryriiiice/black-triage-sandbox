@@ -1,0 +1,27 @@
+{
+  "case_id": "c08",
+  "upstream_issue": 4979,
+  "permalink": "https://github.com/psf/black/issues/4979",
+  "created_at": "2026-02-02T17:04:28Z",
+  "author_association": "NONE",
+  "title_at_creation": "INTERNAL ERROR code that is not equivalent to the source (non-UTF8, iso-8859-1)",
+  "body_at_creation": "**Describe the bug**\n\nHistoric behaviour:\n\n```\n❯ black --version && black --diff tests/test_cases/not_utf8.py\nblack, 23.9.1 (compiled: no)\nPython (CPython) 3.13.5\nAll done! ✨ 🍰 ✨\n1 file would be left unchanged.\n```\n\n```\n❯ black --version && black --diff tests/test_cases/not_utf8.py\nblack, 25.12.0 (compiled: no)\nPython (CPython) 3.13.5\nAll done! ✨ 🍰 ✨\n1 file would be left unchanged.\n```\n\nNew behaviour:\n\n```\n❯ black --version && black --diff tests/test_cases/not_utf8.py\nblack, 26.1.0 (compiled: no)\nPython (CPython) 3.13.5\nerror: cannot format tests/test_cases/not_utf8.py: INTERNAL ERROR: Black 26.1.0 on Python (CPython) 3.13.5 produced code that is not equivalent to the source.  Please report a bug on https://github.com/psf/black/issues.  This diff might be helpful: /var/folders/_b/zf5p80v11bd2m2fq4j17z8mr0000gn/T/blk_9jeg_ijj.log\n\nOh no! 💥 💔 💥\n1 file would fail to reformat.\n```\n\n```\n❯ cat  /var/folders/_b/zf5p80v11bd2m2fq4j17z8mr0000gn/T/blk_9jeg_ijj.log\n--- src\n+++ dst\n@@ -63,11 +63,11 @@\n                 value=\n                 Constant(\n                     kind=\n                     None,  # NoneType\n                     value=\n-                    'Initialize name instance.\\n\\n>>> fred = Name(\"FrÃ©dÃ©ric\", \"FranÃ§ois\")\\n>>> print(fred)',  # str\n+                    'Initialize name instance.\\n\\n>>> fred = Name(\"FrÃ\\x83Â\\x83Ã\\x82Â©dÃ\\x83Â\\x83Ã\\x82Â©ric\", \"FranÃ\\x83Â\\x83Ã\\x82Â§ois\")\\n>>> print(fred)',  # str\n                 )  # /Constant\n             )  # /Expr\n             Assign(\n                 targets=\n                 Attribute(\n```\n\nLooks like a change in how non ASCII strings are represented?\n\n**To Reproduce**\n\nUsing this file: https://github.com/peterjc/flake8-rst-docstrings/blob/master/tests/test_cases/not_utf8.py\n\nThis is a test case over five years old, as per the file header:\n\n> This file is not using UTF-8, but Western European.\n>\n> It works fine using the Windows-1252 or iso-8859-1 encoding,\nbut not using UTF-8 which is the Python default.\n\n**Expected behavior**\n\nNo error, no reformatting as in black 23.9.1 or black 25.12.0\n\n**Environment**\n\n- Black's version:  26.1.0\n- OS and Python version: macOS / Python 3.13.5 \n\n**Additional context**\n\nSpotted by CI under Linux, see https://github.com/peterjc/flake8-rst-docstrings/pull/102",
+  "template_labels_detected": [
+    "T: bug"
+  ],
+  "replay_labels": [
+    "T: bug"
+  ],
+  "leakage_avoidance": [
+    "never renamed; current title == title at creation",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": [
+    "code block: github.com URL neutralised",
+    "prose changed: 'Looks like a change in how non ASCII strings are represented?\\n\\n**To Reproduce**\\n'"
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "url": "https://api.github.com/repos/psf/black/issues/comments/4873317917",
+    "html_url": "https://github.com/psf/black/issues/5208#issuecomment-4873317917",
+    "issue_url": "https://api.github.com/repos/psf/black/issues/5208",
+    "id": 4873317917,
+    "node_id": "IC_kwDOB3dpmM8AAAABInjuHQ",
+    "user": {
+      "login": "anupddas",
+      "id": 149822306,
+      "node_id": "U_kgDOCO4bYg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/149822306?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/anupddas",
+      "html_url": "https://github.com/anupddas",
+      "followers_url": "https://api.github.com/users/anupddas/followers",
+      "following_url": "https://api.github.com/users/anupddas/following{/other_user}",
+      "gists_url": "https://api.github.com/users/anupddas/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/anupddas/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/anupddas/subscriptions",
+      "organizations_url": "https://api.github.com/users/anupddas/orgs",
+      "repos_url": "https://api.github.com/users/anupddas/repos",
+      "events_url": "https://api.github.com/users/anupddas/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/anupddas/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "created_at": "2026-07-03T06:41:03Z",
+    "updated_at": "2026-07-03T06:41:03Z",
+    "body": "Thanks @Divija2612 @cobaltt7 ",
+    "author_association": "NONE",
+    "pin": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/psf/black/issues/comments/4873317917/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "performed_via_github_app": null,
+    "minimized": null
+  }
+]

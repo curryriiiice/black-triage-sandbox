@@ -1,0 +1,12 @@
+{
+  "issue": 1,
+  "skipped_before_agent": true,
+  "skip_reason": "issue already carries triage labels ['C: crash', 'C: preview style', 'F: fmtskip']",
+  "event_counts": {
+    "prefetch": 1
+  },
+  "agent_ran_skill_scripts": false,
+  "skill_loaded_marker": false,
+  "repro_outcomes": [],
+  "last_validation": null
+}

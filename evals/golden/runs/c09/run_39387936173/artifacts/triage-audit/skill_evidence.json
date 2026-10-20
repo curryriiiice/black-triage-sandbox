@@ -1,0 +1,17 @@
+{
+  "issue": 11,
+  "skipped_before_agent": false,
+  "skip_reason": null,
+  "event_counts": {
+    "prefetch": 1,
+    "skill_loaded": 1,
+    "repro": 2
+  },
+  "agent_ran_skill_scripts": true,
+  "skill_loaded_marker": true,
+  "repro_outcomes": [
+    "reformatted",
+    "reformatted"
+  ],
+  "last_validation": null
+}

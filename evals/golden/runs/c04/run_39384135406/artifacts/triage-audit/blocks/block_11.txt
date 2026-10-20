@@ -1,0 +1,3 @@
+def func1[
+    T: (int, str)
+](a,): ...

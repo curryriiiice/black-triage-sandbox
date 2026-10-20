@@ -1,0 +1,1 @@
+Black crashes on a module with a long comment block (INTERNAL ERROR)

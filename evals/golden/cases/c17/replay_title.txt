@@ -1,0 +1,1 @@
+upstream-issue-4855 — # fmt: skip applied to the line after the comment instead of the line it's on.

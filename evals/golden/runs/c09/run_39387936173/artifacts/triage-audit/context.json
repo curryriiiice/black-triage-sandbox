@@ -1,0 +1,219 @@
+{
+  "issue": {
+    "number": 11,
+    "title": "Black breaks code in multiline assertion",
+    "body": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install --group tests`\n   - make sure it's sane by running `python -m pytest -n auto`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\nRunning Black on the example code below introduces a change in the meaning of the code.\n\n**To Reproduce**\n\nFor example, take this code:\n\n```python\nassert (\n    # my comment\n    my_var == 999 if abc == \"TEST\" else 0\n)\n```\n\nBlack updates it to:\n\n```python\nassert (\n    # my comment\n    my_var == 999\n    if abc == \"TEST\"\n    else 0\n)\n```\n\nThis introduces a bug:\n- Original code: when `abc == \"TEST\"` this results in `assert my_var == 0`\n- Updated code: when `abc == \"TEST\"` this results in `assert 0`\n\n**Expected behavior**\n\nAdding parentheses would fix it. For example:\n\n```python\nassert (\n    # my comment\n    my_var == (\n        999 if abc == \"TEST\" else 0\n    )\n)\n```\n\n**Environment**\n\n- Black's version: 25.11.0\n- OS and Python version: MacOS, Python 3.9.6\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n\n",
+    "created_at": "2026-02-18T18:26:47Z",
+    "author_association": "NONE",
+    "existing_labels": [
+      "T: bug"
+    ]
+  },
+  "replay_mode": true,
+  "skip": false,
+  "skip_reason": null,
+  "hints": {
+    "reported_version": "25.11.0",
+    "black_command_lines": [],
+    "flags_seen_in_commands": [],
+    "mentions_preview": false
+  },
+  "code_blocks": [
+    {
+      "index": 1,
+      "lang": "python",
+      "lines": 4,
+      "kind": "block",
+      "file": "block_1.txt"
+    },
+    {
+      "index": 2,
+      "lang": "python",
+      "lines": 6,
+      "kind": "block",
+      "file": "block_2.txt"
+    },
+    {
+      "index": 3,
+      "lang": "python",
+      "lines": 6,
+      "kind": "block",
+      "file": "block_3.txt"
+    }
+  ],
+  "inline_snippets": [
+    {
+      "index": 1,
+      "file": "inline_1.txt",
+      "code": "abc == \"TEST\"\n"
+    },
+    {
+      "index": 2,
+      "file": "inline_2.txt",
+      "code": "assert my_var == 0\n"
+    },
+    {
+      "index": 3,
+      "file": "inline_3.txt",
+      "code": "assert 0\n"
+    }
+  ],
+  "black_releases_as_of_issue": [
+    "22.1.0",
+    "22.3.0",
+    "22.6.0",
+    "22.8.0",
+    "22.10.0",
+    "22.12.0",
+    "23.1.0",
+    "23.3.0",
+    "23.7.0",
+    "23.9.0",
+    "23.9.1",
+    "23.10.0",
+    "23.10.1",
+    "23.11.0",
+    "23.12.0",
+    "23.12.1",
+    "24.1.0",
+    "24.1.1",
+    "24.2.0",
+    "24.3.0",
+    "24.4.0",
+    "24.4.1",
+    "24.4.2",
+    "24.8.0",
+    "24.10.0",
+    "25.1.0",
+    "25.9.0",
+    "25.11.0",
+    "25.12.0",
+    "26.1.0"
+  ],
+  "latest_black_release_as_of_issue": "26.1.0",
+  "repo_labels": [
+    "C: api",
+    "C: cleanup",
+    "C: configuration",
+    "C: crash",
+    "C: dependencies",
+    "C: file collection",
+    "C: integrations",
+    "C: invalid code",
+    "C: jupyter",
+    "C: maintenance",
+    "C: packaging",
+    "C: parser",
+    "C: performance",
+    "C: preview style",
+    "C: target version",
+    "C: unstable formatting",
+    "C: vim",
+    "F: comments",
+    "F: docstrings",
+    "F: empty lines",
+    "F: fmtoff",
+    "F: fmtskip",
+    "F: linebreak",
+    "F: linetoolong",
+    "F: parentheses",
+    "F: strings",
+    "F: symmetry",
+    "F: trailing comma",
+    "R: duplicate",
+    "R: invalid",
+    "R: not a bug",
+    "R: outdated",
+    "R: rejected",
+    "S: accepted",
+    "S: awaiting response",
+    "S: blocked",
+    "S: needs discussion",
+    "S: needs repro",
+    "S: up for grabs",
+    "T: bug",
+    "T: documentation",
+    "T: enhancement",
+    "T: style",
+    "T: user support",
+    "agentic-workflows",
+    "ci: build all wheels",
+    "ci: fuzz error",
+    "ci: skip news",
+    "good first issue",
+    "good second issue",
+    "hacktoberfest-accepted",
+    "help wanted",
+    "spam / ai"
+  ],
+  "duplicate_candidates": [
+    {
+      "number": 4,
+      "title": "Eliminar maestro",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.206,
+      "shared_signals": [],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install -r test_requirements.txt`\n   - make sure it's sane by running `python -m pytest`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n<!--\nMinimal steps to reproduce the behavior with source code and Black's configuration.\n-->\n\nFor example, take this code:\n\n```python\nthis = \"code\"\n```\n\nAnd run it with these arguments:\n\n```sh\n$ black file.py --target-version py39\n```\n\nThe resulting error is:\n\n> cannot format file.py: INTERNAL ERROR: ...\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Environment**\n\n<!-- Pl"
+    },
+    {
+      "number": 8,
+      "title": "Cannot parse multi-line code split using backslash",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.186,
+      "shared_signals": [],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install -r test_requirements.txt`\n   - make sure it's sane by running `python -m pytest`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\nWhen my code contains a multi-line expression that's concatenated using backslash (`\\`) and no indentation, black cannot parse my code\n\n**To Reproduce**\n\n<!--\nMinimal steps to reproduce the behavior with source code and Black's configuration.\n-->\n\nFor example, take this code:\n\n```python\nif True:\n    foo = 1+\\\n2\n    print(foo)\n```\n\nAnd run it with these arguments:\n\n```sh\n$ black file.py --target-version py313\n```\n\nThe resulting error is:\n\n> err"
+    },
+    {
+      "number": 5,
+      "title": "Unexpected error with Black 25.11.0 when fmt: off and fmt: on are used within block of comments",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "C: unstable formatting",
+        "F: fmtoff",
+        "T: bug"
+      ],
+      "score": 0.181,
+      "shared_signals": [
+        "comment"
+      ],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install -r test_requirements.txt`\n   - make sure it's sane by running `python -m pytest`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n<!--\nMinimal steps to reproduce the behavior with source code and Black's configuration.\n-->\n\nFor example, take this code:\n\n```python\n[\n    (1, 2),\n    # # fmt: off\n    # (3,\n    #    4),\n    # # fmt: on\n    (5, 6),\n]\n```\n\nAnd run it with these arguments:\n\n```sh\n$ black file.py\n```\n\nThe resulting error is:\n\n> error: cannot format file.py: INTERNAL ERROR: Black 25.11.0 on Python (CPython) 3.11.13 produced different code on th"
+    },
+    {
+      "number": 6,
+      "title": "Setting the 2026 stable style",
+      "state": "open",
+      "state_reason": null,
+      "labels": [],
+      "score": 0.067,
+      "shared_signals": [
+        "comment",
+        "parenthes"
+      ],
+      "body_excerpt": "2023: upstream-issue-3407\n2024: upstream-issue-4042\n2025: upstream-issue-4522\nRuff: https://github[.]com/astral-sh/ruff/issues/20482\n\nAs always, the ideal is for all preview features to be stabilized, not including the unstable ones.\n\n---\n\nOrdered by most controversial to least:\n\n<details>\n<summary>multiline_string_handling (upstream-issue-1879)</summary>\nMake expressions involving multiline strings more compact.\n\n**Input**\n```py\ntextwrap.dedent(\n    \"\"\"\\\n    This is a\n    multiline string\n\"\"\"\n)\n\nMULTILINE = \"\"\"\nfoobar\n\"\"\".replace(\n    \"\\n\", \"\"\n)\n```\n\n**Output (off)**\n*unchanged*\n\n**Output (on)**\n```py\ntextwrap.dedent(\"\"\"\\\n    This is a\n    multiline string\n\"\"\")\n\nMULTILINE = \"\"\"\nfoobar\n\"\"\".replace(\"\\n\", \"\")\n```\n\nFairly controversial. There were some issues in upstream-issue-4159 that were never fully fixed. Additionally, it's only been in preview since v25.11 (but the issues were resolved as-best-as-possible since v25.9).\nHowever, we haven't gotten any further feedback since then. I think the current state is an improvement overall and we probably won't be able to do much else.\nIMO, we should at least include it in the first v26 beta to get user feedback, even if we don't plan on s"
+    },
+    {
+      "number": 9,
+      "title": "pygettext.py: Black 26.1.0 on Python (CPython) 3.14.0 produced different code on the second pass of the formatter",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.054,
+      "shared_signals": [],
+      "body_excerpt": "**Describe the bug**\n\nBlack crashes with the mentioned error on a very old script that we have included for ages\n\n**To Reproduce**\n\nSee: https://github[.]com/sabnzbd/sabnzbd/blob/develop/tools/pygettext.py\n\nLog as mentioned in the error:\n[blk_ym54yfeb.log](https://github[.]com/user-attachments/files/24714471/blk_ym54yfeb.log)\n\nThis also happens when I use black.vercel.app. \nIt crashes.\n\n**Expected behavior**\n\nNo failure\n\n**Environment**\n\nBlack 26.1.0\nWindows and black.vercel.app. \n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n\n"
+    }
+  ]
+}

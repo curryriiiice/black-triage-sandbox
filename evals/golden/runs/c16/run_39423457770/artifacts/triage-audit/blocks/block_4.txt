@@ -1,0 +1,5 @@
+$ python -c "import ast; ast.parse(open('bug.py').read())"
+  File "<unknown>", line 3
+    except ValueError, TypeError:
+                     ^
+SyntaxError: multiple exception types must be parenthesized

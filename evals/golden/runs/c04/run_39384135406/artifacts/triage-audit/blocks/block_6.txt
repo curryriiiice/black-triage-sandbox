@@ -1,0 +1,4 @@
+[
+    a
+    for graph_path_expression in refined_constraint.condition_as_predicate.variables
+]

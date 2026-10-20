@@ -1,0 +1,1 @@
+{"event": "prefetch", "issue": 1, "latest_release_as_of": "25.9.0", "n_blocks": 4, "n_candidates": 0, "replay_mode": true, "skill": "black-issue-triage", "skip": true, "skip_reason": "issue already carries triage labels ['C: crash', 'C: preview style', 'F: fmtskip']", "ts": "2026-10-20T14:09:36Z", "version": "1.0.0"}

@@ -1,0 +1,1 @@
+Typo "laborously" and inconsistent "MacOS" capitalization in usage_and_configuration/the_basics.md

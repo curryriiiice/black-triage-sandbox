@@ -1,0 +1,2 @@
+{"ts":1792468244235,"event":"TRACK_START","rid":"9e915cd8-52c7-47c1-aaa2-c70d8e565587","provider":"anthropic","path":"/v1/models","streaming":false,"ct":"application/json","ce":"gzip","status":200}
+{"ts":1792468244244,"event":"TRACK_END","rid":"9e915cd8-52c7-47c1-aaa2-c70d8e565587","result":"no_usage","streaming":false,"bytes":839,"overflow":false,"ct":"application/json","ce":"gzip"}
