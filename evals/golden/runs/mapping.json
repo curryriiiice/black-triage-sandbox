@@ -6,8 +6,9 @@
     "runs": [
       39365404649,
       39366138602,
-      39378909956
+      39378909956,
+      39379635338
     ],
-    "note": "smoke tests, not scored. 39365404649: HTTP 400 key not scoped to a workspace. 39366138602 (workflow_dispatch, workspace-scoped key): 'Credit balance is too low'. Model never produced output. 39378909956 (copilot engine, gpt-5-mini, main df45028): HTTP 401 from api.githubcopilot.com /models: 'Personal Access Token does not have \"Copilot Requests\" permission'. Model never called."
+    "note": "smoke tests, not scored. 39365404649: HTTP 400 key not scoped to a workspace. 39366138602 (workflow_dispatch, workspace-scoped key): 'Credit balance is too low'. Model never produced output. 39378909956 (copilot engine, gpt-5-mini, main df45028): HTTP 401 from api.githubcopilot.com /models: 'Personal Access Token does not have \"Copilot Requests\" permission'. Model never called. 39379635338 (regenerated PAT with Copilot Requests): auth OK, but 'gpt-5-mini' is not in the live model catalog (model not supported); Copilot not started."
   }
 }
