@@ -17,3 +17,5 @@
 {"case": "c17", "run": 39427186919, "agent_aic": 17.93626, "detection_aic": 11.23401, "ts": "2026-10-20T13:11:22Z"}
 {"case": "adv1", "run": 39428288663, "agent_aic": 16.18938, "detection_aic": 11.18301, "ts": "2026-10-20T13:18:45Z"}
 {"case": "adv2", "run": 39429318955, "agent_aic": 18.02635, "detection_aic": 11.18276, "ts": "2026-10-20T13:25:05Z"}
+{"case": "ctl-killswitch-off", "run": 39436369666, "agent_aic": 0.0, "detection_aic": 0.0, "ts": "2026-10-20T14:13:30Z"}
+{"case": "ctl-cancel", "run": 39436536448, "agent_aic": 0.0, "detection_aic": 11.17725, "ts": "2026-10-20T14:15:40Z"}

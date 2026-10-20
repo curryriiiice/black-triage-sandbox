@@ -1,17 +1,10 @@
 # Golden evaluation: reproduction instructions
 
-> Status (round 1, tester): inputs, pre-event context and expected outcomes were committed
-> on 2026-10-20T03:27:10Z (`f9e38b0`), before any agent run. **The end-to-end evaluation
-> is stopped after the smoke test.** The first run (c01, run 39365404649) failed before the
-> first model call, with `API Error: 400 This API key is not scoped to a workspace, so this
-> request must include the anthropic-workspace-id header`. No case has been scored, and
-> no `results.md` exists yet. The second smoke run (39366138602) used a workspace-scoped key
-> and failed with `Credit balance is too low`. After the switch to the `copilot` engine, the
-> third smoke run (39378909956) failed with HTTP 401 `Personal Access Token does not have
-> "Copilot Requests" permission`. The fourth (39379635338, regenerated PAT) authenticated, but
-> failed because `gpt-5-mini` is not in the workflow's live Copilot model catalog. The fifth
-> (39380550220, `claude-sonnet-5.5`) was rejected with HTTP 400 `model_not_supported` (the model is
-> not enabled in the Copilot model picker). Evidence is in `runs/c01/`.
+> Status (round 1, tester): expected outcomes were committed on 2026-10-20T03:27:10Z (`f9e38b0`),
+> before any agent run. Five smoke runs failed before inference because of credential/engine problems
+> (see `runs/c01/`). The evaluation then ran end to end on gh-aw `claude` / `claude-sonnet-5-5`
+> (sandbox main `102cb74`): **19 cases: 15 PASS, 1 PARTIAL, 3 FAIL**, plus kill-switch and cancel control
+> runs. Results and failure analysis: `results.md`. Total cost: 537.76 AIC (about $5.38, gh-aw estimate).
 
 ## What is evaluated
 
@@ -79,8 +72,9 @@ replay in chronological order and seed any "original" issue before its duplicate
 | `cases/<case_id>/pre_event.json` | Title/body *as created*, creation time, author association, template labels, leakage notes, neutralisation log |
 | `cases/<case_id>/replay_{title.txt,body.md,labels.json}` | Exactly what is posted to the sandbox |
 | `scripts/` | `fetch_upstream.py` (GET-only snapshot), `build_cases.py` (pre-event reconstruction + neutralisation), `render_expected.py`, `replay.py` (create sandbox issues / collect outputs) |
-| `runs/` | (after Phase B) `mapping.json`, and per case: issue/comments/timeline, run logs, artifacts |
-| `results.md` | (after Phase B) expected vs actual, pass/fail, explanations |
+| `runs/` | `mapping.json` (case -> issue -> runs), `costs.jsonl`, and per case: issue/comments/timeline and per run `run.log`, `run_view.json`, `gh_aw_audit.md`, `summary.json`, `artifacts/` (the repro virtualenvs inside `triage-audit` are omitted: about 95 MB of PyPI wheels per run, still in the Actions artifact for 30 days) |
+| `results.md` | Expected vs actual for every case, pass/fail, failure analysis, controls, cost |
+| `judgements.json` | Tester's manual verdicts and explanations (input to `results.md`) |
 
 ## Cases
 
@@ -153,12 +147,19 @@ python3 -I evals/golden/scripts/render_expected.py evals/golden/cases.json evals
 # 2. preconditions: secret COPILOT_GITHUB_TOKEN set; TRIAGE_AGENT_ENABLED=true; TRIAGE_REPLAY_MODE=true
 gh secret list -R curryriiiice/black-triage-sandbox
 gh variable list -R curryriiiice/black-triage-sandbox
-# 3. replay in order (each creation fires issues: opened), waiting for each run to finish
-python3 -I evals/golden/scripts/replay.py create c01 c02 c03 c04 c05 c06 c07 c08 c09 c10 \
+# 3. replay in order: create the issue, wait for its run, collect logs/artifacts/audit/cost
+python3 -I evals/golden/scripts/replay.py run c01 c02 c03 c04 c05 c06 c07 c08 c09 c10 \
   c11 c12 c13 c14 c15 c16 c17 adv1 adv2
-# 4. collect outputs, logs and artifacts
-python3 -I evals/golden/scripts/replay.py collect c01 c02 ...   # same list
-gh aw audit <run-id>    # per run: model, turns, tool calls, firewall, AI credits
+#    (re-collect one run: replay.py collect <case> <run-id>; re-run: replay.py dispatch <case>)
+# 4. score and render
+python3 -I evals/golden/scripts/score.py evals/golden/cases.json evals/golden/runs
+python3 -I evals/golden/scripts/render_results.py evals/golden   # uses judgements.json
+# 5. controls (restore the switch afterwards!)
+gh variable set TRIAGE_AGENT_ENABLED -R curryriiiice/black-triage-sandbox --body false
+gh workflow run issue-triage.lock.yml -R curryriiiice/black-triage-sandbox -f issue_number=1  # expect: all jobs skipped
+gh variable set TRIAGE_AGENT_ENABLED -R curryriiiice/black-triage-sandbox --body true
+gh workflow run issue-triage.lock.yml -R curryriiiice/black-triage-sandbox -f issue_number=1
+gh run cancel <run-id> -R curryriiiice/black-triage-sandbox  # while the agent job is in_progress
 ```
 
 To re-run one case, remove any `C:/F:/S:/R:`/`spam / ai` labels first (the prefetch skips

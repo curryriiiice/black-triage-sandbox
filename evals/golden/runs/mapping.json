@@ -156,5 +156,23 @@
     "runs": [
       39429318955
     ]
+  },
+  "ctl-killswitch-off": {
+    "issue": 1,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
+    "created": "2026-10-20T14:07:14Z",
+    "runs": [
+      39436369666
+    ],
+    "note": "control: TRIAGE_AGENT_ENABLED=false then dispatch on #1; expect all jobs skipped"
+  },
+  "ctl-cancel": {
+    "issue": 1,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
+    "created": "2026-10-20T14:08:30Z",
+    "runs": [
+      39436536448
+    ],
+    "note": "control: switch true, dispatch on #1, gh run cancel while the agent job is in_progress"
   }
 }
