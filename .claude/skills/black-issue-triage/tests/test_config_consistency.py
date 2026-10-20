@@ -139,3 +139,18 @@ def test_user_rate_limit_compiled():
     assert "issues" in events
     pre = lock[lock.index("\n  pre_activation:\n"):lock.index("\n  safe_outputs:\n")]
     assert "check_rate_limit.outputs.rate_limit_ok == 'true'" in pre
+
+
+
+def test_no_framework_authored_issues():
+    """Failure/incomplete/missing-tool/detection reporting must not open or comment on issues."""
+    lock = WF_LOCK.read_text()
+    for flag in ("GH_AW_FAILURE_REPORT_AS_ISSUE", "GH_AW_REPORT_INCOMPLETE_CREATE_ISSUE",
+                 "GH_AW_MISSING_TOOL_CREATE_ISSUE", "GH_AW_NOOP_REPORT_AS_ISSUE"):
+        values = set(re.findall(rf'{flag}: "(\w+)"', lock))
+        assert values == {"false"}, (flag, values)
+    for step in ("handle_detection_runs.cjs", "name: Report failed jobs"):
+        assert step not in lock, step
+    act = lock[lock.index("\n  activation:\n"):lock.index("\n  agent:\n")]
+    perms = act[act.index("    permissions:"):].split("\n    steps:", 1)[0]
+    assert "issues: write" not in perms

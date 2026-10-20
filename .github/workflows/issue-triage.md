@@ -123,6 +123,19 @@ safe-outputs:
   max-bot-mentions: 1
   threat-detection:
     continue-on-error: false
+    report-as-issue: false
+  # No framework-authored issues: failures, incomplete runs, failed jobs and detection results
+  # stay in the run log, step summary and artifacts (audit trail) instead of public issues that
+  # notify every watcher and would pollute the duplicate-candidate pool.
+  report-failure-as-issue: false
+  report-failed-jobs: false
+  report-incomplete:
+    max: 1
+    create-issue: false
+  missing-tool:
+    create-issue: false
+  missing-data:
+    create-issue: false
 
 env:
   TRIAGE_REPLAY_MODE: ${{ vars.TRIAGE_REPLAY_MODE }}

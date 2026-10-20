@@ -234,6 +234,18 @@ def _jaccard(a: set[str], b: set[str]) -> float:
     return len(a & b) / len(a | b) if a and b else 0.0
 
 
+AUTOMATION_LABELS = {"agentic-workflows"}
+
+
+def is_automation_issue(cand: dict[str, Any]) -> bool:
+    """Bot-authored or gh-aw tracking issues are never duplicate candidates for user reports."""
+    user = cand.get("user") or {}
+    login = str(user.get("login", ""))
+    if user.get("type") == "Bot" or login.endswith("[bot]") or login == "github-actions":
+        return True
+    return bool({lbl.get("name") for lbl in cand.get("labels", [])} & AUTOMATION_LABELS)
+
+
 def rank_duplicates(issue: dict[str, Any], body: str, pool: list[dict[str, Any]],
                     limit: int = 5) -> list[dict[str, Any]]:
     """Score earlier issues by title/body token overlap and shared signal terms."""
@@ -244,6 +256,8 @@ def rank_duplicates(issue: dict[str, Any], body: str, pool: list[dict[str, Any]]
     for cand in pool:
         n = cand.get("number")
         if n is None or n >= number or n in seen or "pull_request" in cand:
+            continue
+        if is_automation_issue(cand):
             continue
         seen.add(n)
         _, cbody = parse_replay_header(cand.get("body") or "")
