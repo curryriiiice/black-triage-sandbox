@@ -72,3 +72,12 @@ def test_main_writes_audit(tmp_path, capsys):
               (tmp_path / "skill_audit.jsonl").read_text().splitlines()]
     assert events == ["repro", "validate_labels"]
     assert vl.main(["R: rejected", "--triage-dir", str(tmp_path)]) == 1
+
+
+def test_skill_loaded_marker(tmp_path, capsys):
+    assert vl.main(["--skill-loaded", "--triage-dir", str(tmp_path)]) == 0
+    rec = json.loads((tmp_path / "skill_audit.jsonl").read_text().splitlines()[0])
+    assert rec["event"] == "skill_loaded"
+    import skill_evidence
+    s = skill_evidence.summarise(tmp_path)
+    assert s["skill_loaded_marker"] and s["agent_ran_skill_scripts"]

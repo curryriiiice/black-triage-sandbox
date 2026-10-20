@@ -102,7 +102,7 @@ def test_scrub_step_runs_after_checkout_and_before_agent():
     i_checkout = job.index("name: Checkout repository (gh-aw default)")
     i_scrub = job.index(SCRUB_STEP)
     i_prefetch = job.index("Prefetch triage context")
-    i_agent = job.index("name: Execute Claude Code CLI")
+    i_agent = job.index("name: Execute GitHub Copilot CLI")
     assert i_checkout < i_scrub < i_prefetch < i_agent
     # nothing may re-materialise repository files between the scrub and the agent
     between = job[i_scrub:i_agent]
@@ -154,3 +154,26 @@ def test_no_framework_authored_issues():
     act = lock[lock.index("\n  activation:\n"):lock.index("\n  agent:\n")]
     perms = act[act.index("    permissions:"):].split("\n    steps:", 1)[0]
     assert "issues: write" not in perms
+
+
+def test_copilot_engine_uses_student_pat_not_org_billing():
+    md = WF_MD.read_text()
+    lock = WF_LOCK.read_text()
+    assert re.search(r"^  id: copilot$", md, re.M)
+    # copilot-requests: write would make gh-aw ignore COPILOT_GITHUB_TOKEN (auth docs)
+    assert not re.search(r"^\s*copilot-requests:", md, re.M)
+    assert "COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}" in lock
+    assert "copilot-requests: write" not in lock.split("\n  agent:\n")[1].split("\n  conclusion:\n")[0]
+    assert "COPILOT_MODEL: gpt-5-mini" in lock
+    # inference goes through the AWF API proxy; no direct Copilot/GitHub egress for the agent
+    domains = json.loads(re.search(r'"allowDomains":(\[[^\]]*\])', lock).group(1))
+    assert not [d for d in domains if "github" in d or "copilot" in d]
+
+
+def test_skill_is_discoverable_by_copilot():
+    """Copilot CLI discovers project skills in .claude/skills; the checkout must include it."""
+    job = _agent_job(WF_LOCK.read_text())
+    assert "            .claude/\n" in job
+    skill = (SKILL_DIR / "SKILL.md").read_text()
+    assert skill.startswith("---\nname: black-issue-triage\n")
+    assert "validate_labels.py --skill-loaded" in skill
