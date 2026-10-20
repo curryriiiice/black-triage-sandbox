@@ -1,0 +1,11 @@
+{
+  "c01": {
+    "issue": 1,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
+    "created": "2026-10-20T03:39:00Z",
+    "runs": [
+      39365404649
+    ],
+    "note": "smoke test; engine could not call the model (API key not scoped to a workspace). Not scored."
+  }
+}

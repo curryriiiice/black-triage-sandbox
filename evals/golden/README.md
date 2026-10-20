@@ -1,9 +1,11 @@
 # Golden evaluation: reproduction instructions
 
-> Status (round 1, tester): **inputs, pre-event context and expected outcomes are
-> recorded and committed before any agent run** (Phase A). End-to-end runs have not been
-> made yet: the `ANTHROPIC_API_KEY` Actions secret was not set in the sandbox on
-> 2026-10-20, so `runs/` and `results.md` do not exist yet. Nothing here is a run result.
+> Status (round 1, tester): inputs, pre-event context and expected outcomes were committed
+> on 2026-10-20T03:27:10Z (`f9e38b0`), before any agent run. **The end-to-end evaluation
+> is stopped after the smoke test.** The first run (c01, run 39365404649) failed before the
+> first model call, with `API Error: 400 This API key is not scoped to a workspace, so this
+> request must include the anthropic-workspace-id header`. No case has been scored, and
+> no `results.md` exists yet. Evidence is in `runs/c01/`.
 
 ## What is evaluated
 
