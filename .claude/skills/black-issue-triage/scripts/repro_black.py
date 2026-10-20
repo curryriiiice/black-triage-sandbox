@@ -9,6 +9,7 @@ parses its input; the snippet is never imported or executed.
 Usage (from the repository root):
   python3 .claude/skills/black-issue-triage/scripts/repro_black.py --block 1 --version 25.9.0
   python3 .../repro_black.py --block 2 --version as-of --preview --target-version py314
+  python3 .../repro_black.py --inline 1 --version as-of     # an inline `code` span
 
 `--version as-of` means "the latest Black release that existed when the issue was opened".
 Versions released after the issue was opened are refused (no hindsight in replays).
@@ -161,7 +162,8 @@ def udiff(a: str, b: str, name_a: str, name_b: str, limit: int = 4000) -> str:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Safely reproduce a Black formatting report.")
     src_group = ap.add_mutually_exclusive_group(required=True)
-    src_group.add_argument("--block", type=int, help="code block number from context.md")
+    src_group.add_argument("--block", type=int, help="fenced code block number from context.md")
+    src_group.add_argument("--inline", type=int, help="inline code snippet number from context.md")
     src_group.add_argument("--snippet-file", help="file under the triage dir holding the code")
     ap.add_argument("--version", required=True, help="exact Black release, or 'as-of'")
     ap.add_argument("--preview", action="store_true")
@@ -174,12 +176,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--pyi", action="store_true")
     ap.add_argument("--triage-dir", default=str(DEFAULT_TRIAGE_DIR))
     ns = ap.parse_args(argv)
-    triage_dir = Path(ns.triage_dir)
+    triage_dir = Path(ns.triage_dir).resolve()  # Black runs from an isolated cwd
     ctx = load_json(triage_dir / "context.json")
     black_args = build_black_args(ns)
 
     if ns.block is not None:
         src_path = triage_dir / "blocks" / f"block_{ns.block}.txt"
+    elif ns.inline is not None:
+        src_path = triage_dir / "blocks" / f"inline_{ns.inline}.txt"
     else:
         src_path = Path(ns.snippet_file).resolve()
         if triage_dir.resolve() not in src_path.parents:

@@ -7,7 +7,8 @@ read-only GITHUB_TOKEN). It does every check that needs no model judgement:
   * fetch the issue and decide whether the agent should run at all (skip rules);
   * in replay mode, read the original author association / creation date from the
     replay header and strip the header so the agent never sees evaluation metadata;
-  * extract fenced code blocks and Black command lines from the body;
+  * extract fenced code blocks, Python-looking inline `code` spans, and Black command
+    lines from the body;
   * list the repository's labels;
   * compute which Black releases existed when the issue was opened (no hindsight);
   * rank likely duplicate issues among *earlier* issues.
@@ -15,7 +16,8 @@ read-only GITHUB_TOKEN). It does every check that needs no model judgement:
 Outputs (in --out, default /tmp/gh-aw/agent/triage):
   context.json   machine-readable context
   context.md     the same, formatted for the agent to read
-  blocks/block_N.txt  each fenced code block, verbatim
+  blocks/block_N.txt   each fenced code block, verbatim
+  blocks/inline_N.txt  each inline code span that looks like Python (newline appended)
 If the issue must be skipped, a `noop` safe output is appended to $GH_AW_SAFE_OUTPUTS so
 the gh-aw harness exits before any model inference (no AI cost).
 
@@ -142,8 +144,50 @@ def extract_code_blocks(body: str) -> list[dict[str, Any]]:
     for i, m in enumerate(FENCE_RE.finditer(body or ""), start=1):
         lang = m.group("lang").strip().split()[0].lower() if m.group("lang").strip() else ""
         code = m.group("code")
-        blocks.append({"index": i, "lang": lang, "lines": code.count("\n"), "code": code})
+        blocks.append({"index": i, "lang": lang, "lines": code.count("\n"), "code": code,
+                       "kind": "block", "file": f"block_{i}.txt"})
     return blocks
+
+
+INLINE_RE = re.compile(r"(?<!`)`([^`\n]{4,400})`(?!`)")
+PY_KEYWORD_START = re.compile(
+    r"^(def|class|import|from|return|lambda|if|elif|else|for|while|with|async|await|try|"
+    r"except|raise|assert|print|match|case|del|global|nonlocal|yield)\b")
+NOT_CODE_RE = re.compile(
+    r"^(\$|-|black\b|pip\b|python3?\b|https?://|www\.|\d+(\.\d+)*$|[\w./\\-]+\.(py|toml|cfg|ini|txt|md|ipynb)$)",
+    re.IGNORECASE)
+
+
+def looks_like_python(span: str) -> bool:
+    """Heuristic for inline code worth reproducing (expressions/statements, not flags,
+    paths, versions, URLs or single identifiers)."""
+    t = span.strip()
+    if len(t) < 4 or NOT_CODE_RE.match(t):
+        return False
+    if PY_KEYWORD_START.match(t):
+        return True
+    if re.match(r"^[rbuf]{1,2}[\"']", t, re.IGNORECASE):  # f"...", r'...'
+        return True
+    if re.search(r"[A-Za-z_]\w*\s*[(\[].*[)\]]", t):  # call or subscript
+        return True
+    return bool(re.search(r"\S\s*(?:==|\+=|-=|->|:=|=)\s*\S", t))  # assignment/comparison
+
+
+def extract_inline_snippets(body: str) -> list[dict[str, Any]]:
+    """Inline `code` spans outside fenced blocks that look like Python."""
+    outside = FENCE_RE.sub("", body or "")
+    seen, out = set(), []
+    for m in INLINE_RE.finditer(outside):
+        code = m.group(1).strip()
+        if code in seen or not looks_like_python(code):
+            continue
+        seen.add(code)
+        n = len(out) + 1
+        out.append({"index": n, "lang": "inline", "lines": 1, "code": code + "\n",
+                    "kind": "inline", "file": f"inline_{n}.txt"})
+        if len(out) >= 10:
+            break
+    return out
 
 
 BLACK_CMD_RE = re.compile(r"^\s*(?:\$\s*)?(?:python3? -m )?black\b[^\n]*$", re.MULTILINE)
@@ -253,6 +297,7 @@ def build_context(issue: dict[str, Any], repo_labels: list[dict[str, Any]],
     skip = decide_skip(issue, association, author_is_bot)
     releases = releases_as_of(pypi, created_at) if pypi else []
     blocks = extract_code_blocks(body)
+    inlines = extract_inline_snippets(body)
     return {
         "issue": {
             "number": issue["number"], "title": issue.get("title", ""), "body": body,
@@ -263,11 +308,13 @@ def build_context(issue: dict[str, Any], repo_labels: list[dict[str, Any]],
         "skip": skip is not None, "skip_reason": skip,
         "hints": extract_hints(body),
         "code_blocks": [{k: v for k, v in b.items() if k != "code"} for b in blocks],
+        "inline_snippets": [{"index": b["index"], "file": b["file"], "code": b["code"]}
+                            for b in inlines],
         "black_releases_as_of_issue": [r["version"] for r in releases],
         "latest_black_release_as_of_issue": releases[-1]["version"] if releases else None,
         "repo_labels": sorted(lbl["name"] for lbl in repo_labels),
         "duplicate_candidates": [] if skip else rank_duplicates(issue, body, pool),
-    }, blocks
+    }, blocks + inlines
 
 
 def render_markdown(ctx: dict[str, Any]) -> str:
@@ -288,6 +335,9 @@ def render_markdown(ctx: dict[str, Any]) -> str:
         f"- code blocks: " + (", ".join(f"block {b['index']} ({b['lang'] or 'no lang'}, "
                                          f"{b['lines']} lines)" for b in ctx["code_blocks"])
                                or "none"),
+        f"- inline code snippets (use `--inline N`): " + ("; ".join(
+            f"inline {b['index']}: `{b['code'].strip()}`" for b in ctx["inline_snippets"])
+            or "none"),
         "",
         "## Duplicate candidates (earlier issues, ranked by a deterministic similarity score)",
         "",
@@ -350,7 +400,7 @@ def main(argv: list[str] | None = None) -> int:
 
     ctx, blocks = build_context(issue, labels, pool, pypi, replay)
     for blk in blocks:
-        (out / "blocks" / f"block_{blk['index']}.txt").write_text(blk["code"], encoding="utf-8")
+        (out / "blocks" / blk["file"]).write_text(blk["code"], encoding="utf-8")
     (out / "context.json").write_text(json.dumps(ctx, indent=2), encoding="utf-8")
     (out / "context.md").write_text(render_markdown(ctx), encoding="utf-8")
     audit(out, "prefetch", issue=ctx["issue"]["number"], skip=ctx["skip"],

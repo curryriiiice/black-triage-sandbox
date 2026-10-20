@@ -72,7 +72,11 @@ Choose the code block that holds the *input* code and the flags the reporter use
 
 ```bash
 python3 .claude/skills/black-issue-triage/scripts/repro_black.py --block <N> --version <reported or as-of> [flags]
+python3 .claude/skills/black-issue-triage/scripts/repro_black.py --inline <N> --version <reported or as-of> [flags]
 ```
+
+Use `--inline N` when the only code is an inline `code` span (listed under "inline code
+snippets" in `context.md`). You cannot create snippet files yourself.
 
 - The script ignores every `pyproject.toml`/user config, so only the flags you pass count.
   If the reporter shows their `[tool.black]` settings, translate them into flags.
@@ -85,7 +89,7 @@ python3 .claude/skills/black-issue-triage/scripts/repro_black.py --block <N> --v
   formatting`; `parse_error` → the input is not valid for that target, or there is a parser bug (judge:
   check the target version); `reformatted`/`unchanged` → compare with what the reporter
   says they expected (usually a style question → category C, or not reproduced → B).
-- If no usable code block exists, do not invent one. Use category B.
+- If no usable code block or inline snippet exists, do not invent one. Use category B.
 - Never run the reporter's code with `python`. The script only gives the code to Black,
   which parses it without executing it.
 
