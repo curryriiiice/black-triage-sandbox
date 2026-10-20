@@ -9,7 +9,9 @@
 > and failed with `Credit balance is too low`. After the switch to the `copilot` engine, the
 > third smoke run (39378909956) failed with HTTP 401 `Personal Access Token does not have
 > "Copilot Requests" permission`. The fourth (39379635338, regenerated PAT) authenticated, but
-> failed because `gpt-5-mini` is not in the workflow's live Copilot model catalog. Evidence is in `runs/c01/`.
+> failed because `gpt-5-mini` is not in the workflow's live Copilot model catalog. The fifth
+> (39380550220, `claude-sonnet-5.5`) was rejected with HTTP 400 `model_not_supported` (the model is
+> not enabled in the Copilot model picker). Evidence is in `runs/c01/`.
 
 ## What is evaluated
 
