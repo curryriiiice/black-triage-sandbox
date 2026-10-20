@@ -24,7 +24,8 @@ This file states facts only. *How* to triage is in the skill
 | `.github/ISSUE_TEMPLATE/` | issue templates. Each auto-applies a `T:` label (bug → `T: bug`, etc.) |
 | `.claude/skills/black-issue-triage/` | the triage skill, its scripts, label policy and tests |
 | `.github/workflows/issue-triage.md` / `.lock.yml` | the gh-aw agentic workflow (source / compiled) |
-| `evals/golden/` | historical triage cases, expected outcomes, actual outputs, logs |
+| `evals/golden/` | historical triage cases, expected outcomes, actual outputs, logs (**not** in the agent workspace) |
+| `analysis/need/` | need-measurement data and scripts (contains maintainer outcomes; **not** in the agent workspace) |
 | `UPSTREAM_README.md`, `CHANGES.md` | upstream README and changelog as of 25.9.0 |
 
 ## Build and test commands (verified 2026-10-20, macOS, CPython 3.12.6)
@@ -66,10 +67,19 @@ Notes:
   `docs/the_black_code_style/future_style.md` and `src/black/mode.py` (`class Preview`).
 - Python ≥ 3.9. Code style is Black itself (`black --check src/`).
 
+## Agent workspace
+
+The triage workflow checks out only `.claude/`, `.github/`, `docs/`, `src/` and the root files
+(sparse checkout). A pre-agent step then deletes `analysis/`, `evals/` and `DESIGN.md`, failing
+the job if any remains, so evaluation answers can never be read during triage. Ground-truth or
+evaluation data must live only under `analysis/` or `evals/`.
+
 ## Forbidden changes
 
 - Do not modify anything under `src/`, `tests/`, `docs/`, `LICENSE`, or `AUTHORS.md`. They
   are the upstream snapshot and the attribution.
+- Do not put evaluation answers or maintainer outcomes anywhere except `analysis/` or `evals/`,
+  and do not widen the sparse checkout in `issue-triage.md` to include them.
 - Do not edit `.github/workflows/*.lock.yml` by hand. Change the `.md` source and run
   `gh aw compile`.
 - Do not widen `permissions`, `network`, `tools`, or `safe-outputs` in

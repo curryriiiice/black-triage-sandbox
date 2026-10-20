@@ -133,3 +133,48 @@ def test_main_offline_no_noop_for_external_issue(tmp_path, monkeypatch):
              "--issues-json", str(tmp_path / "i.json"), "--pypi-json", str(tmp_path / "p.json")])
     assert not outputs.exists()
     assert (out / "blocks" / "block_1.txt").read_text() == "if x: pass  # fmt: skip\n"
+
+
+INLINE_BODY = (
+    "black fails when parsing a valid f string:\n\n"
+    "```\nBlack produced invalid code: f-string: expecting '}'\n```\n\n"
+    "`f\"Processing {data['type']}: {data['id']}\"`\n\n"
+    "I ran `black --preview x.py` with `pyproject.toml` on `25.9.0`; also `x = 1` is fine.\n"
+)
+
+
+def test_inline_snippets_extracted_with_heuristics():
+    snips = pc.extract_inline_snippets(INLINE_BODY)
+    assert [s["code"] for s in snips] == ["f\"Processing {data['type']}: {data['id']}\"\n",
+                                          "x = 1\n"]
+    assert snips[0]["file"] == "inline_1.txt"
+
+
+def test_inline_spans_inside_fences_ignored():
+    body = "```python\nx = `y = 1`\n```\n"
+    assert pc.extract_inline_snippets(body) == []
+
+
+def test_looks_like_python_rejects_non_code():
+    for t in ("--preview", "pyproject.toml", "26.1.0", "black file.py", "fmt: skip", "foo",
+              "https://example.org/a", "src/black/linegen.py"):
+        assert not pc.looks_like_python(t), t
+    for t in ("print(x)", "except (A, B):", "a[1:2]", "r'\\d+'", "x = 1"):
+        assert pc.looks_like_python(t), t
+
+
+def test_main_writes_inline_files(tmp_path, monkeypatch):
+    f = tmp_path / "issue.json"
+    f.write_text(json.dumps(issue(number=8, body=INLINE_BODY, assoc="NONE")))
+    for name, data in (("l.json", []), ("i.json", []), ("p.json", PYPI)):
+        (tmp_path / name).write_text(json.dumps(data))
+    monkeypatch.delenv("GH_AW_SAFE_OUTPUTS", raising=False)
+    monkeypatch.setenv("TRIAGE_REPLAY_MODE", "false")
+    out = tmp_path / "triage"
+    pc.main(["--out", str(out), "--issue-json", str(f), "--labels-json", str(tmp_path / "l.json"),
+             "--issues-json", str(tmp_path / "i.json"), "--pypi-json", str(tmp_path / "p.json")])
+    assert (out / "blocks" / "inline_1.txt").read_text().startswith('f"Processing')
+    assert (out / "blocks" / "block_1.txt").exists()
+    ctx = json.loads((out / "context.json").read_text())
+    assert len(ctx["inline_snippets"]) == 2 and len(ctx["code_blocks"]) == 1
+    assert "--inline N" in (out / "context.md").read_text()

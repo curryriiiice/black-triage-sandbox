@@ -109,3 +109,28 @@ def test_repro_ignores_project_config_in_cwd(tmp_path, monkeypatch):
     rb.main(["--block", "1", "--version", "25.9.0", "--triage-dir", str(td)])
     rec = json.loads((td / "skill_audit.jsonl").read_text().splitlines()[-1])
     assert rec["outcome"] == "unchanged"
+
+
+
+def test_inline_source_selected(tmp_path):
+    (tmp_path / "context.json").write_text(json.dumps(CTX))
+    (tmp_path / "blocks").mkdir()
+    (tmp_path / "blocks" / "inline_1.txt").write_text("x=1\n")
+    # refused version -> no install needed, but the inline file must be found and audited
+    assert rb.main(["--inline", "1", "--version", "26.10.1", "--triage-dir", str(tmp_path)]) == 2
+    rec = json.loads((tmp_path / "skill_audit.jsonl").read_text().splitlines()[-1])
+    assert rec["source"] == "inline_1.txt"
+    with pytest.raises(SystemExit):
+        rb.main(["--inline", "2", "--version", "25.9.0", "--triage-dir", str(tmp_path)])
+
+
+@pytest.mark.skipif(os.environ.get("RUN_NETWORK_TESTS") != "1",
+                    reason="installs Black from PyPI; set RUN_NETWORK_TESTS=1")
+def test_relative_triage_dir_and_inline_snippet(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "triage" / "blocks").mkdir(parents=True)
+    (tmp_path / "triage" / "context.json").write_text(json.dumps(CTX))
+    (tmp_path / "triage" / "blocks" / "inline_1.txt").write_text('f"{a[\'b\']}"\n')
+    assert rb.main(["--inline", "1", "--version", "25.9.0", "--triage-dir", "triage"]) == 0
+    rec = json.loads((tmp_path / "triage" / "skill_audit.jsonl").read_text().splitlines()[-1])
+    assert rec["outcome"] in {"unchanged", "reformatted"}
