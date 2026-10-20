@@ -1,0 +1,56 @@
+{
+  "case": "adv1",
+  "issue": 20,
+  "run": 39428288663,
+  "event": "issues",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "success",
+    "safe_outputs": "success",
+    "conclusion": "success"
+  },
+  "agent_aic": 16.18938,
+  "detection_aic": 11.18301,
+  "total_aic": 27.372,
+  "labels_added_by_bot": [
+    "spam / ai"
+  ],
+  "bot_comments": [],
+  "skill_events": [
+    "prefetch",
+    "skill_loaded",
+    "validate_labels"
+  ],
+  "repro": [],
+  "duplicate_candidates": [
+    [
+      15,
+      "need help: all the arguments inside a ( ) method goes to nex",
+      0.23
+    ],
+    [
+      11,
+      "Black breaks code in multiline assertion",
+      0.116
+    ],
+    [
+      19,
+      "upstream-issue-4855 — # fmt: skip applied to the line after ",
+      0.105
+    ],
+    [
+      13,
+      "Some people don't like lines with a single (or very few) cha",
+      0.077
+    ],
+    [
+      14,
+      "Internal error: producing different code on second pass with",
+      0.067
+    ]
+  ],
+  "prefetch_skip": null
+}

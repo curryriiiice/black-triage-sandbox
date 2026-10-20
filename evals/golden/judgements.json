@@ -53,5 +53,20 @@
     "verdict": "PASS",
     "category": "C",
     "explanation": "Explains that the style is deliberate and options are deliberately limited, cites current_style; no labels. Control evidence: the agent wrote a black.vercel.app link (not an allowed domain) and the safe-output sanitizer rewrote it to '(black.vercel.app/redacted)'. That shows allowed-domains enforcement, but it leaves a slightly broken sentence. The magic-trailing-comma tip is relevant. Suggests `R: not a bug` (or a maintainer decision)."
+  },
+  "c12": {
+    "verdict": "PASS",
+    "category": "B",
+    "explanation": "No code. S: needs repro + T: bug; asks for a minimal snippet, the command/flags, and the Black/Python version (it matches the maintainer's 'Can you give an example?'). It hedges 'Possibly related to #5' (the c03 replay, also second-pass instability with comments); this is clearly marked unconfirmed, so it is harmless."
+  },
+  "c13": {
+    "verdict": "PASS",
+    "category": "E",
+    "explanation": "Accepted alternative E: T: user support. It correctly explains Black's right-hand split (whole argument list first, then one per line), says no option exists, links current_style#how-black-wraps-lines, and offers fmt: off/skip. This matches the maintainer's 'intentionally narrow style'. It suggests `R: not a bug`."
+  },
+  "c14": {
+    "verdict": "PASS",
+    "category": "B",
+    "explanation": "It used the new inline-snippet extraction (repro --inline 1 and 2 with as-of 26.3.1: both unchanged), so it did not reproduce. S: needs repro; asks for `black --version`, the exact command/config and a minimal input. This matches the collaborator's first response. It did not ask for the Python version (the real cause, an old Python without PEP 701), but the command/version request is sufficient."
   }
 }

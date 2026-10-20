@@ -1,0 +1,236 @@
+{
+  "issue": {
+    "number": 18,
+    "title": "With --target-version py314, Black strips parentheses from `except (A, B):` producing invalid Python 3",
+    "body": "### Describe the bug\n\nWith `--target-version py314`, Black rewrites a parenthesized `except` tuple into the Python-2 `except A, B:` form, which is a **`SyntaxError` in Python 3**. Black therefore emits source it cannot itself re-parse. The bug is specific to the `py314` target \u2014 `py313` and the default (no target) leave the code unchanged.\n\n### To Reproduce\n\nGiven `bug.py`:\n\n```python\ntry:\n    pass\nexcept (ValueError, TypeError):\n    pass\n```\n\nRun:\n\n```console\n$ black --target-version py314 bug.py\n```\n\nResult \u2014 the file is rewritten to:\n\n```python\ntry:\n    pass\nexcept ValueError, TypeError:\n    pass\n```\n\nwhich no longer parses under Python 3:\n\n```console\n$ python -c \"import ast; ast.parse(open('bug.py').read())\"\n  File \"<unknown>\", line 3\n    except ValueError, TypeError:\n                     ^\nSyntaxError: multiple exception types must be parenthesized\n```\n\nThree-or-more-element tuples are affected too (`except (A, B, C):` \u2192 `except A, B, C:`).\n\n### Expected behavior\n\n`except (ValueError, TypeError):` is left unchanged. The parentheses are **required** in Python 3 and must never be removed.\n\n### Environment\n\n- Black version: **26.3.1** (from PyPI; `black --version` reports `black, 26.3.1 (compiled: yes)`)\n- OS: Linux\n- Python: CPython 3.14.6\n\n### Additional context\n\n- Deterministic on a cache miss. Because Black caches results by file mtime/size, a second run on an unchanged file may report \"unchanged\" without reformatting \u2014 clearing `~/.cache/black` (or editing the file) reproduces it every time.\n- Not reproducible with `--target-version py313` or with no `--target-version` (defaults).\n- Reproduces via the CLI flag alone; a `[tool.black] target-version = [\"py314\"]` in `pyproject.toml` triggers it identically.\n- Impact: `black`/`black --check` in a py314-targeted project can silently turn valid source into a `SyntaxError`.\n\n",
+    "created_at": "2026-07-22T03:11:12Z",
+    "author_association": "NONE",
+    "existing_labels": []
+  },
+  "replay_mode": true,
+  "skip": false,
+  "skip_reason": null,
+  "hints": {
+    "reported_version": "26.3.1",
+    "black_command_lines": [
+      "$ black --target-version py314 bug.py"
+    ],
+    "flags_seen_in_commands": [
+      "--target-version"
+    ],
+    "mentions_preview": false
+  },
+  "code_blocks": [
+    {
+      "index": 1,
+      "lang": "python",
+      "lines": 4,
+      "kind": "block",
+      "file": "block_1.txt"
+    },
+    {
+      "index": 2,
+      "lang": "console",
+      "lines": 1,
+      "kind": "block",
+      "file": "block_2.txt"
+    },
+    {
+      "index": 3,
+      "lang": "python",
+      "lines": 4,
+      "kind": "block",
+      "file": "block_3.txt"
+    },
+    {
+      "index": 4,
+      "lang": "console",
+      "lines": 5,
+      "kind": "block",
+      "file": "block_4.txt"
+    }
+  ],
+  "inline_snippets": [
+    {
+      "index": 1,
+      "file": "inline_1.txt",
+      "code": "except\n"
+    },
+    {
+      "index": 2,
+      "file": "inline_2.txt",
+      "code": "except A, B:\n"
+    },
+    {
+      "index": 3,
+      "file": "inline_3.txt",
+      "code": "except (A, B, C):\n"
+    },
+    {
+      "index": 4,
+      "file": "inline_4.txt",
+      "code": "except A, B, C:\n"
+    },
+    {
+      "index": 5,
+      "file": "inline_5.txt",
+      "code": "except (ValueError, TypeError):\n"
+    },
+    {
+      "index": 6,
+      "file": "inline_6.txt",
+      "code": "[tool.black] target-version = [\"py314\"]\n"
+    }
+  ],
+  "black_releases_as_of_issue": [
+    "22.1.0",
+    "22.3.0",
+    "22.6.0",
+    "22.8.0",
+    "22.10.0",
+    "22.12.0",
+    "23.1.0",
+    "23.3.0",
+    "23.7.0",
+    "23.9.0",
+    "23.9.1",
+    "23.10.0",
+    "23.10.1",
+    "23.11.0",
+    "23.12.0",
+    "23.12.1",
+    "24.1.0",
+    "24.1.1",
+    "24.2.0",
+    "24.3.0",
+    "24.4.0",
+    "24.4.1",
+    "24.4.2",
+    "24.8.0",
+    "24.10.0",
+    "25.1.0",
+    "25.9.0",
+    "25.11.0",
+    "25.12.0",
+    "26.1.0",
+    "26.3.0",
+    "26.3.1",
+    "26.5.0",
+    "26.5.1"
+  ],
+  "latest_black_release_as_of_issue": "26.5.1",
+  "repo_labels": [
+    "C: api",
+    "C: cleanup",
+    "C: configuration",
+    "C: crash",
+    "C: dependencies",
+    "C: file collection",
+    "C: integrations",
+    "C: invalid code",
+    "C: jupyter",
+    "C: maintenance",
+    "C: packaging",
+    "C: parser",
+    "C: performance",
+    "C: preview style",
+    "C: target version",
+    "C: unstable formatting",
+    "C: vim",
+    "F: comments",
+    "F: docstrings",
+    "F: empty lines",
+    "F: fmtoff",
+    "F: fmtskip",
+    "F: linebreak",
+    "F: linetoolong",
+    "F: parentheses",
+    "F: strings",
+    "F: symmetry",
+    "F: trailing comma",
+    "R: duplicate",
+    "R: invalid",
+    "R: not a bug",
+    "R: outdated",
+    "R: rejected",
+    "S: accepted",
+    "S: awaiting response",
+    "S: blocked",
+    "S: needs discussion",
+    "S: needs repro",
+    "S: up for grabs",
+    "T: bug",
+    "T: documentation",
+    "T: enhancement",
+    "T: style",
+    "T: user support",
+    "agentic-workflows",
+    "ci: build all wheels",
+    "ci: fuzz error",
+    "ci: skip news",
+    "good first issue",
+    "good second issue",
+    "hacktoberfest-accepted",
+    "help wanted",
+    "spam / ai"
+  ],
+  "duplicate_candidates": [
+    {
+      "number": 4,
+      "title": "Eliminar maestro",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.082,
+      "shared_signals": [
+        "target-version"
+      ],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install -r test_requirements.txt`\n   - make sure it's sane by running `python -m pytest`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n<!--\nMinimal steps to reproduce the behavior with source code and Black's configuration.\n-->\n\nFor example, take this code:\n\n```python\nthis = \"code\"\n```\n\nAnd run it with these arguments:\n\n```sh\n$ black file.py --target-version py39\n```\n\nThe resulting error is:\n\n> cannot format file.py: INTERNAL ERROR: ...\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Environment**\n\n<!-- Pl"
+    },
+    {
+      "number": 11,
+      "title": "Black breaks code in multiline assertion",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "T: bug"
+      ],
+      "score": 0.08,
+      "shared_signals": [
+        "parenthes"
+      ],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install --group tests`\n   - make sure it's sane by running `python -m pytest -n auto`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\nRunning Black on the example code below introduces a change in the meaning of the code.\n\n**To Reproduce**\n\nFor example, take this code:\n\n```python\nassert (\n    # my comment\n    my_var == 999 if abc == \"TEST\" else 0\n)\n```\n\nBlack updates it to:\n\n```python\nassert (\n    # my comment\n    my_var == 999\n    if abc == \"TEST\"\n    else 0\n)\n```\n\nThis introduces a bug:\n- Original code: when `abc == \"TEST\"` this results in `assert my_var == 0`\n- Updated code: when `abc == \"TEST\"` this results in `assert 0`\n\n**Expected "
+    },
+    {
+      "number": 8,
+      "title": "Cannot parse multi-line code split using backslash",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.07,
+      "shared_signals": [
+        "target-version"
+      ],
+      "body_excerpt": "<!--\nPlease make sure that the bug is not already fixed either in newer versions or the\ncurrent development version. To confirm this, you have three options:\n\n1. Update Black's version if a newer release exists: `pip install -U black`\n2. Use the online formatter at <https://black.vercel.app/?version=main>, which will use\n   the latest main branch.\n3. Or run _Black_ on your machine:\n   - create a new virtualenv (make sure it's the same Python version);\n   - clone this repository;\n   - run `pip install -e .[d]`;\n   - run `pip install -r test_requirements.txt`\n   - make sure it's sane by running `python -m pytest`; and\n   - run `black` like you did last time.\n-->\n\n**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\nWhen my code contains a multi-line expression that's concatenated using backslash (`\\`) and no indentation, black cannot parse my code\n\n**To Reproduce**\n\n<!--\nMinimal steps to reproduce the behavior with source code and Black's configuration.\n-->\n\nFor example, take this code:\n\n```python\nif True:\n    foo = 1+\\\n2\n    print(foo)\n```\n\nAnd run it with these arguments:\n\n```sh\n$ black file.py --target-version py313\n```\n\nThe resulting error is:\n\n> err"
+    },
+    {
+      "number": 14,
+      "title": "Internal error: producing different code on second pass with long type annotations",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        "S: needs repro",
+        "T: bug"
+      ],
+      "score": 0.042,
+      "shared_signals": [],
+      "body_excerpt": "## Bug Description\nBlack produces different code on the second pass of the formatter when processing files with long type annotations and comments. This violates the idempotency guarantee.\n\n## Expected Behavior\nBlack should produce identical output on consecutive passes.\n\nRelated to upstream-issue-4733.\n"
+    }
+  ]
+}

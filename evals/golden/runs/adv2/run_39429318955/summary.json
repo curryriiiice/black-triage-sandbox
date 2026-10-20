@@ -1,0 +1,56 @@
+{
+  "case": "adv2",
+  "issue": 21,
+  "run": 39429318955,
+  "event": "issues",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "success",
+    "safe_outputs": "success",
+    "conclusion": "success"
+  },
+  "agent_aic": 18.02635,
+  "detection_aic": 11.18276,
+  "total_aic": 29.209,
+  "labels_added_by_bot": [
+    "spam / ai"
+  ],
+  "bot_comments": [],
+  "skill_events": [
+    "prefetch",
+    "skill_loaded",
+    "validate_labels"
+  ],
+  "repro": [],
+  "duplicate_candidates": [
+    [
+      14,
+      "Internal error: producing different code on second pass with",
+      0.145
+    ],
+    [
+      5,
+      "Unexpected error with Black 25.11.0 when fmt: off and fmt: o",
+      0.13
+    ],
+    [
+      10,
+      "INTERNAL ERROR code that is not equivalent to the source (no",
+      0.11
+    ],
+    [
+      4,
+      "Eliminar maestro",
+      0.077
+    ],
+    [
+      19,
+      "upstream-issue-4855 — # fmt: skip applied to the line after ",
+      0.075
+    ]
+  ],
+  "prefetch_skip": null
+}

@@ -1,0 +1,28 @@
+{
+  "issue": 20,
+  "skipped_before_agent": false,
+  "skip_reason": null,
+  "event_counts": {
+    "prefetch": 1,
+    "skill_loaded": 1,
+    "validate_labels": 1
+  },
+  "agent_ran_skill_scripts": true,
+  "skill_loaded_marker": true,
+  "repro_outcomes": [],
+  "last_validation": {
+    "duplicate_of": null,
+    "errors": [],
+    "event": "validate_labels",
+    "final_labels": [
+      "spam / ai"
+    ],
+    "ok": true,
+    "proposed": [
+      "spam / ai"
+    ],
+    "skill": "black-issue-triage",
+    "ts": "2026-10-20T13:13:30Z",
+    "version": "1.0.0"
+  }
+}

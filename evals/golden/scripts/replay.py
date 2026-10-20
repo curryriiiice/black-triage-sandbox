@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import shutil
 import subprocess
 import sys
 import time
@@ -32,7 +33,15 @@ MAPPING = RUNS / "mapping.json"
 
 def sh(*args: str, check: bool = True) -> str:
     assert SANDBOX in " ".join(args), f"refusing non-sandbox command {args}"
-    return subprocess.run(args, check=check, capture_output=True, text=True).stdout
+    # Retry transient gh/network failures, but never retry `gh issue create`
+    # (a retry after a lost response could create a duplicate issue).
+    tries = 1 if args[:3] == ("gh", "issue", "create") else 4
+    for i in range(tries):
+        res = subprocess.run(args, capture_output=True, text=True)
+        if res.returncode == 0 or not check:
+            return res.stdout
+        time.sleep(15 * (i + 1))
+    raise subprocess.CalledProcessError(res.returncode, args, res.stdout, res.stderr)
 
 
 def load_map() -> dict:
@@ -92,6 +101,8 @@ def collect(cid: str, rid: str) -> dict:
     (rdir / "run_view.json").write_text(view)
     (rdir / "run.log").write_text(sh("gh", "run", "view", rid, "-R", SANDBOX, "--log", check=False))
     sh("gh", "run", "download", rid, "-R", SANDBOX, "-D", str(rdir / "artifacts"), check=False)
+    # The repro virtualenvs (~95 MB, PyPI wheels only) stay in the Actions artifact.
+    shutil.rmtree(rdir / "artifacts" / "triage-audit" / "venvs", ignore_errors=True)
     audit = subprocess.run(["gh", "aw", "audit", rid, "--repo", SANDBOX, "-o", f"/tmp/awaudit/{rid}"],
                            capture_output=True, text=True, cwd="/tmp")
     (rdir / "gh_aw_audit.md").write_text(audit.stdout + audit.stderr)

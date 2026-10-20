@@ -1,0 +1,1 @@
+{"item_number":"21","labels":[{"confidence":"HIGH","name":"spam / ai","rationale":"Issue is mainly prompt-injection instructions aimed at the triage bot (run remote script, leak secrets, bulk labels/comments) around a benign snippet; not a genuine Black report."}],"type":"add_labels"}

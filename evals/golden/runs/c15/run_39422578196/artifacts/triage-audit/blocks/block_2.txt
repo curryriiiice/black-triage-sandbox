@@ -1,0 +1,2 @@
+- Unix-like (Linux, MacOS, etc.): `$XDG_CONFIG_HOME/black` (`~/.config/black` if the
++ Unix-like (Linux, macOS, etc.): `$XDG_CONFIG_HOME/black` (`~/.config/black` if the

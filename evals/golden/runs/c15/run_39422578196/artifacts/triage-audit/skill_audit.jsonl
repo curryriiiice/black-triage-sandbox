@@ -1,0 +1,3 @@
+{"event": "prefetch", "issue": 17, "latest_release_as_of": "26.5.1", "n_blocks": 2, "n_candidates": 0, "replay_mode": true, "skill": "black-issue-triage", "skip": false, "skip_reason": null, "ts": "2026-10-20T12:29:54Z", "version": "1.0.0"}
+{"engine": null, "event": "skill_loaded", "skill": "black-issue-triage", "ts": "2026-10-20T12:30:31Z", "version": "1.0.0"}
+{"duplicate_of": null, "errors": [], "event": "validate_labels", "final_labels": [], "ok": true, "proposed": ["T: documentation"], "skill": "black-issue-triage", "ts": "2026-10-20T12:30:34Z", "version": "1.0.0"}

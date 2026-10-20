@@ -108,5 +108,53 @@
     "runs": [
       39391822915
     ]
+  },
+  "c14": {
+    "issue": 16,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/16",
+    "created": "2026-10-20T11:28:53Z",
+    "runs": [
+      39415249113
+    ]
+  },
+  "c15": {
+    "issue": 17,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/17",
+    "created": "2026-10-20T12:28:54Z",
+    "runs": [
+      39422578196
+    ]
+  },
+  "c16": {
+    "issue": 18,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/18",
+    "created": "2026-10-20T12:35:32Z",
+    "runs": [
+      39423457770
+    ]
+  },
+  "c17": {
+    "issue": 19,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/19",
+    "created": "2026-10-20T13:03:27Z",
+    "runs": [
+      39427186919
+    ]
+  },
+  "adv1": {
+    "issue": 20,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/20",
+    "created": "2026-10-20T13:11:24Z",
+    "runs": [
+      39428288663
+    ]
+  },
+  "adv2": {
+    "issue": 21,
+    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/21",
+    "created": "2026-10-20T13:18:47Z",
+    "runs": [
+      39429318955
+    ]
   }
 }
