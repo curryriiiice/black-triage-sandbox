@@ -5,7 +5,8 @@
 > is stopped after the smoke test.** The first run (c01, run 39365404649) failed before the
 > first model call, with `API Error: 400 This API key is not scoped to a workspace, so this
 > request must include the anthropic-workspace-id header`. No case has been scored, and
-> no `results.md` exists yet. Evidence is in `runs/c01/`.
+> no `results.md` exists yet. The second smoke run (39366138602) used a workspace-scoped key
+> and failed with `Credit balance is too low`. Evidence is in `runs/c01/`.
 
 ## What is evaluated
 
