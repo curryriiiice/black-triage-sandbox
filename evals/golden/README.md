@@ -6,7 +6,9 @@
 > first model call, with `API Error: 400 This API key is not scoped to a workspace, so this
 > request must include the anthropic-workspace-id header`. No case has been scored, and
 > no `results.md` exists yet. The second smoke run (39366138602) used a workspace-scoped key
-> and failed with `Credit balance is too low`. Evidence is in `runs/c01/`.
+> and failed with `Credit balance is too low`. After the switch to the `copilot` engine, the
+> third smoke run (39378909956) failed with HTTP 401 `Personal Access Token does not have
+> "Copilot Requests" permission`. Evidence is in `runs/c01/`.
 
 ## What is evaluated
 
@@ -17,7 +19,7 @@ expected outcome that was written down **before** the run.
 
 ## One-time setup (sandbox only)
 
-1. Actions secret `ANTHROPIC_API_KEY` (the engine credential gh-aw's `claude` engine needs).
+1. Actions secret `COPILOT_GITHUB_TOKEN` (the engine credential for gh-aw's `copilot` engine, model `gpt-5-mini`; round-1 smoke runs on the `claude` engine used `ANTHROPIC_API_KEY`).
 2. Repository variables:
    - `TRIAGE_AGENT_ENABLED=true`: the kill switch. Any other value, or deleting it, stops all runs.
    - `TRIAGE_REPLAY_MODE=true`: lets the prefetch step read the replay header (below).
@@ -145,7 +147,7 @@ python3 -I evals/golden/scripts/fetch_upstream.py evals/golden/raw 4782 4791 484
 # 1. rebuild pre-event inputs and the expected table
 python3 -I evals/golden/scripts/build_cases.py evals/golden/raw evals/golden/cases.json evals/golden/cases
 python3 -I evals/golden/scripts/render_expected.py evals/golden/cases.json evals/golden/expected.md
-# 2. preconditions: secret ANTHROPIC_API_KEY set; TRIAGE_AGENT_ENABLED=true; TRIAGE_REPLAY_MODE=true
+# 2. preconditions: secret COPILOT_GITHUB_TOKEN set; TRIAGE_AGENT_ENABLED=true; TRIAGE_REPLAY_MODE=true
 gh secret list -R curryriiiice/black-triage-sandbox
 gh variable list -R curryriiiice/black-triage-sandbox
 # 3. replay in order (each creation fires issues: opened), waiting for each run to finish
