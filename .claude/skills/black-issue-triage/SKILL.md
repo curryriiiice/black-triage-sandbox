@@ -17,7 +17,13 @@ used, so always run the scripts. Do not reason your way around them.
 
 ## Step 0: read the context (always first)
 
-Read `/tmp/gh-aw/agent/triage/context.md` (with the Read tool).
+```bash
+python3 .claude/skills/black-issue-triage/scripts/validate_labels.py --skill-loaded
+cat /tmp/gh-aw/agent/triage/context.md
+```
+
+The first command only records that this skill was loaded (event `skill_loaded` in the audit
+log). Run it before anything else.
 
 A deterministic workflow step (`scripts/prefetch_context.py`) wrote this file before you
 started. It contains the issue, the code blocks (`/tmp/gh-aw/agent/triage/blocks/block_N.txt`),
@@ -58,7 +64,7 @@ Label guidance lives in `.claude/skills/black-issue-triage/references/label_guid
 Style questions must be checked against `docs/the_black_code_style/current_style.md`,
 `docs/the_black_code_style/future_style.md` (preview/unstable features), and
 `docs/usage_and_configuration/the_basics.md` in the repository checkout. Search them
-with the Grep/Read tools. Do not answer from memory.
+with `grep`/`cat`. Do not answer from memory.
 
 **Spam needs two signals:** (1) no Black-specific content (no Python snippet, no
 formatter behaviour, no CLI/config question) **and** (2) a spam pattern: promotion, a test

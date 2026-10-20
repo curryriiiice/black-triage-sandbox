@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -107,9 +108,16 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Validate proposed triage labels.")
     ap.add_argument("labels", nargs="*")
     ap.add_argument("--duplicate-of", type=int)
+    ap.add_argument("--skill-loaded", action="store_true",
+                    help="record that the agent loaded SKILL.md (step 0) and exit")
     ap.add_argument("--triage-dir", default=str(DEFAULT_TRIAGE_DIR))
     ns = ap.parse_args(argv)
     triage_dir = Path(ns.triage_dir)
+    if ns.skill_loaded:
+        audit(triage_dir, "skill_loaded", engine=os.environ.get("GH_AW_ENGINE_ID")
+              or os.environ.get("GH_AW_INFO_ENGINE_ID"))
+        print(f"{MARKER} skill loaded")
+        return 0
     ctx = load_json(triage_dir / "context.json")
     if ctx is None:
         print(f"{MARKER} warning: no context.json; repository label checks skipped")

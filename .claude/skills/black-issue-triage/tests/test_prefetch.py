@@ -178,3 +178,21 @@ def test_main_writes_inline_files(tmp_path, monkeypatch):
     ctx = json.loads((out / "context.json").read_text())
     assert len(ctx["inline_snippets"]) == 2 and len(ctx["code_blocks"]) == 1
     assert "--inline N" in (out / "context.md").read_text()
+
+
+
+def test_duplicate_pool_excludes_bot_and_agentic_workflow_issues():
+    me = issue(number=10)
+    _, body = pc.parse_replay_header(REPLAY_BODY)
+    same = {"title": "Crash with fmt: skip in preview mode", "body": "fmt: skip crash",
+            "state": "open"}
+    pool = [
+        dict(same, number=2, user={"login": "github-actions[bot]", "type": "Bot"}, labels=[]),
+        dict(same, number=3, user={"login": "someone", "type": "User"},
+             labels=[{"name": "agentic-workflows"}]),
+        dict(same, number=4, user={"login": "github-actions", "type": "User"}, labels=[]),
+        dict(same, number=5, user={"login": "reporter", "type": "User"}, labels=[]),
+    ]
+    assert [c["number"] for c in pc.rank_duplicates(me, body, pool)] == [5]
+    assert pc.is_automation_issue(pool[0]) and pc.is_automation_issue(pool[1])
+    assert not pc.is_automation_issue(pool[3])

@@ -30,7 +30,8 @@ def summarise(triage_dir: Path) -> dict:
                 pass
     ctx = load_json(triage_dir / "context.json", {}) or {}
     counts = Counter(r.get("event") for r in records)
-    agent_events = counts.get("repro", 0) + counts.get("validate_labels", 0)
+    agent_events = (counts.get("repro", 0) + counts.get("validate_labels", 0)
+                    + counts.get("skill_loaded", 0))
     validations = [r for r in records if r.get("event") == "validate_labels"]
     return {
         "issue": (ctx.get("issue") or {}).get("number"),
@@ -38,6 +39,7 @@ def summarise(triage_dir: Path) -> dict:
         "skip_reason": ctx.get("skip_reason"),
         "event_counts": dict(counts),
         "agent_ran_skill_scripts": agent_events > 0,
+        "skill_loaded_marker": counts.get("skill_loaded", 0) > 0,
         "repro_outcomes": [r.get("outcome") for r in records if r.get("event") == "repro"],
         "last_validation": validations[-1] if validations else None,
     }
@@ -56,6 +58,7 @@ def main(argv: list[str]) -> int:
     print(f"- skipped deterministically before the agent: {s['skipped_before_agent']}"
           + (f" ({s['skip_reason']})" if s["skip_reason"] else ""))
     print(f"- skill script events: {s['event_counts'] or 'none'}")
+    print(f"- skill loaded (step 0 marker): {s['skill_loaded_marker']}")
     print(f"- agent invoked skill scripts: {s['agent_ran_skill_scripts']}")
     print(f"- repro outcomes: {s['repro_outcomes'] or 'none'}")
     print(f"- last label validation: ok={lv.get('ok')} labels={lv.get('final_labels')}")

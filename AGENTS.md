@@ -73,6 +73,8 @@ The triage workflow checks out only `.claude/`, `.github/`, `docs/`, `src/` and 
 (sparse checkout). A pre-agent step then deletes `analysis/`, `evals/` and `DESIGN.md`, failing
 the job if any remains, so evaluation answers can never be read during triage. Ground-truth or
 evaluation data must live only under `analysis/` or `evals/`.
+The agent is GitHub Copilot CLI (gh-aw `copilot` engine). It discovers the triage skill in
+`.claude/skills/` and reads files with shell `cat`/`grep` (no edit or web tools).
 
 ## Forbidden changes
 
