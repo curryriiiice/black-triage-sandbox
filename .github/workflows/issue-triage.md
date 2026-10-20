@@ -27,8 +27,8 @@ permissions:
 # it would make gh-aw ignore that PAT and require org-billed Copilot on the Actions token.
 engine:
   id: copilot
-  # Pinned explicitly: cheapest capable Copilot model (see DESIGN.md, bill of materials).
-  model: gpt-5-mini
+  # Pinned explicitly; must be an id in the run's live Copilot catalog (awf-reflect.json). See DESIGN.md BOM.
+  model: claude-sonnet-5.5
   # Serialise agent runs across issues (bursts queue instead of fanning out).
   concurrency:
     group: "gh-aw-copilot-issue-triage"
@@ -37,7 +37,7 @@ engine:
 timeout-minutes: 10
 max-turns: 30
 max-ai-credits: 150
-max-daily-ai-credits: 1500
+max-daily-ai-credits: 1000
 
 user-rate-limit:
   max-runs-per-window: 3
