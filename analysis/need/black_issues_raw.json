@@ -1,0 +1,5666 @@
+{
+ "meta": {
+  "repo": "psf/black",
+  "window": [
+   "2025-10-01",
+   "2026-09-30"
+  ],
+  "fetched_at": "2026-10-20T02:14:03Z",
+  "count": 91
+ },
+ "issues": [
+  {
+   "number": 4771,
+   "title": "potential multiprocessing performance improvement",
+   "user": "asottile",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-10-02T18:56:09Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-05T21:32:20Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "subscribed",
+     "actor": "narpfel",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-02T21:53:58Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "93578237",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-03T06:52:09Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "stefanvanburen",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T14:46:51Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Parnassius",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-29T16:28:00Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "KORraNpl",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-30T07:45:36Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "hugovk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-01T08:43:22Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-01T04:49:36Z"
+    }
+   ]
+  },
+  {
+   "number": 4781,
+   "title": "Crash with preview style `fix_fmt_skip_in_one_liners` for function with annotated parameter and `# fmt: skip` on one line",
+   "user": "dylwil3",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-06T19:07:33Z",
+   "closed_at": "2025-11-21T23:24:40Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "renamed",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-06T19:11:04Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2025-10-10T00:17:59Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "F: fmtskip",
+     "created_at": "2025-10-19T21:21:04Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-05T23:54:15Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T23:04:31Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T23:24:40Z"
+    }
+   ]
+  },
+  {
+   "number": 4782,
+   "title": "Crash with preview style `fix_fmt_skip_in_one_liners` for certain compound statements",
+   "user": "dylwil3",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-06T19:26:28Z",
+   "closed_at": "2025-11-21T23:49:06Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "comments": [
+    {
+     "user": "Exgene",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-12T11:30:03Z"
+    },
+    {
+     "user": "sarang80040",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-15T12:43:07Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-15T13:44:25Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2025-10-10T00:17:49Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T12:43:08Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T12:43:08Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "sarang80040",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T13:44:26Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "sarang80040",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T13:44:26Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "F: fmtskip",
+     "created_at": "2025-10-19T21:21:00Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T23:49:06Z"
+    }
+   ]
+  },
+  {
+   "number": 4783,
+   "title": "Preview style `fix_fmt_skip_in_one_liners` does not work for semi-colon separated statements in body of compound statement",
+   "user": "dylwil3",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-06T20:20:11Z",
+   "closed_at": "2025-10-26T19:37:07Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "F: fmtskip"
+   ],
+   "comments": [
+    {
+     "user": "sonianuj287",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-14T04:46:19Z"
+    },
+    {
+     "user": "sarang80040",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-15T12:32:39Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-18T13:30:35Z"
+    },
+    {
+     "user": "sonianuj287",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-18T18:33:05Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-14T04:46:20Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-14T04:46:21Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T12:32:40Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T12:32:40Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "sonianuj287",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T13:30:36Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "sonianuj287",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T13:30:36Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "sarang80040",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T13:30:36Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "sarang80040",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T13:30:37Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T18:33:06Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "dylwil3",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T18:33:06Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T18:33:06Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T18:33:06Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-10-19T21:20:54Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "F: fmtskip",
+     "created_at": "2025-10-19T21:20:54Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-26T19:37:07Z"
+    }
+   ]
+  },
+  {
+   "number": 4788,
+   "title": "Unreadable code block styles in dark mode documentation",
+   "user": "Andrej730",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-08T18:35:38Z",
+   "closed_at": "2025-10-09T16:05:17Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "r055a",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-09T13:40:45Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Andrej730",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2025-10-08T18:35:40Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "Andrej730",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-08T18:35:50Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "Andrej730",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-09T13:40:53Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Andrej730",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-09T13:40:54Z"
+    },
+    {
+     "event": "closed",
+     "actor": "MeGaGiGaGon",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-09T16:05:17Z"
+    }
+   ]
+  },
+  {
+   "number": 4791,
+   "title": "Eliminar maestro",
+   "user": "coronelnestorgaston05-ai",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-11T21:15:47Z",
+   "closed_at": "2025-10-11T21:29:16Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "coronelnestorgaston05-ai",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-10-11T21:15:49Z"
+    },
+    {
+     "event": "closed",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-11T21:29:16Z"
+    },
+    {
+     "event": "unlabeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-12-07T17:25:47Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam",
+     "created_at": "2025-12-07T17:25:47Z"
+    }
+   ]
+  },
+  {
+   "number": 4793,
+   "title": "Add a parameter to avoid increasing line length",
+   "user": "Dr-Irv",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-13T14:44:01Z",
+   "closed_at": "2025-10-13T20:49:12Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T15:28:03Z"
+    },
+    {
+     "user": "Dr-Irv",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-13T15:34:11Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T19:15:42Z"
+    },
+    {
+     "user": "Dr-Irv",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-13T20:00:29Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T20:13:39Z"
+    },
+    {
+     "user": "Dr-Irv",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-13T20:18:25Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T20:19:12Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T20:20:39Z"
+    },
+    {
+     "user": "Dr-Irv",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-13T20:23:13Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-13T20:49:12Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Dr-Irv",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2025-10-13T14:44:03Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-13T20:49:12Z"
+    }
+   ]
+  },
+  {
+   "number": 4796,
+   "title": "`pytokens` dependency is making packaging impossible, and looks inadequately maintained",
+   "user": "mgorny",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-10-15T07:37:04Z",
+   "closed_at": "2025-10-15T11:13:30Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-15T08:10:26Z"
+    },
+    {
+     "user": "mgorny",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-15T11:13:30Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "mgorny",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-10-15T07:37:05Z"
+    },
+    {
+     "event": "closed",
+     "actor": "mgorny",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T11:13:30Z"
+    }
+   ]
+  },
+  {
+   "number": 4797,
+   "title": "t-strings (Python 3.14) support for black",
+   "user": "bowiechen",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-15T20:29:16Z",
+   "closed_at": "2025-11-05T18:14:19Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-15T20:46:42Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-15T20:58:52Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-15T21:17:33Z"
+    },
+    {
+     "user": "bowiechen",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-16T00:26:03Z"
+    },
+    {
+     "user": "ranjodhsingh1729",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-16T01:56:08Z"
+    },
+    {
+     "user": "bowiechen",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-16T06:08:13Z"
+    },
+    {
+     "user": "ranjodhsingh1729",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-16T12:03:17Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "bowiechen",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-10-15T20:29:17Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "itamaro",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-15T20:32:42Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "bowiechen",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T01:56:10Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "bowiechen",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T01:56:10Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ranjodhsingh1729",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T06:08:14Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ranjodhsingh1729",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T06:08:14Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "bowiechen",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T12:03:19Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "bowiechen",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-16T12:03:19Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "George-Ogden",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-17T18:52:22Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jatoben",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-17T19:39:01Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-18T13:40:15Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "kasium",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-20T05:56:45Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": "3.14",
+     "created_at": "2025-10-22T01:57:33Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Guerteltier",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-05T15:31:09Z"
+    },
+    {
+     "event": "closed",
+     "actor": "tusharsadhwani",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-05T18:14:19Z"
+    }
+   ]
+  },
+  {
+   "number": 4802,
+   "title": "Add a `--no-cache` argument",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2025-10-19T17:16:45Z",
+   "closed_at": "2025-10-26T15:14:49Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [
+    {
+     "user": "ranjodhsingh1729",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-10-19T17:38:43Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-19T17:42:45Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2025-10-19T17:16:46Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-19T17:38:44Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-19T17:38:44Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-26T15:14:50Z"
+    }
+   ]
+  },
+  {
+   "number": 4813,
+   "title": "Add support for arm64 windows",
+   "user": "finnagin",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-10-26T23:48:49Z",
+   "closed_at": "2025-11-10T23:23:56Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "finnagin",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2025-10-26T23:48:51Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-10T23:23:56Z"
+    }
+   ]
+  },
+  {
+   "number": 4818,
+   "title": "`--line-ranges` fails to parse when an @overload function is inside a class",
+   "user": "jericjan",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-10-30T04:18:34Z",
+   "closed_at": "2025-10-30T06:02:36Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "MeGaGiGaGon",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-10-30T04:44:17Z"
+    },
+    {
+     "user": "jericjan",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-10-30T06:02:36Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "jericjan",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-10-30T04:18:35Z"
+    },
+    {
+     "event": "closed",
+     "actor": "jericjan",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-30T06:02:36Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-10-30T11:58:34Z"
+    }
+   ]
+  },
+  {
+   "number": 4820,
+   "title": "Improve syntax error reporting for a better user experience",
+   "user": "samriddhitiwary",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-11-04T14:07:38Z",
+   "closed_at": "2026-04-14T14:44:46Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [
+    {
+     "user": "amritamishra01",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-11-18T08:57:21Z"
+    },
+    {
+     "user": "motalib-code",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-24T10:22:05Z"
+    },
+    {
+     "user": "Harish-Nesrekar",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-26T13:43:30Z"
+    },
+    {
+     "user": "MohamedSharfan",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-15T09:50:54Z"
+    },
+    {
+     "user": "Codes-Chandana",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-03-29T15:20:50Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "samriddhitiwary",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2025-11-04T14:07:40Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-17T01:12:46Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "motalib-code",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-24T10:56:06Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "motalib-code",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-24T11:02:50Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "samriddhitiwary",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-15T09:50:55Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "samriddhitiwary",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-15T09:50:55Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-14T14:44:47Z"
+    }
+   ]
+  },
+  {
+   "number": 4823,
+   "title": "`PyInstaller` related issue when using the prebuilt Black binary on Mac OSX",
+   "user": "FrankPortman",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-11-07T22:39:24Z",
+   "closed_at": "2026-01-23T16:04:49Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "yadneshx17",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-19T17:06:24Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-11-19T17:09:36Z"
+    },
+    {
+     "user": "yadneshx17",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-20T15:18:10Z"
+    },
+    {
+     "user": "ichard26",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-11-20T17:10:47Z"
+    },
+    {
+     "user": "yadneshx17",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-21T18:00:25Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-11-21T18:22:30Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "FrankPortman",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-07T22:39:25Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "yadneshx17",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-20T17:10:49Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "yadneshx17",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-20T17:10:49Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ichard26",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T18:00:27Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ichard26",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T18:00:27Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "yadneshx17",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T18:22:31Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "yadneshx17",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T18:22:31Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Ankitsinghsisodya",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-30T02:35:01Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T16:04:50Z"
+    }
+   ]
+  },
+  {
+   "number": 4826,
+   "title": "tests are not compatiable with pytest 9.0",
+   "user": "onerandomusername",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-11-09T22:16:58Z",
+   "closed_at": "2025-11-10T01:11:03Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "assigned",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-09T22:17:35Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-09T22:17:52Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": "3.14",
+     "created_at": "2025-11-09T22:17:52Z"
+    },
+    {
+     "event": "unlabeled",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": "3.14",
+     "created_at": "2025-11-09T22:18:05Z"
+    },
+    {
+     "event": "unassigned",
+     "actor": "cooperlees",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-09T22:18:13Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-10T00:34:31Z"
+    },
+    {
+     "event": "closed",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-10T01:11:03Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-10T01:11:03Z"
+    }
+   ]
+  },
+  {
+   "number": 4838,
+   "title": "Internal: Documentation/state of `ci: build all wheels` label",
+   "user": "onerandomusername",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-11-10T08:12:06Z",
+   "closed_at": "2025-11-23T22:30:26Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "amritamishra01",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-11-17T07:54:47Z"
+    },
+    {
+     "user": "amritamishra01",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-11-18T08:33:49Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-22T14:30:40Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-22T14:31:32Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-23T22:30:26Z"
+    }
+   ]
+  },
+  {
+   "number": 4839,
+   "title": "Release workflow: Atomic PyPI pushing?",
+   "user": "onerandomusername",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-11-10T08:14:32Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "motalib-code",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-24T14:11:14Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "amyreese",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-24T14:11:15Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "amyreese",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-24T14:11:15Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "motalib-code",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-24T14:37:14Z"
+    }
+   ]
+  },
+  {
+   "number": 4841,
+   "title": "Unexpected error with Black 25.11.0 when fmt: off and fmt: on are used within block of comments",
+   "user": "alexhernandezgarcia",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-11-11T05:20:43Z",
+   "closed_at": "2025-11-29T15:19:16Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: fmtoff"
+   ],
+   "comments": [
+    {
+     "user": "RemiCardona",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-11T10:37:39Z"
+    },
+    {
+     "user": "RemiCardona",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-11T16:52:03Z"
+    },
+    {
+     "user": "tahseenjamal",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-17T13:18:47Z"
+    },
+    {
+     "user": "motalib-code",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-20T11:38:37Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "alexhernandezgarcia",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-11T05:20:44Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "RemiCardona",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-11T10:30:51Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2025-11-11T17:30:16Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "F: fmtoff",
+     "created_at": "2025-11-11T17:30:16Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "marcelm",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-12T07:53:21Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "elijahr",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-12T22:45:59Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Himanshu7667-hash",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-17T16:26:00Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "alexhernandezgarcia",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-20T11:38:39Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "alexhernandezgarcia",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-20T11:38:39Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-29T15:19:17Z"
+    }
+   ]
+  },
+  {
+   "number": 4843,
+   "title": "`black==25.11.0` removing `%% [markdown]` comments",
+   "user": "jamesbraza",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2025-11-15T21:12:40Z",
+   "closed_at": "2025-11-21T22:39:41Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "HWKDS",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-11-16T22:55:56Z"
+    },
+    {
+     "user": "motalib-code",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-21T02:43:42Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-15T21:12:42Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "HWKDS",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-16T22:22:06Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-16T22:55:57Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-16T22:55:57Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "HWKDS",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-17T04:27:15Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "motalib-code",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T02:25:57Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "motalib-code",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T02:33:59Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T02:43:43Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jamesbraza",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T02:43:43Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-21T22:39:42Z"
+    }
+   ]
+  },
+  {
+   "number": 4844,
+   "title": "Needs torch 2.9.1 but installs 2.8.0 then...",
+   "user": "vrepub",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-11-16T07:16:09Z",
+   "closed_at": "2025-11-16T07:51:03Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "vrepub",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-16T07:16:10Z"
+    },
+    {
+     "event": "closed",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-16T07:51:03Z"
+    },
+    {
+     "event": "unlabeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-12-07T17:25:05Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam",
+     "created_at": "2025-12-07T17:25:05Z"
+    }
+   ]
+  },
+  {
+   "number": 4873,
+   "title": "`black` told me to report a bug for lines with `# fmt: skip` on them, I think",
+   "user": "adiabatic",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-11-27T07:41:20Z",
+   "closed_at": "2025-12-02T15:30:58Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "comments": [
+    {
+     "user": "prithvi-makwana",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-28T13:12:53Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "adiabatic",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-11-27T07:41:21Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "adiabatic",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-27T07:46:08Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2025-11-28T01:33:25Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "F: fmtskip",
+     "created_at": "2025-11-28T01:33:28Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Nikhil172913832",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-02T08:31:39Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-02T15:30:57Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-02T15:30:58Z"
+    }
+   ]
+  },
+  {
+   "number": 4875,
+   "title": "Setting the 2026 stable style",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2025-11-29T15:45:43Z",
+   "closed_at": "2026-01-18T04:30:37Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement",
+    "T: style",
+    "C: maintenance"
+   ],
+   "comments": [
+    {
+     "user": "pufferfish101007",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-11-30T14:45:14Z"
+    },
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-11-30T22:22:10Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-04T05:10:27Z"
+    },
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-04T07:17:53Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-04T23:44:12Z"
+    },
+    {
+     "user": "hugovk",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-12-08T11:52:45Z"
+    },
+    {
+     "user": "cdce8p",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2025-12-08T12:15:34Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-09T00:25:11Z"
+    },
+    {
+     "user": "Liam-DeVoe",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-25T00:59:37Z"
+    },
+    {
+     "user": "abeliangroupie",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-03-25T04:10:20Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-29T16:47:45Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2025-11-29T15:45:45Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: style",
+     "created_at": "2025-11-29T15:45:45Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: maintenance",
+     "created_at": "2025-11-29T15:45:45Z"
+    },
+    {
+     "event": "pinned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-29T15:45:54Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-04T05:10:28Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-04T05:10:28Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "hugovk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-06T05:58:45Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cdce8p",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-09T00:25:13Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cdce8p",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-09T00:25:13Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "injust",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-09T23:21:10Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jonathanberthias",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-14T13:16:56Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-18T04:30:37Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "JonathonReinhart",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-26T03:06:11Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "abeliangroupie",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-29T16:47:47Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "abeliangroupie",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-29T16:47:47Z"
+    },
+    {
+     "event": "unpinned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-13T01:18:06Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "anoopcs9",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-28T09:34:37Z"
+    }
+   ]
+  },
+  {
+   "number": 4877,
+   "title": "wrap_comprehension_in: Black preview style removes parentheses that make code harder to read",
+   "user": "hauntsaninja",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2025-11-30T21:58:28Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "ShubhamPatel-16",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-22T10:12:28Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-24T15:46:14Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "renamed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-11-30T22:19:05Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cdce8p",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-08T12:17:09Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ShubhamPatel-16",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-24T15:46:16Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ShubhamPatel-16",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-24T15:46:16Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "jonathanberthias",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-14T13:24:08Z"
+    }
+   ]
+  },
+  {
+   "number": 4880,
+   "title": "Failure upon two ignores for type checkers",
+   "user": "cmp0xff",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-12-03T13:57:57Z",
+   "closed_at": "2026-01-23T00:35:06Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-04T03:32:50Z"
+    },
+    {
+     "user": "janavidabhi9-eng",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-16T06:51:25Z"
+    },
+    {
+     "user": "janavidabhi9-eng",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-19T07:05:07Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-19T15:50:06Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-12-03T13:57:58Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-03T14:40:42Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-03T21:42:46Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-04T13:35:31Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-06T20:46:09Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-08T13:13:57Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-08T22:30:29Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cmp0xff",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-10T20:29:23Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "janavidabhi9-eng",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-19T15:50:08Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "janavidabhi9-eng",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-19T15:50:08Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2026-01-12T16:08:33Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T00:35:07Z"
+    }
+   ]
+  },
+  {
+   "number": 4882,
+   "title": "Thinking about `wrap_long_dict_values_in_parens`",
+   "user": "hauntsaninja",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2025-12-04T07:15:05Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2025-12-04T07:16:52Z"
+    },
+    {
+     "user": "ShubhamPatel-16",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-21T18:55:38Z"
+    },
+    {
+     "user": "ItsOmPrakash",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-04T21:54:01Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-05T02:00:57Z"
+    },
+    {
+     "user": "jiteshgulati",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-10-13T20:28:52Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:53Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "hauntsaninja",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:53Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:53Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:53Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ShubhamPatel-16",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:54Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ShubhamPatel-16",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-13T20:28:54Z"
+    }
+   ]
+  },
+  {
+   "number": 4912,
+   "title": "string_processing: error with unassigned long string literal with trailing comma",
+   "user": "pmolodo",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2025-12-12T23:50:19Z",
+   "closed_at": "2026-01-23T00:52:39Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: strings",
+    "C: preview style"
+   ],
+   "comments": [
+    {
+     "user": "pmolodo",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-12T23:53:14Z"
+    },
+    {
+     "user": "pmolodo",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-12T23:54:42Z"
+    },
+    {
+     "user": "pmolodo",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2025-12-13T00:02:01Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "pmolodo",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2025-12-12T23:50:20Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "F: strings",
+     "created_at": "2025-12-13T16:02:26Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2025-12-13T16:02:38Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "C: preview style",
+     "created_at": "2025-12-13T16:02:42Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Ankitsinghsisodya",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-30T01:45:32Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-01T04:56:30Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T00:52:39Z"
+    }
+   ]
+  },
+  {
+   "number": 4926,
+   "title": "Split the Build and Publish workflow into more jobs",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2025-12-27T20:36:39Z",
+   "closed_at": "2026-01-16T04:05:07Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-29T21:10:28Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-29T21:52:07Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-29T22:43:07Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-31T20:27:27Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2025-12-31T21:12:33Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-01T01:39:16Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-12T16:03:48Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T03:44:03Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T04:05:07Z"
+    }
+   ]
+  },
+  {
+   "number": 4944,
+   "title": "pathspec v1 changes",
+   "user": "cpburnz",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-07T00:16:54Z",
+   "closed_at": "2026-01-16T03:07:27Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-07T01:40:52Z"
+    },
+    {
+     "user": "cpburnz",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-07T01:53:44Z"
+    },
+    {
+     "user": "tzachshabtay",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-07T18:06:22Z"
+    },
+    {
+     "user": "cpburnz",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-07T21:29:54Z"
+    },
+    {
+     "user": "cpburnz",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-08T14:32:05Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-12T14:47:49Z"
+    },
+    {
+     "user": "cpburnz",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-13T02:38:03Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-15T14:56:29Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cpburnz",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2026-01-07T00:16:56Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-07T01:53:45Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-07T01:53:45Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "tzachshabtay",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-07T21:29:55Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "tzachshabtay",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-07T21:29:55Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "tzachshabtay",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-08T14:32:06Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "tzachshabtay",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-08T14:32:07Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-13T02:38:04Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-13T02:38:04Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-15T15:55:06Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T03:07:27Z"
+    }
+   ]
+  },
+  {
+   "number": 4945,
+   "title": "Cannot parse multi-line code split using backslash",
+   "user": "ericli-splunk",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-07T19:30:39Z",
+   "closed_at": "2026-01-30T00:35:44Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "comments": [
+    {
+     "user": "Ashinee-work",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-10T07:13:39Z"
+    },
+    {
+     "user": "ericli-splunk",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-12T17:21:17Z"
+    },
+    {
+     "user": "RizwaanShaik273",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-16T11:36:55Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "ericli-splunk",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-01-07T19:30:40Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ericli-splunk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-10T07:14:20Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ericli-splunk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-10T07:14:20Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2026-01-12T16:08:25Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "ericli-splunk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T11:36:57Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "ericli-splunk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T11:36:57Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "nileshsingal",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-26T15:58:37Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "nileshsingal",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-26T16:20:10Z"
+    },
+    {
+     "event": "closed",
+     "actor": "tusharsadhwani",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-30T00:35:45Z"
+    }
+   ]
+  },
+  {
+   "number": 4947,
+   "title": "Title",
+   "user": "mma211624-afk",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-08T11:48:06Z",
+   "closed_at": "2026-01-08T11:48:28Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "mma211624-afk",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-08T11:48:28Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "mma211624-afk",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-08T11:48:29Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-01-08T20:59:53Z"
+    }
+   ]
+  },
+  {
+   "number": 4950,
+   "title": "Manager not properly shut down in concurrency module - violates multiprocessing best practices",
+   "user": "Bitshifter-9",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-10T05:58:58Z",
+   "closed_at": "2026-01-16T04:32:18Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-10T16:09:00Z"
+    },
+    {
+     "user": "nileshsingal",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-01-10T23:02:46Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Bitshifter-9",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-01-10T05:58:59Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-10T23:02:48Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-10T23:02:48Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-16T04:32:18Z"
+    }
+   ]
+  },
+  {
+   "number": 4963,
+   "title": "pygettext.py: Black 26.1.0 on Python (CPython) 3.14 produced different code on the second pass of the formatter",
+   "user": "Safihre",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-19T11:40:32Z",
+   "closed_at": "2026-01-23T16:05:04Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: unstable formatting"
+   ],
+   "comments": [
+    {
+     "user": "Safihre",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-19T11:41:31Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-19T17:53:20Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Safihre",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-01-19T11:40:33Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "Safihre",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-19T11:46:54Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "MeGaGiGaGon",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-19T17:53:21Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "MeGaGiGaGon",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-19T17:53:21Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: unstable formatting",
+     "created_at": "2026-01-20T03:11:25Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "bhearsum",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-22T14:18:18Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "bhearsum",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-22T14:19:19Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "bhearsum",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-22T14:42:41Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T16:05:04Z"
+    },
+    {
+     "event": "marked_as_duplicate",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-02T17:18:08Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "jcristau",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-07T14:17:18Z"
+    }
+   ]
+  },
+  {
+   "number": 4966,
+   "title": "`nbqa black` reports notebooks need reformat even after running",
+   "user": "SunsetWolf",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-20T10:39:02Z",
+   "closed_at": "2026-02-16T03:54:31Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-20T13:31:27Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-20T14:37:25Z"
+    },
+    {
+     "user": "tar-ang-2004",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-07T10:46:53Z"
+    },
+    {
+     "user": "tar-ang-2004",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-07T12:19:30Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-16T03:55:17Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-16T03:54:31Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "SunsetWolf",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-16T03:55:18Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "SunsetWolf",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-16T03:55:18Z"
+    }
+   ]
+  },
+  {
+   "number": 4967,
+   "title": "Docs: Better documentation for Jupyter usage",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2026-01-20T14:32:54Z",
+   "closed_at": "2026-03-02T03:56:30Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "good first issue",
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "Eshaan-byte",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-21T00:39:38Z"
+    },
+    {
+     "user": "Shubhamyadav93",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-01-21T13:33:37Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-23T00:32:05Z"
+    },
+    {
+     "user": "int-arsh",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-01-28T17:32:27Z"
+    },
+    {
+     "user": "MohamedSharfan",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-15T02:53:16Z"
+    },
+    {
+     "user": "Kai-Rowan-the-AI",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-23T00:25:19Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "good first issue",
+     "created_at": "2026-01-20T14:32:56Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2026-01-20T14:32:56Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-21T00:39:39Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-21T00:39:39Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-21T13:33:38Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-21T13:33:38Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T00:27:44Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "int-arsh",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-23T17:57:37Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-28T17:32:29Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-28T17:32:29Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "veeceey",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-08T07:08:42Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-15T02:53:17Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-15T02:53:17Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "veeceey",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-24T07:38:55Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-02T03:56:30Z"
+    }
+   ]
+  },
+  {
+   "number": 4972,
+   "title": "Cannot parse file when first line in a Python function is not indented",
+   "user": "pelamlio",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-01-24T21:27:16Z",
+   "closed_at": "2026-01-24T21:31:44Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-01-24T21:31:42Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "pelamlio",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-01-24T21:27:18Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-01-24T21:31:44Z"
+    }
+   ]
+  },
+  {
+   "number": 4979,
+   "title": "INTERNAL ERROR code that is not equivalent to the source (non-UTF8, iso-8859-1)",
+   "user": "peterjc",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-02-02T17:04:28Z",
+   "closed_at": "2026-02-02T17:18:08Z",
+   "state": "closed",
+   "state_reason": "duplicate",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-02T17:17:36Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "peterjc",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-02-02T17:04:29Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-02T17:18:08Z"
+    }
+   ]
+  },
+  {
+   "number": 4980,
+   "title": "Internal error when targeting Python 3.14 but running with 3.12",
+   "user": "godlygeek",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-02-02T20:22:32Z",
+   "closed_at": "2026-03-02T02:34:59Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "ranjodhsingh1729",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-02T20:30:52Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-02T20:49:29Z"
+    },
+    {
+     "user": "godlygeek",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-02T20:57:58Z"
+    },
+    {
+     "user": "godlygeek",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-02T21:23:59Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-03T15:25:16Z"
+    },
+    {
+     "user": "godlygeek",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-03T16:37:52Z"
+    },
+    {
+     "user": "godlygeek",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-03T18:20:49Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "godlygeek",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-02-02T20:22:33Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "godlygeek",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-02T20:30:54Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "godlygeek",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-02T20:30:54Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "regiscamimura",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-07T00:43:38Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-02T02:34:59Z"
+    }
+   ]
+  },
+  {
+   "number": 4989,
+   "title": "python",
+   "user": "vanthullrocky0-source",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-02-10T17:22:06Z",
+   "closed_at": "2026-02-11T01:25:29Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-10T17:27:49Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-11T01:25:30Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-02-15T21:08:05Z"
+    }
+   ]
+  },
+  {
+   "number": 4995,
+   "title": "Black breaks code in multiline assertion",
+   "user": "paulineribeyre",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-02-18T18:26:47Z",
+   "closed_at": "2026-02-18T19:56:21Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "R: invalid",
+    "R: not a bug"
+   ],
+   "comments": [
+    {
+     "user": "AlexWaygood",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-02-18T18:51:47Z"
+    },
+    {
+     "user": "paulineribeyre",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-02-18T19:56:21Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "paulineribeyre",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-02-18T18:26:49Z"
+    },
+    {
+     "event": "closed",
+     "actor": "paulineribeyre",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-18T19:56:21Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-21T02:35:31Z"
+    },
+    {
+     "event": "unlabeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-02-21T02:35:48Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "R: invalid",
+     "created_at": "2026-02-21T02:35:48Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "R: not a bug",
+     "created_at": "2026-02-21T02:35:48Z"
+    }
+   ]
+  },
+  {
+   "number": 5001,
+   "title": "Consecutive @overload definitions have two distinct stable formatting states for the same AST",
+   "user": "louisabraham",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-02-22T10:31:44Z",
+   "closed_at": "2026-05-22T03:57:27Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-23T19:14:17Z"
+    },
+    {
+     "user": "SadManFahIm",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-03-17T10:17:49Z"
+    },
+    {
+     "user": "Sarathchandra-Janapati",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-05-22T03:13:57Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "overload",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-17T10:17:50Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "overload",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-17T10:17:51Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-22T03:57:28Z"
+    }
+   ]
+  },
+  {
+   "number": 5002,
+   "title": "Editor integration page links to stale Atom/Nuclide tooling",
+   "user": "TommyR2",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-02-23T01:43:27Z",
+   "closed_at": "2026-02-23T02:44:38Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-02-23T01:49:32Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "TommyR2",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2026-02-23T01:43:27Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "TommyR2",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-23T02:14:34Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-23T02:44:38Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-02-23T02:44:38Z"
+    }
+   ]
+  },
+  {
+   "number": 5029,
+   "title": "Security: Zip Slip / Tar Slip path traversal in gallery/gallery.py archive extraction",
+   "user": "Vext-Labs",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-03-06T15:08:42Z",
+   "closed_at": "2026-03-06T16:31:44Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-06T15:25:15Z"
+    },
+    {
+     "user": "Vext-Labs",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-03-06T16:21:17Z"
+    },
+    {
+     "user": "Vext-Labs",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-03-06T16:31:43Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-06T16:21:18Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-06T16:21:18Z"
+    },
+    {
+     "event": "closed",
+     "actor": "Vext-Labs",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-06T16:31:44Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-06T16:46:01Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-06T17:18:54Z"
+    }
+   ]
+  },
+  {
+   "number": 5042,
+   "title": "Support `lazy` imports",
+   "user": "hugovk",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-03-11T09:06:08Z",
+   "closed_at": "2026-03-21T16:20:45Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-11T13:21:03Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-11T13:26:31Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-11T15:52:19Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "hugovk",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2026-03-11T09:06:09Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-21T16:20:45Z"
+    }
+   ]
+  },
+  {
+   "number": 5043,
+   "title": "Remove references to the Black playground",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2026-03-11T21:26:42Z",
+   "closed_at": "2026-03-12T02:51:35Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "good first issue",
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "ccxbt",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-03-11T22:05:54Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2026-03-11T21:26:43Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "good first issue",
+     "created_at": "2026-03-11T21:27:10Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-12T02:51:35Z"
+    }
+   ]
+  },
+  {
+   "number": 5045,
+   "title": "Fuzz test failure",
+   "user": "github-actions[bot]",
+   "user_type": "Bot",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-03-12T02:54:22Z",
+   "closed_at": "2026-03-12T03:01:14Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "ci: fuzz error"
+   ],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-12T03:01:14Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "github-actions[bot]",
+     "actor_type": "Bot",
+     "label": "ci: fuzz error",
+     "created_at": "2026-03-12T02:54:23Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-12T03:01:14Z"
+    }
+   ]
+  },
+  {
+   "number": 5049,
+   "title": "Fuzz test failure",
+   "user": "github-actions[bot]",
+   "user_type": "Bot",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-03-12T03:44:05Z",
+   "closed_at": "2026-03-12T03:45:06Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "ci: fuzz error"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-12T12:02:12Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "github-actions[bot]",
+     "actor_type": "Bot",
+     "label": "ci: fuzz error",
+     "created_at": "2026-03-12T03:44:07Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-12T03:45:06Z"
+    }
+   ]
+  },
+  {
+   "number": 5055,
+   "title": "Remove lines with a single (or very few) characters",
+   "user": "SebastienEske",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-03-16T10:11:59Z",
+   "closed_at": "2026-03-16T14:25:01Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "T: style"
+   ],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-16T14:25:01Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "SebastienEske",
+     "actor_type": "User",
+     "label": "T: style",
+     "created_at": "2026-03-16T10:12:01Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "SebastienEske",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-16T10:12:23Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-03-16T14:25:02Z"
+    }
+   ]
+  },
+  {
+   "number": 5058,
+   "title": "Internal error: producing different code on second pass with long type annotations",
+   "user": "themavik",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-03-19T11:55:39Z",
+   "closed_at": "2026-05-24T14:16:55Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-03-19T15:13:22Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-05-24T14:16:55Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-24T14:16:55Z"
+    }
+   ]
+  },
+  {
+   "number": 5083,
+   "title": "Black silently fails with exit code 1 when passed in too many files in the Python 3.14.2 on Linux",
+   "user": "emperorcezar",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-04-06T18:53:39Z",
+   "closed_at": "2026-05-10T00:01:33Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "comments": [
+    {
+     "user": "hauntsaninja",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-06T18:54:57Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-20T00:09:55Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "emperorcezar",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-04-06T18:53:41Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "MuraveyApp",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-10T13:51:08Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2026-04-12T18:23:38Z"
+    },
+    {
+     "event": "closed",
+     "actor": "emperorcezar",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-10T00:01:33Z"
+    }
+   ]
+  },
+  {
+   "number": 5099,
+   "title": "Bug runnig at Python 3.13 - INTERNAL ERROR: Black 26.1a1 on Python (CPython) 3.13.12 produced invalid code: multiple exception types must be parenthesized",
+   "user": "felipementel",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-04-14T12:31:59Z",
+   "closed_at": "2026-04-15T02:09:30Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-14T12:49:07Z"
+    },
+    {
+     "user": "felipementel",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-04-14T13:17:59Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-14T14:09:17Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-15T02:09:30Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "felipementel",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-04-14T12:32:01Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "C: crash",
+     "created_at": "2026-04-14T12:49:10Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-14T13:18:00Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-14T13:18:01Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-15T02:09:30Z"
+    }
+   ]
+  },
+  {
+   "number": 5112,
+   "title": "`# fmt: skip` regression",
+   "user": "pekkaklarck",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-04-21T21:51:28Z",
+   "closed_at": "2026-05-12T14:43:16Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "pekkaklarck",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-04-21T21:51:30Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-12T14:43:16Z"
+    }
+   ]
+  },
+  {
+   "number": 5119,
+   "title": "need help: all the arguments inside a ( ) method goes to next line instead of the last argument",
+   "user": "LegoPon",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-04-29T22:29:25Z",
+   "closed_at": "2026-04-30T00:48:37Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-04-30T00:48:37Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-04-30T00:48:37Z"
+    }
+   ]
+  },
+  {
+   "number": 5120,
+   "title": "Please consider making releases immutable",
+   "user": "sjpb",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-01T14:01:35Z",
+   "closed_at": "2026-10-03T23:45:19Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "sjpb",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-01T14:01:37Z"
+    },
+    {
+     "event": "assigned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-30T02:15:49Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-03T23:45:20Z"
+    }
+   ]
+  },
+  {
+   "number": 5122,
+   "title": "Fail to parse multiline `case` statement with `# fmt: skip`",
+   "user": "DrGFreeman",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-04T19:27:22Z",
+   "closed_at": "2026-05-12T14:43:17Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "DrGFreeman",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-04T19:27:23Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "DrGFreeman",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-04T19:36:53Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-12T14:43:18Z"
+    }
+   ]
+  },
+  {
+   "number": 5125,
+   "title": "black fails to handle f-string that uses values of dictionary with single quote around key",
+   "user": "Sam-Bate-ITV",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-06T09:37:19Z",
+   "closed_at": "2026-05-15T17:05:31Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "T: bug",
+    "S: needs repro"
+   ],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-05-06T09:52:24Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-05-06T13:24:24Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Sam-Bate-ITV",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-06T09:37:20Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "Sam-Bate-ITV",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-06T09:52:25Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Sam-Bate-ITV",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-06T09:52:25Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "S: needs repro",
+     "created_at": "2026-05-11T22:23:47Z"
+    },
+    {
+     "event": "closed",
+     "actor": "tusharsadhwani",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-15T17:05:31Z"
+    }
+   ]
+  },
+  {
+   "number": 5137,
+   "title": "black 26.5.0 downloaded from GitHub releases shows version 0.1",
+   "user": "skrueger8",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-18T07:57:45Z",
+   "closed_at": "2026-05-18T16:51:41Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-05-18T16:08:49Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "skrueger8",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-18T07:57:46Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-18T16:39:26Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-18T16:51:41Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "pull[bot]",
+     "actor_type": "Bot",
+     "label": null,
+     "created_at": "2026-05-18T17:03:20Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "luketainton",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-23T19:50:47Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "luketainton",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-23T19:50:57Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "736-c41-2c1-e464fc974",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-06T09:26:48Z"
+    }
+   ]
+  },
+  {
+   "number": 5138,
+   "title": "INTERNAL ERROR on 26.5.0",
+   "user": "AlexeyDmitriev",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-18T11:04:52Z",
+   "closed_at": "2026-05-18T16:23:44Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "AlexeyDmitriev",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-18T11:04:54Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-05-18T16:23:44Z"
+    }
+   ]
+  },
+  {
+   "number": 5160,
+   "title": "Black Formatter fails with `ValueError` when workspace uses UNC path and file uses mapped drive",
+   "user": "htanwar922",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-05-31T10:31:54Z",
+   "closed_at": "2026-06-02T14:55:46Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "htanwar922",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-05-31T10:44:49Z"
+    },
+    {
+     "user": "Pedro-Muller29",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-06-02T14:50:43Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "htanwar922",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-05-31T10:31:55Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-02T14:55:46Z"
+    }
+   ]
+  },
+  {
+   "number": 5164,
+   "title": "Unexpected version warning",
+   "user": "oyvindronningstad",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-06-03T12:55:04Z",
+   "closed_at": "2026-06-08T01:35:20Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "oyvindronningstad",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-06-03T12:55:05Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "wahajahmed010",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-03T23:42:27Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-08T01:35:20Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "douglatornell",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-26T16:11:29Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "douglatornell",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-29T22:57:20Z"
+    }
+   ]
+  },
+  {
+   "number": 5174,
+   "title": "Allow cache dir configuration via command-line argument",
+   "user": "MatheusCylo",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-06-10T14:40:26Z",
+   "closed_at": "2026-10-05T04:24:17Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "MatheusCylo",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2026-06-10T14:40:31Z"
+    },
+    {
+     "event": "unsubscribed",
+     "actor": "MatheusCylo",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T14:34:49Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "MatheusCylo",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T14:34:50Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-05T04:24:17Z"
+    }
+   ]
+  },
+  {
+   "number": 5179,
+   "title": "Localization of The Black Documentation",
+   "user": "hwhsu1231",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-06-14T12:24:54Z",
+   "closed_at": "2026-06-24T17:28:11Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-06-24T17:28:11Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "localizethedocs",
+     "actor_type": "Organization",
+     "label": null,
+     "created_at": "2026-06-14T12:24:55Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-24T17:28:11Z"
+    }
+   ]
+  },
+  {
+   "number": 5187,
+   "title": "INTERNAL ERROR crash; syntax error in log",
+   "user": "LukeShu",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-06-18T20:40:15Z",
+   "closed_at": "2026-06-24T18:14:10Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "LukeShu",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-06-18T20:40:16Z"
+    },
+    {
+     "event": "renamed",
+     "actor": "LukeShu",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-18T20:40:56Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-24T18:14:11Z"
+    }
+   ]
+  },
+  {
+   "number": 5204,
+   "title": "SuperCompress: Free open-source LLM prompt compression - reduce token costs ~65%",
+   "user": "arjunkshah",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-06-30T02:50:55Z",
+   "closed_at": "2026-06-30T03:59:57Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "arjunkshah",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-06-30T03:59:56Z"
+    },
+    {
+     "user": "arjunkshah",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-06-30T04:09:27Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "arjunkshah",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-06-30T03:59:57Z"
+    }
+   ]
+  },
+  {
+   "number": 5208,
+   "title": "Typo \"laborously\" and inconsistent \"MacOS\" capitalization in usage_and_configuration/the_basics.md",
+   "user": "anupddas",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-01T05:53:22Z",
+   "closed_at": "2026-07-03T04:40:57Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "anupddas",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-03T06:41:03Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "anupddas",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2026-07-01T05:53:23Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T04:40:57Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:41:04Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:41:05Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "Divija2612",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:41:05Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Divija2612",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:41:05Z"
+    }
+   ]
+  },
+  {
+   "number": 5209,
+   "title": "Fix broken/incorrect ReadTheDocs link in CONTRIBUTING.md",
+   "user": "anupddas",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-01T06:07:46Z",
+   "closed_at": "2026-07-03T04:52:06Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: documentation"
+   ],
+   "comments": [
+    {
+     "user": "anupddas",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-03T06:40:40Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "anupddas",
+     "actor_type": "User",
+     "label": "T: documentation",
+     "created_at": "2026-07-01T06:07:47Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T04:52:06Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:40:42Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:40:42Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "nightt5879",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:40:42Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "nightt5879",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T06:40:42Z"
+    }
+   ]
+  },
+  {
+   "number": 5210,
+   "title": "Invalid BLACK_NUM_WORKERS value can produce a raw ValueError traceback",
+   "user": "MicroMilo",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-07-01T07:14:07Z",
+   "closed_at": "2026-07-03T17:39:30Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-01T07:27:29Z"
+    },
+    {
+     "user": "MicroMilo",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-07-01T08:09:22Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-03T17:39:30Z"
+    }
+   ]
+  },
+  {
+   "number": 5214,
+   "title": "Leaf.bracket_depth not initialized",
+   "user": "msftcangoblowm",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-01T10:50:06Z",
+   "closed_at": "2026-09-21T18:46:31Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "msftcangoblowm",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-01T13:11:14Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-06T15:51:05Z"
+    },
+    {
+     "user": "msftcangoblowm",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-09T11:49:55Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-09T16:03:53Z"
+    },
+    {
+     "user": "msftcangoblowm",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-14T11:28:25Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-14T13:03:16Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "msftcangoblowm",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-07-01T10:50:08Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "michaelsam94",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-09T11:49:56Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "michaelsam94",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-09T11:49:57Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-14T11:28:26Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-14T11:28:26Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "arunsoman",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-29T17:06:36Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-21T17:25:55Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-21T18:46:31Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-21T18:46:31Z"
+    }
+   ]
+  },
+  {
+   "number": 5216,
+   "title": "Potential memory optimizations",
+   "user": "rsb-23",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-01T18:12:15Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "rsb-23",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-01T18:13:13Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-03T04:40:46Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-05T02:46:18Z"
+    }
+   ]
+  },
+  {
+   "number": 5225,
+   "title": "Inconsistent number of lines after import",
+   "user": "ivanpu",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-06T12:15:39Z",
+   "closed_at": "2026-07-21T22:22:55Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug",
+    "F: fmtoff"
+   ],
+   "comments": [
+    {
+     "user": "mirajjara",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-10T16:06:36Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-13T00:41:02Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "ivanpu",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-07-06T12:15:41Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": "F: fmtoff",
+     "created_at": "2026-07-06T15:49:25Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-21T22:22:55Z"
+    }
+   ]
+  },
+  {
+   "number": 5243,
+   "title": "Magic trailing comma does not explode a type-parameter list containing *TypeVarTuple / **ParamSpec",
+   "user": "Emilianocarfu88",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-18T05:59:27Z",
+   "closed_at": "2026-07-21T00:51:55Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-21T00:51:55Z"
+    }
+   ]
+  },
+  {
+   "number": 5249,
+   "title": "With --target-version py314, Black strips parentheses from `except (A, B):` producing invalid Python 3",
+   "user": "ericz7900",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-22T03:11:12Z",
+   "closed_at": "2026-07-22T03:55:50Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-22T03:55:29Z"
+    },
+    {
+     "user": "tusharsadhwani",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-22T04:35:12Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-22T03:55:50Z"
+    }
+   ]
+  },
+  {
+   "number": 5256,
+   "title": "Spectre ghost Reconciliation animation",
+   "user": "Tsims61",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-23T03:42:01Z",
+   "closed_at": "2026-07-23T04:00:53Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "Tsims61",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-23T03:44:51Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Tsims61",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2026-07-23T03:42:02Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-23T04:00:53Z"
+    },
+    {
+     "event": "unlabeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: enhancement",
+     "created_at": "2026-09-15T21:32:15Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-09-15T21:32:15Z"
+    }
+   ]
+  },
+  {
+   "number": 5260,
+   "title": "`ruff:ignore` should be processed as a pragma in `contains_pragma_comment`",
+   "user": "A5rocks",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-26T00:39:19Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-26T15:25:25Z"
+    },
+    {
+     "user": "jakkdl",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-07-27T12:36:14Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-08-04T03:49:47Z"
+    },
+    {
+     "user": "A5rocks",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-08-13T00:28:55Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-08-13T23:00:02Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "A5rocks",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-07-26T00:39:21Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "CoolCat467",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-26T03:57:50Z"
+    },
+    {
+     "event": "connected",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-07-28T14:35:06Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "harriiinnii",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-17T06:32:34Z"
+    }
+   ]
+  },
+  {
+   "number": 5270,
+   "title": "Quadratic formatting time for chains of subscripts (7s for one 160-subscript line; attribute/call chains stay linear)",
+   "user": "LuShadowX",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-07-29T06:05:49Z",
+   "closed_at": "2026-10-06T18:04:34Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "DresdenGman",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-07-29T23:51:46Z"
+    },
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-07-30T14:51:58Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "referenced",
+     "actor": "Prateek99-s",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-03T07:35:05Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Prateek99-s",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-03T08:09:31Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Prateek99-s",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-03T10:28:31Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Prateek99-s",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-06T12:42:55Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-06T18:04:34Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-06T18:04:34Z"
+    }
+   ]
+  },
+  {
+   "number": 5285,
+   "title": "Empty new line added after docstring when using `--line-ranges`",
+   "user": "ddeepwell",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-07-31T18:02:47Z",
+   "closed_at": "2026-08-19T00:56:55Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "aryansk",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-08-16T06:09:59Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "ddeepwell",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-07-31T18:02:48Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-19T00:56:55Z"
+    }
+   ]
+  },
+  {
+   "number": 5298,
+   "title": "Add pre-commit hook configuration for monorepo with multiple Python versions",
+   "user": "rexblade58",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-08-08T14:42:58Z",
+   "closed_at": "2026-08-08T15:35:26Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "rexblade58",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-08-08T15:35:25Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "rexblade58",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-08T15:35:26Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-09-15T21:31:09Z"
+    }
+   ]
+  },
+  {
+   "number": 5301,
+   "title": "#4855 \u2014 # fmt: skip applied to the line after the comment instead of the line it's on.",
+   "user": "ghost",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-08-12T05:43:34Z",
+   "closed_at": "2026-08-12T23:24:46Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-08-12T23:24:46Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T23:24:46Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-08-12T23:24:50Z"
+    }
+   ]
+  },
+  {
+   "number": 5302,
+   "title": "#4853 \u2014 fix_fmt_skip_in_one_liners crashes on with statements.",
+   "user": "ghost",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-08-12T05:43:53Z",
+   "closed_at": "2026-08-12T23:25:05Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-08-12T23:25:05Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T23:25:05Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-08-12T23:25:12Z"
+    }
+   ]
+  },
+  {
+   "number": 5307,
+   "title": "Crash on `async def`/`with` and a semicolon on the same line",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2026-08-12T23:44:15Z",
+   "closed_at": "2026-08-19T13:00:20Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "Dharshika-11",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-08-13T04:59:54Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-08-12T23:44:16Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "Dharshika-11",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T23:44:16Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "Dharshika-11",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-12T23:44:17Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-19T13:00:20Z"
+    }
+   ]
+  },
+  {
+   "number": 5323,
+   "title": "prueba",
+   "user": "Melania-Git",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-08-19T19:44:44Z",
+   "closed_at": "2026-08-19T19:46:46Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "spam / ai"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "daily",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-19T19:44:46Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "daily",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-19T19:44:46Z"
+    },
+    {
+     "event": "closed",
+     "actor": "Melania-Git",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-19T19:46:46Z"
+    },
+    {
+     "event": "labeled",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": "spam / ai",
+     "created_at": "2026-09-15T21:33:47Z"
+    }
+   ]
+  },
+  {
+   "number": 5328,
+   "title": "Formatting a dictionary with a long string and type ignore fails on --unstable",
+   "user": "AleksMat",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-08-20T11:21:51Z",
+   "closed_at": "2026-09-24T21:21:22Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "AleksMat",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-08-20T12:02:58Z"
+    },
+    {
+     "user": "Gambit-Checkmate",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-08-22T13:54:58Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "AleksMat",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-08-20T11:21:53Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "SirHegel",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-08-20T19:18:26Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-24T21:21:23Z"
+    }
+   ]
+  },
+  {
+   "number": 5376,
+   "title": "Nested .gitignore negations can never re-include what an ancestor excluded",
+   "user": "KaizenShogun",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-08-31T10:17:35Z",
+   "closed_at": null,
+   "state": "open",
+   "state_reason": null,
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "wahajahmed010",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-09-02T08:05:10Z"
+    },
+    {
+     "user": "KaizenShogun",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-09-03T19:39:24Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "referenced",
+     "actor": "santhosh220z",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-04T08:33:18Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "santhosh220z",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-05T05:51:04Z"
+    }
+   ]
+  },
+  {
+   "number": 5378,
+   "title": "Notebook assignment magics fail to parse when preceded by non-ASCII characters",
+   "user": "anonymous756fsd",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-01T07:11:38Z",
+   "closed_at": "2026-09-03T16:31:00Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "anonymous756fsd",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-09-01T07:11:40Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-03T16:31:00Z"
+    }
+   ]
+  },
+  {
+   "number": 5379,
+   "title": "`find_project_root` raises `ValueError` for sources on different Windows drives",
+   "user": "anonymous756fsd",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-01T07:57:38Z",
+   "closed_at": "2026-09-24T22:51:00Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "shashb27",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-09-02T07:09:21Z"
+    },
+    {
+     "user": "cobaltt7",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-09-02T22:33:58Z"
+    },
+    {
+     "user": "shashb27",
+     "user_type": "User",
+     "assoc": "CONTRIBUTOR",
+     "created_at": "2026-09-03T05:41:33Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "anonymous756fsd",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-09-01T07:57:40Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cursor[bot]",
+     "actor_type": "Bot",
+     "label": null,
+     "created_at": "2026-09-03T01:23:11Z"
+    },
+    {
+     "event": "mentioned",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-03T05:41:34Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-03T05:41:34Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "Prateek99-s",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T13:04:36Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-24T22:51:01Z"
+    }
+   ]
+  },
+  {
+   "number": 5388,
+   "title": "Embed Agent-Friendly Score badge in README",
+   "user": "hsnice16",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-05T15:07:13Z",
+   "closed_at": "2026-09-05T15:20:34Z",
+   "state": "closed",
+   "state_reason": "not_planned",
+   "labels_now": [],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-09-05T15:20:34Z"
+    },
+    {
+     "user": "hsnice16",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-09-05T16:33:22Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-05T15:20:34Z"
+    }
+   ]
+  },
+  {
+   "number": 5389,
+   "title": "Three symlink tests fail on Windows without symlink privilege (regression of #287)",
+   "user": "iam-kira",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-06T00:25:01Z",
+   "closed_at": "2026-09-16T00:17:46Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "webdevsamran",
+     "user_type": "User",
+     "assoc": "NONE",
+     "created_at": "2026-09-06T14:04:36Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "iam-kira",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-09-06T00:25:02Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-16T00:17:46Z"
+    }
+   ]
+  },
+  {
+   "number": 5397,
+   "title": "Paired `fmt: skip` directives make a valid parenthesized if header fail to format",
+   "user": "torjan0",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-13T08:30:06Z",
+   "closed_at": "2026-09-24T22:28:21Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-24T22:28:21Z"
+    }
+   ]
+  },
+  {
+   "number": 5402,
+   "title": "`# fmt: skip` on an opening bracket alone makes `if`, `while`, `for` and `with` headers fail to parse",
+   "user": "torjan0",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-13T20:27:12Z",
+   "closed_at": "2026-09-22T03:14:42Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "referenced",
+     "actor": "anandghegde",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-15T16:39:38Z"
+    },
+    {
+     "event": "referenced",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T03:14:42Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T03:14:42Z"
+    }
+   ]
+  },
+  {
+   "number": 5424,
+   "title": "Fix normalize_string_prefix not lowercasing uppercase T t-string prefix",
+   "user": "cobaltt7",
+   "user_type": "User",
+   "author_association": "COLLABORATOR",
+   "created_at": "2026-09-22T00:04:41Z",
+   "closed_at": "2026-09-22T04:55:30Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "mentioned",
+     "actor": "JSap0914",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T00:04:43Z"
+    },
+    {
+     "event": "subscribed",
+     "actor": "JSap0914",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T00:04:43Z"
+    },
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-09-22T04:55:30Z"
+    }
+   ]
+  },
+  {
+   "number": 5458,
+   "title": "Black 26.5.1 release compiled wheel retains blib2to3 CST objects across repeated format_str() calls",
+   "user": "Seaman-Li",
+   "user_type": "User",
+   "author_association": "NONE",
+   "created_at": "2026-09-30T20:09:37Z",
+   "closed_at": "2026-10-01T15:43:52Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [
+    "T: bug"
+   ],
+   "comments": [
+    {
+     "user": "JelleZijlstra",
+     "user_type": "User",
+     "assoc": "COLLABORATOR",
+     "created_at": "2026-10-01T15:43:52Z"
+    }
+   ],
+   "events": [
+    {
+     "event": "labeled",
+     "actor": "Seaman-Li",
+     "actor_type": "User",
+     "label": "T: bug",
+     "created_at": "2026-09-30T20:09:39Z"
+    },
+    {
+     "event": "closed",
+     "actor": "JelleZijlstra",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-01T15:43:52Z"
+    }
+   ]
+  },
+  {
+   "number": 5460,
+   "title": "Black changes the value of a docstring containing a form feed",
+   "user": "feiiiiii5",
+   "user_type": "User",
+   "author_association": "CONTRIBUTOR",
+   "created_at": "2026-09-30T22:35:38Z",
+   "closed_at": "2026-10-04T01:03:45Z",
+   "state": "closed",
+   "state_reason": "completed",
+   "labels_now": [],
+   "comments": [],
+   "events": [
+    {
+     "event": "closed",
+     "actor": "cobaltt7",
+     "actor_type": "User",
+     "label": null,
+     "created_at": "2026-10-04T01:03:45Z"
+    }
+   ]
+  }
+ ]
+}

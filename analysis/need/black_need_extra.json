@@ -1,0 +1,92 @@
+{
+ "window_external_n": 80,
+ "silent_closures": {
+  "n": 25,
+  "share_of_external": 0.312,
+  "numbers": [
+   4781,
+   4791,
+   4813,
+   4826,
+   4844,
+   4912,
+   4947,
+   5112,
+   5120,
+   5122,
+   5138,
+   5164,
+   5174,
+   5187,
+   5204,
+   5208,
+   5209,
+   5243,
+   5256,
+   5298,
+   5323,
+   5378,
+   5397,
+   5402,
+   5460
+  ]
+ },
+ "non_author_closes_total": 68,
+ "top_closers": [
+  [
+   "cobaltt7",
+   49
+  ],
+  [
+   "JelleZijlstra",
+   12
+  ],
+  [
+   "hauntsaninja",
+   3
+  ],
+  [
+   "tusharsadhwani",
+   3
+  ]
+ ],
+ "top_closer_share": 0.721,
+ "non_author_human_label_events": 34,
+ "top_labelers": [
+  [
+   "cobaltt7",
+   25
+  ],
+  [
+   "JelleZijlstra",
+   6
+  ],
+  [
+   "cooperlees",
+   3
+  ]
+ ],
+ "top_labeler_share": 0.735,
+ "spam_labelled": [
+  4791,
+  4844,
+  4947,
+  4989,
+  5256,
+  5298,
+  5301,
+  5302,
+  5323
+ ],
+ "open_backlog": {
+  "as_of": "2026-10-20",
+  "open_issues": 237,
+  "zero_comments": 52,
+  "no_T_C_F_S_label": 14,
+  "no_C_or_F_label": 79,
+  "only_T_bug_label": 13,
+  "S_needs_repro_or_awaiting": 0,
+  "median_age_days": 1635,
+  "older_than_365d": 224
+ }
+}

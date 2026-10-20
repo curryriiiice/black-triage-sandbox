@@ -1,0 +1,52 @@
+C: api | One day Black will have an API ...
+C: cleanup | Refactoring and removing dust :)
+C: configuration | CLI and configuration
+C: crash | Black is crashing
+C: dependencies | 
+C: file collection | Related to file collection (e.g. gitignore & cache) or file discovery and all of its configuration.
+C: integrations | Editor plugins and other integrations
+C: invalid code | Black destroyed a valid Python file
+C: jupyter | Jupyter Notebooks, any color you like
+C: maintenance | Related to project maintenance, e.g. CI, testing, policy changes, releases
+C: packaging | Installation and packaging of Black
+C: parser | How we parse code. Or fail to parse it.
+C: performance | Black is too slow. Or too fast.
+C: preview style | Issues with the preview and unstable style. Add the name of the responsible feature in the title.
+C: target version | Related to --target-version, e.g. autodetection
+C: unstable formatting | Formatting changed on the second pass
+C: vim | Vim plugin
+ci: build all wheels | 
+ci: fuzz error | 
+ci: skip news | Pull requests that don't need a changelog entry.
+F: comments | The syntactic kind. Not in the language grammar, always on our minds. Best bugs.
+F: docstrings | How we format docstrings
+F: empty lines | Wasting vertical space efficiently.
+F: fmtoff | fmt: off implementation
+F: fmtskip | fmt: skip implementation
+F: linebreak | How should we split up lines?
+F: linetoolong | Black makes our lines too long
+F: parentheses | Too many parentheses, not enough parentheses, and so on.
+F: strings | Related to our handling of strings
+F: symmetry | Fixing this would require Black to understand symmetry.
+F: trailing comma | Full of magic
+good first issue | Good for newcomers
+good second issue | 
+hacktoberfest-accepted | 
+help wanted | Extra attention is needed
+R: duplicate | This issue or pull request already exists
+R: invalid | This issue / pull request doesn't seem right
+R: not a bug | This is deliberate behavior of Black.
+R: outdated | Resolved or not relevant anymore.
+R: rejected | This will not be worked on
+S: accepted | The changes in this design / enhancement issue have been accepted and can be implemented
+S: awaiting response | Waiting for futher information from OP
+S: blocked | A decision or another issue needs to be made/resolved before this can be worked on (more).
+S: needs discussion | Needs further hashing out before ready for implementation (on desirability, feasibility, etc.)
+S: needs repro | Needs a functional reproduction
+S: up for grabs | (PR only) Available for anyone to work on as the PR author is busy or unreachable.
+spam / ai | 
+T: bug | Something isn't working
+T: documentation | Improvements to the docs (e.g. new topic, correction, etc)
+T: enhancement | New feature or request
+T: style | What do we want Blackened code to look like?
+T: user support | OP looking for assistance or answers to a question

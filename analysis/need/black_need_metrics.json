@@ -1,0 +1,1765 @@
+{
+ "summary": {
+  "meta": {
+   "repo": "psf/black",
+   "window": [
+    "2025-10-01",
+    "2026-09-30"
+   ],
+   "fetched_at": "2026-10-20T02:14:03Z",
+   "count": 91
+  },
+  "as_of": "2026-10-20",
+  "n_all_nonbot": 89,
+  "n_external": 80,
+  "external": {
+   "first_human_days": {
+    "n": 80,
+    "responded": 55,
+    "never": 25,
+    "median_days_responded_only": 0.57,
+    "p75_days_responded_only": 1.91,
+    "share_within_1d": 0.45,
+    "share_within_7d": 0.613,
+    "share_none_after_7d": 0.388
+   },
+   "first_maint_days": {
+    "n": 80,
+    "responded": 41,
+    "never": 39,
+    "median_days_responded_only": 0.18,
+    "p75_days_responded_only": 1.36,
+    "share_within_1d": 0.375,
+    "share_within_7d": 0.463,
+    "share_none_after_7d": 0.537
+   },
+   "first_triage_days": {
+    "n": 80,
+    "responded": 79,
+    "never": 1,
+    "median_days_responded_only": 0.74,
+    "p75_days_responded_only": 3.2,
+    "share_within_1d": 0.562,
+    "share_within_7d": 0.8,
+    "share_none_after_7d": 0.2
+   }
+  },
+  "all": {
+   "first_human_days": {
+    "n": 89,
+    "responded": 62,
+    "never": 27,
+    "median_days_responded_only": 0.49,
+    "p75_days_responded_only": 1.91,
+    "share_within_1d": 0.461,
+    "share_within_7d": 0.607,
+    "share_none_after_7d": 0.393
+   },
+   "first_maint_days": {
+    "n": 89,
+    "responded": 45,
+    "never": 44,
+    "median_days_responded_only": 0.18,
+    "p75_days_responded_only": 1.37,
+    "share_within_1d": 0.348,
+    "share_within_7d": 0.438,
+    "share_none_after_7d": 0.562
+   },
+   "first_triage_days": {
+    "n": 89,
+    "responded": 86,
+    "never": 3,
+    "median_days_responded_only": 0.74,
+    "p75_days_responded_only": 3.2,
+    "share_within_1d": 0.562,
+    "share_within_7d": 0.775,
+    "share_none_after_7d": 0.225
+   }
+  },
+  "template_T_bug": {
+   "n": 38,
+   "later_relabelled_conflicting": 1,
+   "labels_now_still_T_bug": 35
+  },
+  "no_component_label_now": 68,
+  "open_now": 5,
+  "open_now_only_template_or_none": 5,
+  "label_counts_triage": {
+   "C: crash": 9,
+   "spam / ai": 7,
+   "F: fmtskip": 4,
+   "T: bug": 2,
+   "spam": 2,
+   "3.14": 2,
+   "F: fmtoff": 2,
+   "C: preview style": 1,
+   "F: strings": 1,
+   "C: unstable formatting": 1,
+   "R: invalid": 1,
+   "R: not a bug": 1,
+   "S: needs repro": 1
+  }
+ },
+ "rows": [
+  {
+   "number": 4771,
+   "created_at": "2025-10-02T18:56:09Z",
+   "author_is_maintainer": false,
+   "first_human_days": 3.108460648148148,
+   "first_maint_days": 3.108460648148148,
+   "first_bot_days": null,
+   "first_triage_days": 3.108460648148148,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 382.2110069444444
+  },
+  {
+   "number": 4781,
+   "created_at": "2025-10-06T19:07:33Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 3.2155787037037036,
+   "template_labels": [],
+   "triage_labels": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "labels_now": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 378.2030902777778
+  },
+  {
+   "number": 4782,
+   "created_at": "2025-10-06T19:26:28Z",
+   "author_is_maintainer": false,
+   "first_human_days": 5.669155092592592,
+   "first_maint_days": 8.762465277777778,
+   "first_bot_days": null,
+   "first_triage_days": 3.202326388888889,
+   "template_labels": [],
+   "triage_labels": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "labels_now": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 378.1899537037037
+  },
+  {
+   "number": 4783,
+   "created_at": "2025-10-06T20:20:11Z",
+   "author_is_maintainer": false,
+   "first_human_days": 7.351481481481481,
+   "first_maint_days": 11.715555555555556,
+   "first_bot_days": null,
+   "first_triage_days": 7.351481481481481,
+   "template_labels": [],
+   "triage_labels": [
+    "F: fmtskip",
+    "T: bug"
+   ],
+   "labels_now": [
+    "T: bug",
+    "F: fmtskip"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 378.152650462963
+  },
+  {
+   "number": 4788,
+   "created_at": "2025-10-08T18:35:38Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.7952199074074074,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.7952199074074074,
+   "template_labels": [
+    "T: documentation"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 376.2252546296296
+  },
+  {
+   "number": 4791,
+   "created_at": "2025-10-11T21:15:47Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.009363425925925926,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "spam"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 373.11403935185183
+  },
+  {
+   "number": 4793,
+   "created_at": "2025-10-13T14:44:01Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.030578703703703705,
+   "first_maint_days": 0.030578703703703705,
+   "first_bot_days": null,
+   "first_triage_days": 0.030578703703703705,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 371.386099537037
+  },
+  {
+   "number": 4796,
+   "created_at": "2025-10-15T07:37:04Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.023171296296296297,
+   "first_maint_days": 0.023171296296296297,
+   "first_bot_days": null,
+   "first_triage_days": 0.023171296296296297,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 369.6825925925926
+  },
+  {
+   "number": 4797,
+   "created_at": "2025-10-15T20:29:16Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.012106481481481482,
+   "first_maint_days": 0.012106481481481482,
+   "first_bot_days": null,
+   "first_triage_days": 0.012106481481481482,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "3.14"
+   ],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 369.1463425925926
+  },
+  {
+   "number": 4802,
+   "created_at": "2025-10-19T17:16:45Z",
+   "author_is_maintainer": true,
+   "first_human_days": 0.01525462962962963,
+   "first_maint_days": 0.018055555555555554,
+   "first_bot_days": null,
+   "first_triage_days": 0.01525462962962963,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 365.28003472222224
+  },
+  {
+   "number": 4813,
+   "created_at": "2025-10-26T23:48:49Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 14.982719907407407,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 358.0077662037037
+  },
+  {
+   "number": 4818,
+   "created_at": "2025-10-30T04:18:34Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.017858796296296296,
+   "first_maint_days": 0.017858796296296296,
+   "first_bot_days": null,
+   "first_triage_days": 0.017858796296296296,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 354.8204398148148
+  },
+  {
+   "number": 4820,
+   "created_at": "2025-11-04T14:07:38Z",
+   "author_is_maintainer": false,
+   "first_human_days": 13.784525462962963,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 13.784525462962963,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 349.41136574074073
+  },
+  {
+   "number": 4823,
+   "created_at": "2025-11-07T22:39:24Z",
+   "author_is_maintainer": false,
+   "first_human_days": 11.76875,
+   "first_maint_days": 11.770972222222222,
+   "first_bot_days": null,
+   "first_triage_days": 11.76875,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 346.05597222222224
+  },
+  {
+   "number": 4826,
+   "created_at": "2025-11-09T22:16:58Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.000625,
+   "template_labels": [],
+   "triage_labels": [
+    "3.14",
+    "T: bug"
+   ],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 344.0715509259259
+  },
+  {
+   "number": 4838,
+   "created_at": "2025-11-10T08:12:06Z",
+   "author_is_maintainer": false,
+   "first_human_days": 6.987974537037037,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 6.987974537037037,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 343.6582638888889
+  },
+  {
+   "number": 4839,
+   "created_at": "2025-11-10T08:14:32Z",
+   "author_is_maintainer": false,
+   "first_human_days": 14.247708333333334,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 14.247708333333334,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 343.65657407407406
+  },
+  {
+   "number": 4841,
+   "created_at": "2025-11-11T05:20:43Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.2200925925925926,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.2200925925925926,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash",
+    "F: fmtoff"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: fmtoff"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 342.7772800925926
+  },
+  {
+   "number": 4843,
+   "created_at": "2025-11-15T21:12:40Z",
+   "author_is_maintainer": false,
+   "first_human_days": 1.071712962962963,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 1.071712962962963,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 338.1162037037037
+  },
+  {
+   "number": 4844,
+   "created_at": "2025-11-16T07:16:09Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.02423611111111111,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "spam"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 337.69711805555556
+  },
+  {
+   "number": 4873,
+   "created_at": "2025-11-27T07:41:20Z",
+   "author_is_maintainer": false,
+   "first_human_days": 1.2302430555555555,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.7445023148148148,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: fmtskip"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 326.67962962962963
+  },
+  {
+   "number": 4875,
+   "created_at": "2025-11-29T15:45:43Z",
+   "author_is_maintainer": true,
+   "first_human_days": 0.9579976851851851,
+   "first_maint_days": 1.2753125,
+   "first_bot_days": null,
+   "first_triage_days": 0.9579976851851851,
+   "template_labels": [
+    "C: maintenance",
+    "T: enhancement",
+    "T: style"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement",
+    "T: style",
+    "C: maintenance"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 324.34325231481483
+  },
+  {
+   "number": 4877,
+   "created_at": "2025-11-30T21:58:28Z",
+   "author_is_maintainer": true,
+   "first_human_days": 21.509722222222223,
+   "first_maint_days": 23.74150462962963,
+   "first_bot_days": null,
+   "first_triage_days": 21.509722222222223,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 323.0843981481481
+  },
+  {
+   "number": 4880,
+   "created_at": "2025-12-03T13:57:57Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.5658912037037037,
+   "first_maint_days": 0.5658912037037037,
+   "first_bot_days": null,
+   "first_triage_days": 0.5658912037037037,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 320.41809027777776
+  },
+  {
+   "number": 4882,
+   "created_at": "2025-12-04T07:15:05Z",
+   "author_is_maintainer": true,
+   "first_human_days": 17.486493055555556,
+   "first_maint_days": 31.78185185185185,
+   "first_bot_days": null,
+   "first_triage_days": 17.486493055555556,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 319.6978587962963
+  },
+  {
+   "number": 4912,
+   "created_at": "2025-12-12T23:50:19Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.6750810185185185,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash",
+    "C: preview style",
+    "F: strings"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash",
+    "F: strings",
+    "C: preview style"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 311.00672453703703
+  },
+  {
+   "number": 4926,
+   "created_at": "2025-12-27T20:36:39Z",
+   "author_is_maintainer": true,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": null,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 296.1412152777778
+  },
+  {
+   "number": 4944,
+   "created_at": "2026-01-07T00:16:54Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.05831018518518519,
+   "first_maint_days": 0.05831018518518519,
+   "first_bot_days": null,
+   "first_triage_days": 0.05831018518518519,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 285.98826388888887
+  },
+  {
+   "number": 4945,
+   "created_at": "2026-01-07T19:30:39Z",
+   "author_is_maintainer": false,
+   "first_human_days": 2.4881944444444444,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 2.4881944444444444,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 285.1870486111111
+  },
+  {
+   "number": 4947,
+   "created_at": "2026-01-08T11:48:06Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.38318287037037035,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 284.5082638888889
+  },
+  {
+   "number": 4950,
+   "created_at": "2026-01-10T05:58:58Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.42363425925925924,
+   "first_maint_days": 0.42363425925925924,
+   "first_bot_days": null,
+   "first_triage_days": 0.42363425925925924,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 282.7507175925926
+  },
+  {
+   "number": 4963,
+   "created_at": "2026-01-19T11:40:32Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.2588888888888889,
+   "first_maint_days": 0.2588888888888889,
+   "first_bot_days": null,
+   "first_triage_days": 0.2588888888888889,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: unstable formatting"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: unstable formatting"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 273.51351851851854
+  },
+  {
+   "number": 4966,
+   "created_at": "2026-01-20T10:39:02Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.1197337962962963,
+   "first_maint_days": 0.1197337962962963,
+   "first_bot_days": null,
+   "first_triage_days": 0.1197337962962963,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 272.5562268518519
+  },
+  {
+   "number": 4967,
+   "created_at": "2026-01-20T14:32:54Z",
+   "author_is_maintainer": true,
+   "first_human_days": 0.4213425925925926,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.4213425925925926,
+   "template_labels": [
+    "T: documentation",
+    "good first issue"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "good first issue",
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 272.39381944444443
+  },
+  {
+   "number": 4972,
+   "created_at": "2026-01-24T21:27:16Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.0030787037037037037,
+   "first_maint_days": 0.0030787037037037037,
+   "first_bot_days": null,
+   "first_triage_days": 0.0030787037037037037,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 268.10606481481483
+  },
+  {
+   "number": 4979,
+   "created_at": "2026-02-02T17:04:28Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.00912037037037037,
+   "first_maint_days": 0.00912037037037037,
+   "first_bot_days": null,
+   "first_triage_days": 0.00912037037037037,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "duplicate",
+   "age_days": 259.28856481481483
+  },
+  {
+   "number": 4980,
+   "created_at": "2026-02-02T20:22:32Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.005787037037037037,
+   "first_maint_days": 0.01871527777777778,
+   "first_bot_days": null,
+   "first_triage_days": 0.005787037037037037,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 259.1510185185185
+  },
+  {
+   "number": 4989,
+   "created_at": "2026-02-10T17:22:06Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.003969907407407407,
+   "first_maint_days": 0.003969907407407407,
+   "first_bot_days": null,
+   "first_triage_days": 0.003969907407407407,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 251.27631944444445
+  },
+  {
+   "number": 4995,
+   "created_at": "2026-02-18T18:26:47Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.017361111111111112,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.017361111111111112,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "R: invalid",
+    "R: not a bug"
+   ],
+   "labels_now": [
+    "R: invalid",
+    "R: not a bug"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 243.23140046296297
+  },
+  {
+   "number": 5001,
+   "created_at": "2026-02-22T10:31:44Z",
+   "author_is_maintainer": false,
+   "first_human_days": 1.3628819444444444,
+   "first_maint_days": 1.3628819444444444,
+   "first_bot_days": null,
+   "first_triage_days": 1.3628819444444444,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 239.5612962962963
+  },
+  {
+   "number": 5002,
+   "created_at": "2026-02-23T01:43:27Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.004224537037037037,
+   "first_maint_days": 0.004224537037037037,
+   "first_bot_days": null,
+   "first_triage_days": 0.004224537037037037,
+   "template_labels": [
+    "T: documentation"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 238.92815972222223
+  },
+  {
+   "number": 5029,
+   "created_at": "2026-03-06T15:08:42Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.011493055555555555,
+   "first_maint_days": 0.011493055555555555,
+   "first_bot_days": null,
+   "first_triage_days": 0.011493055555555555,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 227.36895833333332
+  },
+  {
+   "number": 5042,
+   "created_at": "2026-03-11T09:06:08Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.17702546296296295,
+   "first_maint_days": 0.17702546296296295,
+   "first_bot_days": null,
+   "first_triage_days": 0.17702546296296295,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 222.62074074074073
+  },
+  {
+   "number": 5043,
+   "created_at": "2026-03-11T21:26:42Z",
+   "author_is_maintainer": true,
+   "first_human_days": 0.02722222222222222,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.02722222222222222,
+   "template_labels": [
+    "T: documentation",
+    "good first issue"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "good first issue",
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 222.10645833333334
+  },
+  {
+   "number": 5055,
+   "created_at": "2026-03-16T10:11:59Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.1757175925925926,
+   "first_maint_days": 0.1757175925925926,
+   "first_bot_days": null,
+   "first_triage_days": 0.1757175925925926,
+   "template_labels": [
+    "T: style"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: style"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 217.57501157407407
+  },
+  {
+   "number": 5058,
+   "created_at": "2026-03-19T11:55:39Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.13730324074074074,
+   "first_maint_days": 0.13730324074074074,
+   "first_bot_days": null,
+   "first_triage_days": 0.13730324074074074,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 214.50302083333332
+  },
+  {
+   "number": 5083,
+   "created_at": "2026-04-06T18:53:39Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.0009027777777777777,
+   "first_maint_days": 0.0009027777777777777,
+   "first_bot_days": null,
+   "first_triage_days": 0.0009027777777777777,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 196.21274305555556
+  },
+  {
+   "number": 5099,
+   "created_at": "2026-04-14T12:31:59Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.011898148148148149,
+   "first_maint_days": 0.011898148148148149,
+   "first_bot_days": null,
+   "first_triage_days": 0.011898148148148149,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "C: crash"
+   ],
+   "labels_now": [
+    "T: bug",
+    "C: crash"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 188.47778935185184
+  },
+  {
+   "number": 5112,
+   "created_at": "2026-04-21T21:51:28Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 20.702638888888888,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 181.08925925925925
+  },
+  {
+   "number": 5119,
+   "created_at": "2026-04-29T22:29:25Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.09666666666666666,
+   "first_maint_days": 0.09666666666666666,
+   "first_bot_days": null,
+   "first_triage_days": 0.09666666666666666,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 173.0629050925926
+  },
+  {
+   "number": 5120,
+   "created_at": "2026-05-01T14:01:35Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 155.40538194444446,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 171.41556712962964
+  },
+  {
+   "number": 5122,
+   "created_at": "2026-05-04T19:27:22Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 7.802731481481482,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 168.1893287037037
+  },
+  {
+   "number": 5125,
+   "created_at": "2026-05-06T09:37:19Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.010474537037037037,
+   "first_maint_days": 0.010474537037037037,
+   "first_bot_days": null,
+   "first_triage_days": 0.010474537037037037,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "S: needs repro"
+   ],
+   "labels_now": [
+    "T: bug",
+    "S: needs repro"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 166.59908564814816
+  },
+  {
+   "number": 5137,
+   "created_at": "2026-05-18T07:57:45Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.3410185185185185,
+   "first_maint_days": 0.3410185185185185,
+   "first_bot_days": null,
+   "first_triage_days": 0.3410185185185185,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 154.66822916666666
+  },
+  {
+   "number": 5138,
+   "created_at": "2026-05-18T11:04:52Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.22143518518518518,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 154.53828703703704
+  },
+  {
+   "number": 5160,
+   "created_at": "2026-05-31T10:31:54Z",
+   "author_is_maintainer": false,
+   "first_human_days": 2.179733796296296,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 2.179733796296296,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 141.56118055555555
+  },
+  {
+   "number": 5164,
+   "created_at": "2026-06-03T12:55:04Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 4.527962962962963,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 138.46175925925925
+  },
+  {
+   "number": 5174,
+   "created_at": "2026-06-10T14:40:26Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 116.57211805555555,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: enhancement"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 131.38858796296296
+  },
+  {
+   "number": 5179,
+   "created_at": "2026-06-14T12:24:54Z",
+   "author_is_maintainer": false,
+   "first_human_days": 10.210613425925926,
+   "first_maint_days": 10.210613425925926,
+   "first_bot_days": null,
+   "first_triage_days": 10.210613425925926,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 127.48270833333333
+  },
+  {
+   "number": 5187,
+   "created_at": "2026-06-18T20:40:15Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 5.898564814814815,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 123.13871527777778
+  },
+  {
+   "number": 5204,
+   "created_at": "2026-06-30T02:50:55Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": null,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 111.88130787037036
+  },
+  {
+   "number": 5208,
+   "created_at": "2026-07-01T05:53:22Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 1.949710648148148,
+   "template_labels": [
+    "T: documentation"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 110.75460648148149
+  },
+  {
+   "number": 5209,
+   "created_at": "2026-07-01T06:07:46Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 1.9474537037037036,
+   "template_labels": [
+    "T: documentation"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: documentation"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 110.74460648148148
+  },
+  {
+   "number": 5210,
+   "created_at": "2026-07-01T07:14:07Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.009282407407407408,
+   "first_maint_days": 0.009282407407407408,
+   "first_bot_days": null,
+   "first_triage_days": 0.009282407407407408,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 110.69853009259259
+  },
+  {
+   "number": 5214,
+   "created_at": "2026-07-01T10:50:06Z",
+   "author_is_maintainer": false,
+   "first_human_days": 5.209016203703704,
+   "first_maint_days": 5.209016203703704,
+   "first_bot_days": null,
+   "first_triage_days": 5.209016203703704,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 110.54854166666667
+  },
+  {
+   "number": 5216,
+   "created_at": "2026-07-01T18:12:15Z",
+   "author_is_maintainer": false,
+   "first_human_days": 1.4364699074074074,
+   "first_maint_days": 1.4364699074074074,
+   "first_bot_days": null,
+   "first_triage_days": 1.4364699074074074,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 110.24149305555555
+  },
+  {
+   "number": 5225,
+   "created_at": "2026-07-06T12:15:39Z",
+   "author_is_maintainer": false,
+   "first_human_days": 4.1603819444444445,
+   "first_maint_days": 6.517627314814815,
+   "first_bot_days": null,
+   "first_triage_days": 0.14844907407407407,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [
+    "F: fmtoff"
+   ],
+   "labels_now": [
+    "T: bug",
+    "F: fmtoff"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 105.48913194444444
+  },
+  {
+   "number": 5243,
+   "created_at": "2026-07-18T05:59:27Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 2.7864351851851854,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 93.75038194444444
+  },
+  {
+   "number": 5249,
+   "created_at": "2026-07-22T03:11:12Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.030752314814814816,
+   "first_maint_days": 0.030752314814814816,
+   "first_bot_days": null,
+   "first_triage_days": 0.030752314814814816,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 89.86722222222222
+  },
+  {
+   "number": 5256,
+   "created_at": "2026-07-23T03:42:01Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.013101851851851852,
+   "template_labels": [
+    "T: enhancement"
+   ],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 88.84582175925927
+  },
+  {
+   "number": 5260,
+   "created_at": "2026-07-26T00:39:19Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.6153472222222223,
+   "first_maint_days": 0.6153472222222223,
+   "first_bot_days": null,
+   "first_triage_days": 0.6153472222222223,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 85.97269675925926
+  },
+  {
+   "number": 5270,
+   "created_at": "2026-07-29T06:05:49Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.7402430555555556,
+   "first_maint_days": 1.3653819444444444,
+   "first_bot_days": null,
+   "first_triage_days": 0.7402430555555556,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 82.74596064814814
+  },
+  {
+   "number": 5285,
+   "created_at": "2026-07-31T18:02:47Z",
+   "author_is_maintainer": false,
+   "first_human_days": 15.505,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 15.505,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 80.24806712962963
+  },
+  {
+   "number": 5298,
+   "created_at": "2026-08-08T14:42:58Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 38.28346064814815,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 72.3868287037037
+  },
+  {
+   "number": 5301,
+   "created_at": "2026-08-12T05:43:34Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.7369444444444444,
+   "first_maint_days": 0.7369444444444444,
+   "first_bot_days": null,
+   "first_triage_days": 0.7369444444444444,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 68.76141203703703
+  },
+  {
+   "number": 5302,
+   "created_at": "2026-08-12T05:43:53Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.7369444444444444,
+   "first_maint_days": 0.7369444444444444,
+   "first_bot_days": null,
+   "first_triage_days": 0.7369444444444444,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 68.76119212962963
+  },
+  {
+   "number": 5307,
+   "created_at": "2026-08-12T23:44:15Z",
+   "author_is_maintainer": true,
+   "first_human_days": 0.21920138888888888,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.21920138888888888,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 68.0109375
+  },
+  {
+   "number": 5323,
+   "created_at": "2026-08-19T19:44:44Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 27.075729166666665,
+   "template_labels": [],
+   "triage_labels": [
+    "spam / ai"
+   ],
+   "labels_now": [
+    "spam / ai"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 61.17726851851852
+  },
+  {
+   "number": 5328,
+   "created_at": "2026-08-20T11:21:51Z",
+   "author_is_maintainer": false,
+   "first_human_days": 2.1063310185185187,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 2.1063310185185187,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 60.526493055555555
+  },
+  {
+   "number": 5376,
+   "created_at": "2026-08-31T10:17:35Z",
+   "author_is_maintainer": false,
+   "first_human_days": 1.9080439814814816,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 1.9080439814814816,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "open",
+   "state_reason": null,
+   "age_days": 49.57112268518519
+  },
+  {
+   "number": 5378,
+   "created_at": "2026-09-01T07:11:38Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 2.388449074074074,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 48.70025462962963
+  },
+  {
+   "number": 5379,
+   "created_at": "2026-09-01T07:57:38Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.9664699074074075,
+   "first_maint_days": 1.6085648148148148,
+   "first_bot_days": null,
+   "first_triage_days": 0.9664699074074075,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 48.668310185185184
+  },
+  {
+   "number": 5388,
+   "created_at": "2026-09-05T15:07:13Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.009270833333333334,
+   "first_maint_days": 0.009270833333333334,
+   "first_bot_days": null,
+   "first_triage_days": 0.009270833333333334,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "not_planned",
+   "age_days": 44.369988425925925
+  },
+  {
+   "number": 5389,
+   "created_at": "2026-09-06T00:25:01Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.5691550925925926,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 0.5691550925925926,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 43.98262731481481
+  },
+  {
+   "number": 5397,
+   "created_at": "2026-09-13T08:30:06Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 11.582118055555556,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 36.64576388888889
+  },
+  {
+   "number": 5402,
+   "created_at": "2026-09-13T20:27:12Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 8.28298611111111,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 36.147777777777776
+  },
+  {
+   "number": 5424,
+   "created_at": "2026-09-22T00:04:41Z",
+   "author_is_maintainer": true,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": null,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 27.996747685185184
+  },
+  {
+   "number": 5458,
+   "created_at": "2026-09-30T20:09:37Z",
+   "author_is_maintainer": false,
+   "first_human_days": 0.8154513888888889,
+   "first_maint_days": 0.8154513888888889,
+   "first_bot_days": null,
+   "first_triage_days": 0.8154513888888889,
+   "template_labels": [
+    "T: bug"
+   ],
+   "triage_labels": [],
+   "labels_now": [
+    "T: bug"
+   ],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 19.159988425925928
+  },
+  {
+   "number": 5460,
+   "created_at": "2026-09-30T22:35:38Z",
+   "author_is_maintainer": false,
+   "first_human_days": null,
+   "first_maint_days": null,
+   "first_bot_days": null,
+   "first_triage_days": 3.1028587962962964,
+   "template_labels": [],
+   "triage_labels": [],
+   "labels_now": [],
+   "state": "closed",
+   "state_reason": "completed",
+   "age_days": 19.058587962962964
+  }
+ ]
+}
