@@ -127,7 +127,26 @@ safe-outputs:
 env:
   TRIAGE_REPLAY_MODE: ${{ vars.TRIAGE_REPLAY_MODE }}
 
+# Ground-truth isolation, layer 1: only check out what the agent needs (cone mode also keeps
+# root files such as AGENTS.md). analysis/ and evals/ (maintainer outcomes, golden answers)
+# are never materialised in the agent's workspace.
+checkout:
+  sparse-checkout: |
+    .claude/
+    .github/
+    docs/
+    src/
+
 pre-agent-steps:
+  # Ground-truth isolation, layer 2 (fail-closed): delete evaluation/ground-truth paths even if
+  # the checkout configuration changes, and abort the job if any of them is still present.
+  - name: Remove evaluation and ground-truth data from the agent workspace
+    run: |
+      rm -rf analysis evals DESIGN.md
+      for p in analysis evals DESIGN.md; do
+        if [ -e "$p" ]; then echo "::error::$p is still present in the agent workspace"; exit 1; fi
+      done
+      echo "ground-truth paths absent: analysis/ evals/ DESIGN.md"
   - name: Prefetch triage context (deterministic, outside the agent)
     env:
       GH_TOKEN: ${{ github.token }}
