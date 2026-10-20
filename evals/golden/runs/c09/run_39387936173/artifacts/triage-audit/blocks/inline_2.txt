@@ -1,0 +1,1 @@
+assert my_var == 0

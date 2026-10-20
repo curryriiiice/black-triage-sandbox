@@ -1,0 +1,6 @@
+assert (
+    # my comment
+    my_var == 999
+    if abc == "TEST"
+    else 0
+)

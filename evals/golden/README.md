@@ -17,7 +17,7 @@
 
 The `issue-triage` agentic workflow (`.github/workflows/issue-triage.md`) runs end to end
 on GitHub Actions in this sandbox repository. Each historical upstream issue is replayed
-as a new sandbox issue. The labels and comment the agent produces are compared with an
+1. Actions secret `ANTHROPIC_API_KEY` (a workspace-scoped key for gh-aw's `claude` engine, model `claude-sonnet-5-5`). The round-1 smoke runs 3–5 temporarily used the `copilot` engine with `COPILOT_GITHUB_TOKEN`.
 expected outcome that was written down **before** the run.
 
 ## One-time setup (sandbox only)

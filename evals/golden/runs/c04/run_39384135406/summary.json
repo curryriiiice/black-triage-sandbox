@@ -1,0 +1,26 @@
+{
+  "case": "c04",
+  "issue": 6,
+  "run": 39384135406,
+  "event": "issues",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "success",
+    "safe_outputs": "success",
+    "conclusion": "success"
+  },
+  "agent_aic": 0.0,
+  "detection_aic": 11.14376,
+  "total_aic": 11.144,
+  "labels_added_by_bot": [],
+  "bot_comments": [],
+  "skill_events": [
+    "prefetch"
+  ],
+  "repro": [],
+  "duplicate_candidates": [],
+  "prefetch_skip": "issue was opened by a maintainer (author_association=COLLABORATOR)"
+}

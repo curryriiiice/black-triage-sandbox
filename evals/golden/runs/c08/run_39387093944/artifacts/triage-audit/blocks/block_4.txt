@@ -1,0 +1,16 @@
+❯ cat  /var/folders/_b/zf5p80v11bd2m2fq4j17z8mr0000gn/T/blk_9jeg_ijj.log
+--- src
++++ dst
+@@ -63,11 +63,11 @@
+                 value=
+                 Constant(
+                     kind=
+                     None,  # NoneType
+                     value=
+-                    'Initialize name instance.\n\n>>> fred = Name("FrÃ©dÃ©ric", "FranÃ§ois")\n>>> print(fred)',  # str
++                    'Initialize name instance.\n\n>>> fred = Name("FrÃ\x83Â\x83Ã\x82Â©dÃ\x83Â\x83Ã\x82Â©ric", "FranÃ\x83Â\x83Ã\x82Â§ois")\n>>> print(fred)',  # str
+                 )  # /Constant
+             )  # /Expr
+             Assign(
+                 targets=
+                 Attribute(

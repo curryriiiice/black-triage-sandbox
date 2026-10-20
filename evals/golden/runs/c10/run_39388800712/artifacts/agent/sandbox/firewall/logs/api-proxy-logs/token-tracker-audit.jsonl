@@ -1,0 +1,10 @@
+{"ts":1792482518530,"event":"TRACK_START","rid":"5977ab14-3c11-41c9-a9f9-f5f6c28867f7","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792482519312,"event":"TRACK_END","rid":"5977ab14-3c11-41c9-a9f9-f5f6c28867f7","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":160,"cache_read":0}
+{"ts":1792482522241,"event":"TRACK_START","rid":"b63842e2-f99f-4639-bf1e-1c70db6d621c","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792482522897,"event":"TRACK_END","rid":"b63842e2-f99f-4639-bf1e-1c70db6d621c","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":166,"cache_read":40463}
+{"ts":1792482530273,"event":"TRACK_START","rid":"392577d2-19ef-422c-bc27-4b12562405f2","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792482530631,"event":"TRACK_END","rid":"392577d2-19ef-422c-bc27-4b12562405f2","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":95,"cache_read":47642}
+{"ts":1792482532043,"event":"TRACK_START","rid":"d38338a3-0d37-44ca-9172-8ec4ab74bbe2","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792482534147,"event":"TRACK_END","rid":"d38338a3-0d37-44ca-9172-8ec4ab74bbe2","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":411,"cache_read":48112}
+{"ts":1792482537282,"event":"TRACK_START","rid":"97f7930f-8670-44cc-abcf-d9bbfa0345f6","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792482537301,"event":"TRACK_END","rid":"97f7930f-8670-44cc-abcf-d9bbfa0345f6","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":286,"cache_read":48363}

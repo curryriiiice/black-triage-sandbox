@@ -1,0 +1,7 @@
+❯ black --version && black --diff tests/test_cases/not_utf8.py
+black, 26.1.0 (compiled: no)
+Python (CPython) 3.13.5
+error: cannot format tests/test_cases/not_utf8.py: INTERNAL ERROR: Black 26.1.0 on Python (CPython) 3.13.5 produced code that is not equivalent to the source.  Please report a bug on https://github[.]com/psf/black/issues.  This diff might be helpful: /var/folders/_b/zf5p80v11bd2m2fq4j17z8mr0000gn/T/blk_9jeg_ijj.log
+
+Oh no! 💥 💔 💥
+1 file would fail to reformat.

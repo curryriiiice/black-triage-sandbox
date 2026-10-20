@@ -1,0 +1,5 @@
+❯ black --version && black --diff tests/test_cases/not_utf8.py
+black, 25.12.0 (compiled: no)
+Python (CPython) 3.13.5
+All done! ✨ 🍰 ✨
+1 file would be left unchanged.

@@ -1,0 +1,6 @@
+lines = sort(lines, len)  # sort lines by increasing length to process them by increasing length
+for line in lines:
+    if len(line) < min-line-length and line[0] in ("{", "}", "(", ")", "[", "]"):
+        if the previous line has a training comma, remove it (no point)
+        move line with the previous line
+        if the previous line is now longer than max-line-length consider splitting it around a ":"
