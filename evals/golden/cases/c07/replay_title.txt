@@ -1,0 +1,1 @@
+pygettext.py: Black 26.1.0 on Python (CPython) 3.14.0 produced different code on the second pass of the formatter

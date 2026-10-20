@@ -1,0 +1,1 @@
+INTERNAL ERROR code that is not equivalent to the source (non-UTF8, iso-8859-1)

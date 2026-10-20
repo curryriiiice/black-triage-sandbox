@@ -1,0 +1,22 @@
+{
+  "case_id": "c12",
+  "upstream_issue": 5058,
+  "permalink": "https://github.com/psf/black/issues/5058",
+  "created_at": "2026-03-19T11:55:39Z",
+  "author_association": "NONE",
+  "title_at_creation": "Internal error: producing different code on second pass with long type annotations",
+  "body_at_creation": "## Bug Description\nBlack produces different code on the second pass of the formatter when processing files with long type annotations and comments. This violates the idempotency guarantee.\n\n## Expected Behavior\nBlack should produce identical output on consecutive passes.\n\nRelated to #4733.",
+  "template_labels_detected": [],
+  "replay_labels": [],
+  "leakage_avoidance": [
+    "never renamed; current title == title at creation",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": [
+    "prose changed: '## Bug Description\\nBlack produces different code on the second pass of the forma'"
+  ]
+}

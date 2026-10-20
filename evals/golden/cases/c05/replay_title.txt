@@ -1,0 +1,1 @@
+Failure upon two ignores for type checkers

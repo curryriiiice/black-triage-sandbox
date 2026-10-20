@@ -1,0 +1,20 @@
+{
+  "case_id": "c16",
+  "upstream_issue": 5249,
+  "permalink": "https://github.com/psf/black/issues/5249",
+  "created_at": "2026-07-22T03:11:12Z",
+  "author_association": "NONE",
+  "title_at_creation": "With --target-version py314, Black strips parentheses from `except (A, B):` producing invalid Python 3",
+  "body_at_creation": "### Describe the bug\n\nWith `--target-version py314`, Black rewrites a parenthesized `except` tuple into the Python-2 `except A, B:` form, which is a **`SyntaxError` in Python 3**. Black therefore emits source it cannot itself re-parse. The bug is specific to the `py314` target — `py313` and the default (no target) leave the code unchanged.\n\n### To Reproduce\n\nGiven `bug.py`:\n\n```python\ntry:\n    pass\nexcept (ValueError, TypeError):\n    pass\n```\n\nRun:\n\n```console\n$ black --target-version py314 bug.py\n```\n\nResult — the file is rewritten to:\n\n```python\ntry:\n    pass\nexcept ValueError, TypeError:\n    pass\n```\n\nwhich no longer parses under Python 3:\n\n```console\n$ python -c \"import ast; ast.parse(open('bug.py').read())\"\n  File \"<unknown>\", line 3\n    except ValueError, TypeError:\n                     ^\nSyntaxError: multiple exception types must be parenthesized\n```\n\nThree-or-more-element tuples are affected too (`except (A, B, C):` → `except A, B, C:`).\n\n### Expected behavior\n\n`except (ValueError, TypeError):` is left unchanged. The parentheses are **required** in Python 3 and must never be removed.\n\n### Environment\n\n- Black version: **26.3.1** (from PyPI; `black --version` reports `black, 26.3.1 (compiled: yes)`)\n- OS: Linux\n- Python: CPython 3.14.6\n\n### Additional context\n\n- Deterministic on a cache miss. Because Black caches results by file mtime/size, a second run on an unchanged file may report \"unchanged\" without reformatting — clearing `~/.cache/black` (or editing the file) reproduces it every time.\n- Not reproducible with `--target-version py313` or with no `--target-version` (defaults).\n- Reproduces via the CLI flag alone; a `[tool.black] target-version = [\"py314\"]` in `pyproject.toml` triggers it identically.\n- Impact: `black`/`black --check` in a py314-targeted project can silently turn valid source into a `SyntaxError`.\n",
+  "template_labels_detected": [],
+  "replay_labels": [],
+  "leakage_avoidance": [
+    "never renamed; current title == title at creation",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": []
+}

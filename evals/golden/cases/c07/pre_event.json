@@ -1,0 +1,26 @@
+{
+  "case_id": "c07",
+  "upstream_issue": 4963,
+  "permalink": "https://github.com/psf/black/issues/4963",
+  "created_at": "2026-01-19T11:40:32Z",
+  "author_association": "NONE",
+  "title_at_creation": "pygettext.py: Black 26.1.0 on Python (CPython) 3.14.0 produced different code on the second pass of the formatter",
+  "body_at_creation": "**Describe the bug**\n\nBlack crashes with the mentioned error on a very old script that we have included for ages\n\n**To Reproduce**\n\nSee: https://github.com/sabnzbd/sabnzbd/blob/develop/tools/pygettext.py\n\nLog as mentioned in the error:\n[blk_ym54yfeb.log](https://github.com/user-attachments/files/24714471/blk_ym54yfeb.log)\n\nThis also happens when I use black.vercel.app. \nIt crashes.\n\n**Expected behavior**\n\nNo failure\n\n**Environment**\n\nBlack 26.1.0\nWindows and black.vercel.app. \n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+  "template_labels_detected": [
+    "T: bug"
+  ],
+  "replay_labels": [
+    "T: bug"
+  ],
+  "leakage_avoidance": [
+    "renamed 1x later; used the earliest rename's `from`",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": [
+    "prose changed: '**Describe the bug**\\n\\nBlack crashes with the mentioned error on a very old scrip'"
+  ]
+}

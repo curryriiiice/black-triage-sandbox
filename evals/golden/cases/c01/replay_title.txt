@@ -1,0 +1,1 @@
+Crash with preview style `fix_fmt_skip_in_one_liners` for certain compound statements

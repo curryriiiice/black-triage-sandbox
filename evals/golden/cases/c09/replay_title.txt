@@ -1,0 +1,1 @@
+Black breaks code in multiline assertion

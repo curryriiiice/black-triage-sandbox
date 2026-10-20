@@ -1,0 +1,22 @@
+{
+  "case_id": "c01",
+  "upstream_issue": 4782,
+  "permalink": "https://github.com/psf/black/issues/4782",
+  "created_at": "2025-10-06T19:26:28Z",
+  "author_association": "NONE",
+  "title_at_creation": "Crash with preview style `fix_fmt_skip_in_one_liners` for certain compound statements",
+  "body_at_creation": "Playground example below, but also reproduces with `async with` and `if` statements with compound boolean conditions (so perhaps related to #4731 but a priori does is not quite the same situation).\n\n**Black https://github.com/psf/black/commit/314f8c**\n\n[Playground link](https://black.vercel.app/?version=main&state=_Td6WFoAAATm1rRGAgAhARYAAAB0L-Wj4AC9AIBdAD2IimZxl1N_WmufDs0LpGEw9emYfCBl3bwWiaaPk-9VShmWdTZHtWIqHDNOo5vv3mtCRt2JPdYrP_88UxS71LUIZEYpZZ1dEE9hvybVY2-MCZ_Ou1Zl2ovnO0SjGtI8ifPSy2ScIBha4EzUEKo6liKlyiprVTWyJDh3AmX1byMAADAZ4agZ4L3QAAGcAb4BAADLeP5oscRn-wIAAAAABFla)\n\n## Options\n\n`--line-length=88`\n`--safe`\n`--preview`\n\n## Input\n\n```python\nwith open(\"file.txt\") as f: content = f.read() # fmt: skip\n```\n\n## Output\n\n```python\nCannot parse: 1:4: with\n```\n\n## Expected\n\n```python\nwith open(\"file.txt\") as f: content = f.read() # fmt: skip\n```",
+  "template_labels_detected": [],
+  "replay_labels": [],
+  "leakage_avoidance": [
+    "never renamed; current title == title at creation",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": [
+    "prose changed: 'statements with compound boolean conditions (so perhaps related to #4731 but a p'"
+  ]
+}

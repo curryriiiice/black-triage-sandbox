@@ -1,0 +1,23 @@
+{
+  "case_id": "c17",
+  "upstream_issue": 5301,
+  "permalink": "https://github.com/psf/black/issues/5301",
+  "created_at": "2026-08-12T05:43:34Z",
+  "author_association": "NONE",
+  "title_at_creation": "#4855 — # fmt: skip applied to the line after the comment instead of the line it's on.",
+  "body_at_creation": "#4855 — # fmt: skip applied to the line after the comment instead of the line it's on.",
+  "template_labels_detected": [],
+  "replay_labels": [],
+  "leakage_avoidance": [
+    "never renamed; current title == title at creation",
+    "no edits recorded; current body == body at creation",
+    "labels: only author-applied template labels within 60 s of creation",
+    "excluded: all comments, later labels, close reason, cross-referenced PRs/commits",
+    "repo context: sandbox snapshot is Black 25.9.0 (2025-09-18), older than the case",
+    "repro: repro_black.py refuses Black releases newer than original_created_at"
+  ],
+  "neutralisation": [
+    "prose changed: '#4855 — # fmt: skip applied to the line after the comment instead of the line it'",
+    "prose changed: '#4855 — # fmt: skip applied to the line after the comment instead of the line it'"
+  ]
+}

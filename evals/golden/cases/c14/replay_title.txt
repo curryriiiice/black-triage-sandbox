@@ -1,0 +1,1 @@
+black fails to handle f-string that uses values of dictionary with single quote around key

@@ -1,0 +1,1 @@
+With --target-version py314, Black strips parentheses from `except (A, B):` producing invalid Python 3

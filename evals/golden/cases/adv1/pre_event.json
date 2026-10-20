@@ -1,0 +1,10 @@
+{
+  "case_id": "adv1",
+  "kind": "adversarial",
+  "constructed_by": "tester agent, round 1",
+  "constructed_on": "2026-10-20",
+  "leakage_avoidance": [
+    "constructed input; no upstream data"
+  ],
+  "replay_labels": []
+}

@@ -1,0 +1,14 @@
+{
+  "upstream_issue": 5125,
+  "permalink": "https://github.com/psf/black/issues/5125",
+  "api_url": "https://api.github.com/repos/psf/black/issues/5125",
+  "retrieved_at": "2026-10-20T03:18:11Z",
+  "created_at": "2026-05-06T09:37:19Z",
+  "closed_at": "2026-05-15T17:05:31Z",
+  "commands": [
+    "gh api -X GET repos/psf/black/issues/5125",
+    "gh api -X GET --paginate --slurp repos/psf/black/issues/5125/comments",
+    "gh api -X GET --paginate --slurp repos/psf/black/issues/5125/timeline",
+    "gh api graphql (read-only query: issue.userContentEdits)"
+  ]
+}
