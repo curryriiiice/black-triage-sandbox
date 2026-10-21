@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -27,7 +28,9 @@ from pathlib import Path
 SANDBOX = "curryriiiice/black-triage-sandbox"
 WORKFLOW = "issue-triage.lock.yml"
 GOLDEN = Path(__file__).resolve().parent.parent
-CASES, RUNS = GOLDEN / "cases", GOLDEN / "runs"
+CASES = GOLDEN / "cases"
+# Round 2+ writes to its own directory so earlier rounds stay intact (GOLDEN_RUNS_DIR=evals/golden/round2/runs).
+RUNS = Path(os.environ["GOLDEN_RUNS_DIR"]).resolve() if os.environ.get("GOLDEN_RUNS_DIR") else GOLDEN / "runs"
 MAPPING = RUNS / "mapping.json"
 
 
