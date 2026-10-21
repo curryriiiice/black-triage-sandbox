@@ -5,7 +5,7 @@ Reads the triage dir written by prefetch_context.py and the skill scripts, write
 skill_evidence.json next to it, and prints a Markdown summary on stdout. It never fails
 the job: missing evidence is reported, not raised.
 
-Usage: python3 skill_evidence.py /tmp/gh-aw/agent/triage
+Usage: python3 skill_evidence.py <work dir> [<context dir>]
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from triage_common import MARKER, load_json  # noqa: E402
 
 
-def summarise(triage_dir: Path) -> dict:
+def summarise(triage_dir: Path, context_dir: Path | None = None) -> dict:
     records = []
     log = triage_dir / "skill_audit.jsonl"
     if log.exists():
@@ -28,7 +28,7 @@ def summarise(triage_dir: Path) -> dict:
                 records.append(json.loads(line))
             except ValueError:
                 pass
-    ctx = load_json(triage_dir / "context.json", {}) or {}
+    ctx = load_json((context_dir or triage_dir) / "context.json", {}) or {}
     counts = Counter(r.get("event") for r in records)
     agent_events = (counts.get("repro", 0) + counts.get("validate_labels", 0)
                     + counts.get("skill_loaded", 0))
@@ -47,7 +47,8 @@ def summarise(triage_dir: Path) -> dict:
 
 def main(argv: list[str]) -> int:
     triage_dir = Path(argv[1] if len(argv) > 1 else "/tmp/gh-aw/agent/triage")
-    s = summarise(triage_dir)
+    context_dir = Path(argv[2]) if len(argv) > 2 else None
+    s = summarise(triage_dir, context_dir)
     try:
         (triage_dir / "skill_evidence.json").write_text(json.dumps(s, indent=2), encoding="utf-8")
     except OSError:

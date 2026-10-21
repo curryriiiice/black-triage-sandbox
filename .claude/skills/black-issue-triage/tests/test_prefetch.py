@@ -196,3 +196,40 @@ def test_duplicate_pool_excludes_bot_and_agentic_workflow_issues():
     assert [c["number"] for c in pc.rank_duplicates(me, body, pool)] == [5]
     assert pc.is_automation_issue(pool[0]) and pc.is_automation_issue(pool[1])
     assert not pc.is_automation_issue(pool[3])
+
+
+
+def test_template_only_body_detected(tmp_path):
+    from conftest import REPO_ROOT
+    templates = pc.load_templates(REPO_ROOT / ".github" / "ISSUE_TEMPLATE")
+    tpl = (REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.md").read_text().split("---", 2)[-1]
+    assert pc.template_check(tpl, templates)["template_only"] is True
+    real = tpl.replace("<!-- A clear and concise description of what the bug is. -->",
+                       "Black crashes on nested f-strings with a backslash in Python 3.12.")
+    assert pc.template_check(real, templates)["template_only"] is False
+    assert pc.template_check("hello", {})["template_only"] is False
+    ctx, _ = pc.build_context(issue(body=tpl), [], [], PYPI, False, templates)
+    assert ctx["template_check"]["template"] == "bug_report.md"
+
+
+def test_context_is_read_only_and_not_overwritten(tmp_path, monkeypatch):
+    f = tmp_path / "issue.json"
+    f.write_text(json.dumps(issue(number=7, assoc="NONE")))
+    for name, data in (("l.json", []), ("i.json", []), ("p.json", PYPI)):
+        (tmp_path / name).write_text(json.dumps(data))
+    monkeypatch.delenv("GH_AW_SAFE_OUTPUTS", raising=False)
+    out, work = tmp_path / "ctx", tmp_path / "work"
+    args = ["--out", str(out), "--audit-dir", str(work), "--issue-json", str(f),
+            "--labels-json", str(tmp_path / "l.json"), "--issues-json", str(tmp_path / "i.json"),
+            "--pypi-json", str(tmp_path / "p.json")]
+    pc.main(args)
+    import os
+    import stat
+    assert not os.access(out / "context.json", os.W_OK) or os.geteuid() == 0
+    assert not (stat.S_IMODE((out / "context.json").stat().st_mode) & 0o222)
+    assert not (stat.S_IMODE(out.stat().st_mode) & 0o222)
+    assert (work / "skill_audit.jsonl").exists() and not (out / "skill_audit.jsonl").exists()
+    import pytest
+    with pytest.raises(SystemExit):
+        pc.main(args)
+    out.chmod(0o755)

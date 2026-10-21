@@ -293,9 +293,47 @@ def decide_skip(issue: dict[str, Any], association: str, author_is_bot: bool) ->
     return None
 
 
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+
+
+def _norm_lines(text: str) -> list[str]:
+    text = HTML_COMMENT_RE.sub("", text or "")
+    return [" ".join(ln.split()) for ln in text.splitlines() if ln.strip()]
+
+
+def load_templates(templates_dir: str | Path | None) -> dict[str, set[str]]:
+    """Issue-template bodies (front matter removed) as sets of normalised lines."""
+    out: dict[str, set[str]] = {}
+    d = Path(templates_dir) if templates_dir else None
+    if not d or not d.is_dir():
+        return out
+    for f in sorted(d.glob("*.md")):
+        text = f.read_text(encoding="utf-8")
+        if text.startswith("---"):
+            text = text.split("---", 2)[-1]
+        out[f.name] = set(_norm_lines(text))
+    return out
+
+
+def template_check(body: str, templates: dict[str, set[str]]) -> dict[str, Any]:
+    """Deterministic spam signal: does the body add (almost) nothing to an issue template?"""
+    lines = _norm_lines(body)
+    best = None
+    for name, tlines in templates.items():
+        novel = [ln for ln in lines if ln not in tlines]
+        chars = len(" ".join(novel))
+        if best is None or chars < best[1]:
+            best = (name, chars, novel)
+    if best is None:
+        return {"template_only": False, "template": None, "novel_chars": None}
+    return {"template_only": best[1] < 15 and bool(templates[best[0]] & set(lines)),
+            "template": best[0], "novel_chars": best[1]}
+
+
 def build_context(issue: dict[str, Any], repo_labels: list[dict[str, Any]],
                   pool: list[dict[str, Any]], pypi: dict[str, Any] | None,
-                  replay_mode: bool) -> dict[str, Any]:
+                  replay_mode: bool, templates: dict[str, set[str]] | None = None
+                  ) -> dict[str, Any]:
     raw_body = issue.get("body") or ""
     meta, body = parse_replay_header(raw_body)
     replay_used = bool(replay_mode and meta)
@@ -321,6 +359,7 @@ def build_context(issue: dict[str, Any], repo_labels: list[dict[str, Any]],
         "replay_mode": replay_used,
         "skip": skip is not None, "skip_reason": skip,
         "hints": extract_hints(body),
+        "template_check": template_check(body, templates or {}),
         "code_blocks": [{k: v for k, v in b.items() if k != "code"} for b in blocks],
         "inline_snippets": [{"index": b["index"], "file": b["file"], "code": b["code"]}
                             for b in inlines],
@@ -343,6 +382,9 @@ def render_markdown(ctx: dict[str, Any]) -> str:
         f"- opened (as-of date for all version checks): {i['created_at']}",
         f"- author association: {i['author_association']}",
         f"- labels already on the issue: {i['existing_labels'] or 'none'}",
+        f"- body only repeats an issue template (deterministic): "
+        f"{ctx['template_check']['template_only']} (template {ctx['template_check']['template']}, "
+        f"{ctx['template_check']['novel_chars']} chars of new text)",
         f"- reported Black version (regex hint, verify in text): {ctx['hints']['reported_version']}",
         f"- latest Black release on that date: {ctx['latest_black_release_as_of_issue']}",
         f"- black command lines found: {ctx['hints']['black_command_lines'] or 'none'}",
@@ -378,10 +420,23 @@ def write_noop(message: str) -> None:
     print(f"{MARKER} wrote noop safe output: {message}")
 
 
+def make_read_only(out: Path, keep_dir_writable: bool) -> None:
+    """chmod a-w on the trusted context so later steps (and the agent) cannot alter it."""
+    for f in out.rglob("*"):
+        if f.is_file() and f.name != "skill_audit.jsonl":
+            f.chmod(0o444)
+    (out / "blocks").chmod(0o555)
+    if not keep_dir_writable:
+        out.chmod(0o555)
+
+
 # ----------------------------------------------------------------------------- main
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--out", default="/tmp/gh-aw/agent/triage")
+    ap.add_argument("--out", default=os.environ.get("TRIAGE_CONTEXT_DIR")
+                    or "/tmp/gh-aw/agent/triage", help="trusted context dir (made read-only)")
+    ap.add_argument("--audit-dir", help="agent-writable work dir for the audit log")
+    ap.add_argument("--templates-dir", default=".github/ISSUE_TEMPLATE")
     ap.add_argument("--repo", default=os.environ.get("TRIAGE_REPO"))
     ap.add_argument("--issue", type=int, default=int(os.environ.get("TRIAGE_ISSUE_NUMBER") or 0))
     ap.add_argument("--issue-json"), ap.add_argument("--labels-json")
@@ -389,6 +444,8 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     out = Path(args.out)
     (out / "blocks").mkdir(parents=True, exist_ok=True)
+    if any(out.joinpath("blocks").iterdir()) or (out / "context.json").exists():
+        raise SystemExit(f"{MARKER} context dir {out} is not empty; refusing to overwrite")
     token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     replay = os.environ.get("TRIAGE_REPLAY_MODE", "").strip().lower() == "true"
 
@@ -412,12 +469,15 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{MARKER} PyPI metadata unavailable: {exc}")
             pypi = None
 
-    ctx, blocks = build_context(issue, labels, pool, pypi, replay)
+    ctx, blocks = build_context(issue, labels, pool, pypi, replay,
+                                load_templates(args.templates_dir))
     for blk in blocks:
         (out / "blocks" / blk["file"]).write_text(blk["code"], encoding="utf-8")
     (out / "context.json").write_text(json.dumps(ctx, indent=2), encoding="utf-8")
     (out / "context.md").write_text(render_markdown(ctx), encoding="utf-8")
-    audit(out, "prefetch", issue=ctx["issue"]["number"], skip=ctx["skip"],
+    audit_dir = Path(args.audit_dir) if args.audit_dir else out
+    make_read_only(out, keep_dir_writable=audit_dir.resolve() == out.resolve())
+    audit(audit_dir, "prefetch", issue=ctx["issue"]["number"], skip=ctx["skip"],
           skip_reason=ctx["skip_reason"], replay_mode=ctx["replay_mode"],
           n_blocks=len(blocks), n_candidates=len(ctx["duplicate_candidates"]),
           latest_release_as_of=ctx["latest_black_release_as_of_issue"])

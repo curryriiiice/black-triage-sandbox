@@ -181,3 +181,32 @@ def test_skill_is_discoverable():
     skill = (SKILL_DIR / "SKILL.md").read_text()
     assert skill.startswith("---\nname: black-issue-triage\n")
     assert "validate_labels.py --skill-loaded" in skill
+
+
+def test_detection_skipped_for_noop_or_unsuccessful_agent():
+    lock = WF_LOCK.read_text()
+    det = lock[lock.index("\n  detection:\n"):]
+    cond = det[det.index("    if:"):det.index("    runs-on:")]
+    assert "needs.agent.result == 'success'" in cond
+    assert "needs.agent.outputs.output_types != 'noop'" in cond
+    # safe outputs still require a successful detection, so nothing unscreened is ever written
+    so = lock[lock.index("\n  safe_outputs:\n"):]
+    assert "needs.detection.result == 'success'" in so[:so.index("    runs-on:")]
+
+
+def test_trusted_context_outside_agent_writable_paths():
+    md, lock = WF_MD.read_text(), WF_LOCK.read_text()
+    assert "TRIAGE_CONTEXT_DIR: ${{ github.workspace }}/.triage-context" in md
+    assert '--out "$TRIAGE_CONTEXT_DIR" --audit-dir /tmp/gh-aw/agent/triage' in lock
+    # the agent may only edit under /tmp; the context dir is in the workspace
+    allowed = lock.split("--allowed-tools '\\''", 1)[1].split("'\\''", 1)[0].split(",")
+    disallowed = lock.split("--disallowed-tools ", 1)[1].split(" ", 1)[0].split(",")
+    edits = [t for t in allowed if t.startswith("Edit")]
+    assert edits == ["Edit(//tmp/**)"] and "Write" in disallowed and "MultiEdit" in disallowed
+
+
+def test_audit_artifact_excludes_virtualenvs_and_conclusion_slot_per_issue():
+    lock = WF_LOCK.read_text()
+    assert "!/tmp/gh-aw/agent/triage/venvs/" in lock
+    assert 'group: "gh-aw-conclusion-issue-triage-${{ github.event.issue.number' in lock
+    assert 'group: "gh-aw-claude-issue-triage"' in lock   # agent runs stay serialised
