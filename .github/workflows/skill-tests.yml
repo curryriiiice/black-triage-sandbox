@@ -9,6 +9,7 @@ on:
       - ".claude/**"
       - ".github/workflows/**"
       - "evals/redteam/**"
+      - "evals/drift/**"
   # Every PR runs the suite: `test` is a required status check on the protected main branch,
   # so a path filter here would leave non-config PRs waiting forever.
   pull_request:
