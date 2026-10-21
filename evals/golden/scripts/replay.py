@@ -40,7 +40,10 @@ def sh(*args: str, check: bool = True) -> str:
     # (a retry after a lost response could create a duplicate issue).
     tries = 1 if args[:3] == ("gh", "issue", "create") else 4
     for i in range(tries):
-        res = subprocess.run(args, capture_output=True, text=True)
+        try:  # a hung gh call (seen in round 3) must not stall the whole replay
+            res = subprocess.run(args, capture_output=True, text=True, timeout=300)
+        except subprocess.TimeoutExpired:
+            res = subprocess.CompletedProcess(args, 124, "", "timeout")
         if res.returncode == 0 or not check:
             return res.stdout
         time.sleep(15 * (i + 1))
@@ -166,8 +169,13 @@ def _wait_for_new_run(after: str, event: str) -> str:
         new = [r for r in runs if r["event"] == event and r["createdAt"] >= after]
         if new:
             rid = str(sorted(new, key=lambda r: r["createdAt"])[0]["databaseId"])
-            subprocess.run(["gh", "run", "watch", rid, "-R", SANDBOX, "--exit-status"],
-                           capture_output=True, text=True)
+            # poll instead of `gh run watch`, which hung repeatedly in round 3
+            for _ in range(90):
+                st = sh("gh", "run", "view", rid, "-R", SANDBOX, "--json", "status", "--jq", ".status",
+                        check=False).strip()
+                if st == "completed":
+                    break
+                time.sleep(20)
             return rid
         time.sleep(10)
     raise SystemExit("no run appeared")
