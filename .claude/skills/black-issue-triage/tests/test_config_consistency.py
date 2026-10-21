@@ -244,3 +244,10 @@ def test_verify_outputs_logic():
     assert labels == ["spam / ai", "T: bug"] and comments == 1
     res = vo.compare(labels, ["T: bug"])
     assert res["applied"] == ["T: bug"] and res["not_applied"] == ["spam / ai"]
+
+
+def test_landing_audit_also_runs_when_safe_outputs_failed():
+    lock = WF_LOCK.read_text()
+    job = lock[lock.index("\n  verify_outputs:\n"):]
+    cond = job[job.index("    if:"):job.index("    runs-on:")]
+    assert "always()" in cond and "needs.safe_outputs.result == 'failure'" in cond

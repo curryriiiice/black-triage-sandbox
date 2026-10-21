@@ -176,10 +176,11 @@ jobs:
   detection:
     if: needs.agent.result == 'success' && needs.agent.outputs.output_types != 'noop'
   # Audit that requested labels actually landed (a "successful" label call can be recorded as a
-  # suggestion only). Read-only; never blocks.
+  # suggestion only). Read-only; never blocks. Also runs when safe_outputs FAILED, because a
+  # rejected item (e.g. a limit that worked) marks that job failed: those runs need the audit most.
   verify_outputs:
     needs: [agent, safe_outputs]
-    if: always() && needs.safe_outputs.result == 'success'
+    if: always() && (needs.safe_outputs.result == 'success' || needs.safe_outputs.result == 'failure')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
