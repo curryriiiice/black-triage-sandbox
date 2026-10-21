@@ -39,4 +39,7 @@ labels and post at most one comment. It has no way to close, edit, lock or delet
 - Kill switch: repository variable `TRIAGE_AGENT_ENABLED` must equal `true`. Set it to
   anything else to stop all runs. Cancel in-flight runs from the Actions tab.
 - Manual (re-)triage: `gh workflow run issue-triage.lock.yml -f issue_number=<N>`.
+- A red `safe_outputs` job does not necessarily mean a malfunction: when gh-aw rejects an item
+  (over a limit, blocked label), that job fails with `E00x` lines, i.e. a limit *worked*. Check the
+  `verify_outputs` job summary (requested vs applied) before acting.
 - Recompile after editing the workflow: `gh aw compile issue-triage` (gh-aw v0.92.0).
