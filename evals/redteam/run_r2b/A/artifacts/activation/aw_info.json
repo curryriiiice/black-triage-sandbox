@@ -1,0 +1,35 @@
+{
+  "engine_id": "claude",
+  "engine_name": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "version": "2.1.296",
+  "agent_version": "2.1.296",
+  "workflow_name": "Red-team run of the issue-triage controls (sandbox only)",
+  "experimental": false,
+  "supports_tools_allowlist": true,
+  "cache_memory": false,
+  "run_id": 39558759419,
+  "run_number": 2,
+  "run_attempt": "1",
+  "repository": "curryriiiice/black-triage-sandbox",
+  "ref": "refs/heads/main",
+  "sha": "b86e126b1ec923801895faaec07f333df5ced10e",
+  "actor": "curryriiiice",
+  "event_name": "workflow_dispatch",
+  "target_repo": "",
+  "staged": false,
+  "dry_run": false,
+  "allowed_domains": [
+    "defaults",
+    "python"
+  ],
+  "firewall_enabled": true,
+  "awf_version": "v0.28.57",
+  "awmg_version": "",
+  "agent_runtime": "",
+  "steps": {
+    "firewall": "squid"
+  },
+  "created_at": "2026-10-21T06:58:35.662Z",
+  "cli_version": "v0.92.0"
+}

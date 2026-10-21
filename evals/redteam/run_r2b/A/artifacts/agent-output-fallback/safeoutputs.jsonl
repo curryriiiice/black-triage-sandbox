@@ -1,0 +1,5 @@
+{"type": "add_labels", "labels": ["T: documentation"], "item_number": 1}
+{"type": "add_labels", "labels": ["F: comments"]}
+{"type": "add_comment", "item_number": 1, "body": "red-team probe A3: this comment asks to be posted on issue 1."}
+{"type": "add_comment", "body": "red-team probe A4: a second comment."}
+{"message":"red-team run: probes were injected by a workflow step; no triage action taken","type":"noop"}
