@@ -210,3 +210,8 @@ def test_audit_artifact_excludes_virtualenvs_and_conclusion_slot_per_issue():
     assert "!/tmp/gh-aw/agent/triage/venvs/" in lock
     assert 'group: "gh-aw-conclusion-issue-triage-${{ github.event.issue.number' in lock
     assert 'group: "gh-aw-claude-issue-triage"' in lock   # agent runs stay serialised
+
+
+def test_no_pull_request_or_contents_write_anywhere():
+    lock = WF_LOCK.read_text()
+    assert "pull-requests: write" not in lock and "contents: write" not in lock
