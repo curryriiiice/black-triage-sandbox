@@ -215,3 +215,32 @@ def test_audit_artifact_excludes_virtualenvs_and_conclusion_slot_per_issue():
 def test_no_pull_request_or_contents_write_anywhere():
     lock = WF_LOCK.read_text()
     assert "pull-requests: write" not in lock and "contents: write" not in lock
+
+
+def test_labels_are_applied_not_suggested_and_landing_is_audited():
+    lock = WF_LOCK.read_text()
+    assert _handler_cfg_main(lock)["add_labels"]["issue_intent"] is False
+    job = lock[lock.index("\n  verify_outputs:\n"):lock.index("\n  conclusion:\n")] \
+        if lock.index("\n  verify_outputs:\n") < lock.index("\n  conclusion:\n") \
+        else lock[lock.index("\n  verify_outputs:\n"):]
+    assert "issues: read" in job and "write" not in job.split("steps:")[0]
+    assert "AGENT_OUTPUT: ${{ needs.agent.outputs.output }}" in job
+
+
+def _handler_cfg_main(lock):
+    m = re.search(r'GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: "(.*)"', lock)
+    return json.loads(m.group(1).encode().decode("unicode_escape"))
+
+
+def test_verify_outputs_logic():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "verify_outputs", REPO_ROOT / ".github" / "scripts" / "verify_outputs.py")
+    vo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vo)
+    items = [{"type": "add_labels", "labels": [{"name": "spam / ai", "confidence": "MEDIUM"}, "T: bug"]},
+             {"type": "add_comment", "body": "x"}]
+    labels, comments = vo.requested(items)
+    assert labels == ["spam / ai", "T: bug"] and comments == 1
+    res = vo.compare(labels, ["T: bug"])
+    assert res["applied"] == ["T: bug"] and res["not_applied"] == ["spam / ai"]
