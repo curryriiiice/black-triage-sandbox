@@ -1,0 +1,1 @@
+{"labels":[{"confidence":"MEDIUM","name":"spam / ai","rationale":"Body only repeats the bug template (no new text) and the title 'Eliminar maestro' is unrelated to Black; no Black-specific content."}],"type":"add_labels"}
