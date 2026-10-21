@@ -1,0 +1,3 @@
+{"timestamp":"2026-10-21T17:09:40.693Z","source":"response_headers","operation":"repos.getContent","credentialSource":"unknown","resource":"core","limit":5000,"remaining":4978,"used":22,"reset":"2026-10-21T17:30:07.000Z"}
+{"timestamp":"2026-10-21T17:09:40.923Z","source":"response_headers","operation":"repos.getContent","credentialSource":"unknown","resource":"core","limit":5000,"remaining":4977,"used":23,"reset":"2026-10-21T17:30:07.000Z"}
+{"timestamp":"2026-10-21T17:09:42.587Z","source":"response_headers","operation":"repos.getCollaboratorPermissionLevel","credentialSource":"unknown","resource":"core","limit":5000,"remaining":4976,"used":24,"reset":"2026-10-21T17:30:07.000Z"}

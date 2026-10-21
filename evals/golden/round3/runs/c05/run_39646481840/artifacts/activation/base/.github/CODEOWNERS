@@ -1,0 +1,10 @@
+# Informational only: names the owner of the agent's configuration, instructions and evaluation.
+# Code-owner review is NOT required by branch protection (a sole maintainer cannot approve their
+# own PRs); what is enforced is a PR plus the required `test` status check, admins included.
+/.github/workflows/  @curryriiiice
+/.github/CODEOWNERS  @curryriiiice
+/.claude/            @curryriiiice
+/AGENTS.md           @curryriiiice
+/CONTRIBUTING.md     @curryriiiice
+/DESIGN.md           @curryriiiice
+/evals/              @curryriiiice

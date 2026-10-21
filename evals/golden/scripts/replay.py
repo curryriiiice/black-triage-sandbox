@@ -107,9 +107,10 @@ def collect(cid: str, rid: str, since: str | None = None) -> dict:
     sh("gh", "run", "download", rid, "-R", SANDBOX, "-D", str(rdir / "artifacts"), check=False)
     # The repro virtualenvs (~95 MB, PyPI wheels only) stay in the Actions artifact.
     shutil.rmtree(rdir / "artifacts" / "triage-audit" / "venvs", ignore_errors=True)
-    audit = subprocess.run(["gh", "aw", "audit", rid, "--repo", SANDBOX, "-o", f"/tmp/awaudit/{rid}"],
-                           capture_output=True, text=True, cwd="/tmp")
-    (rdir / "gh_aw_audit.md").write_text(audit.stdout + audit.stderr)
+    if os.environ.get("SKIP_AW_AUDIT") != "1":  # slow (downloads comparison baselines); costs come from usage artifacts
+        audit = subprocess.run(["gh", "aw", "audit", rid, "--repo", SANDBOX, "-o", f"/tmp/awaudit/{rid}"],
+                               capture_output=True, text=True, cwd="/tmp")
+        (rdir / "gh_aw_audit.md").write_text(audit.stdout + audit.stderr)
     a = rdir / "artifacts"
     agent_aic = _usage(a / "agent" / "agent_usage.json")
     det_aic = _usage(a / "detection" / "detection_usage.json")
