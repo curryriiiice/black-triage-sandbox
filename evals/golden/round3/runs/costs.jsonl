@@ -3,3 +3,10 @@
 {"case": "c03", "run": 39641161912, "agent_aic": 17.06413, "detection_aic": 11.27144, "ts": "2026-10-21T17:25:00Z"}
 {"case": "c04", "run": 39643599755, "agent_aic": 0.0, "detection_aic": 0.0, "ts": "2026-10-21T17:44:24Z"}
 {"case": "c05", "run": 39646481840, "agent_aic": 17.21422, "detection_aic": 11.28694, "ts": "2026-10-21T18:00:24Z"}
+{"case": "c06", "run": 39648875960, "agent_aic": 17.2686, "detection_aic": 11.25969, "ts": "2026-10-21T18:06:01Z"}
+{"case": "c07", "run": 39649674670, "agent_aic": 16.34307, "detection_aic": 6.05098, "ts": "2026-10-21T18:10:53Z"}
+{"case": "c08", "run": 39650398510, "agent_aic": 17.95438, "detection_aic": 6.03048, "ts": "2026-10-21T18:15:21Z"}
+{"case": "c09", "run": 39651069327, "agent_aic": 20.2919, "detection_aic": 6.07373, "ts": "2026-10-21T18:20:29Z"}
+{"case": "c10", "run": 39651853470, "agent_aic": 17.59159, "detection_aic": 11.27144, "ts": "2026-10-21T18:28:59Z"}
+{"case": "c11", "run": 39653113514, "agent_aic": 17.70223, "detection_aic": 11.27069, "ts": "2026-10-21T18:35:26Z"}
+{"case": "c12", "run": 39654112953, "agent_aic": 19.86369, "detection_aic": 11.25619, "ts": "2026-10-21T21:35:34Z"}
