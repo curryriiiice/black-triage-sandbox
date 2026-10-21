@@ -1,5 +1,6 @@
-# Changes to the agent's configuration, instructions and evaluation need the owner's review.
-# (Sandbox: the repository owner is the only maintainer.)
+# Informational only: names the owner of the agent's configuration, instructions and evaluation.
+# Code-owner review is NOT required by branch protection (a sole maintainer cannot approve their
+# own PRs); what is enforced is a PR plus the required `test` status check, admins included.
 /.github/workflows/  @curryriiiice
 /.github/CODEOWNERS  @curryriiiice
 /.claude/            @curryriiiice
