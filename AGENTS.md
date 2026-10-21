@@ -24,6 +24,8 @@ This file states facts only. *How* to triage is in the skill
 | `.github/ISSUE_TEMPLATE/` | issue templates. Each auto-applies a `T:` label (bug → `T: bug`, etc.) |
 | `.claude/skills/black-issue-triage/` | the triage skill, its scripts, label policy and tests |
 | `.github/workflows/issue-triage.md` / `.lock.yml` | the gh-aw agentic workflow (source / compiled) |
+| `.github/workflows/issue-triage-redteam.*`, `.github/redteam/` | sandbox-only red-team variant (generated; injects crafted safe-output probes) |
+| `.github/scripts/verify_outputs.py` | post-run audit: requested vs applied labels/comments |
 | `evals/golden/` | historical triage cases, expected outcomes, actual outputs, logs (**not** in the agent workspace) |
 | `analysis/need/` | need-measurement data and scripts (contains maintainer outcomes; **not** in the agent workspace) |
 | `UPSTREAM_README.md`, `CHANGES.md` | upstream README and changelog as of 25.9.0 |

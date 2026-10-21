@@ -72,6 +72,10 @@ safe-outputs:
   add-labels:
     max: 1
     pull-requests: false   # issues-only workflow: no pull-requests: write
+    # Labels the agent sends with rationale/confidence would otherwise go through GitHub's
+    # label-*suggestion* GraphQL mutation, which may record them as suggestions instead of
+    # applying them (round-2 c02: "added 0 ... Suggested 1"). Validated labels are applied.
+    issue-intent: false
     max-labels: 4
     target: ${{ github.event.issue.number || github.event.inputs.issue_number }}
     allowed:
@@ -169,6 +173,28 @@ jobs:
   # emitted `noop` (deterministic skip) or it did not succeed (e.g. a cancelled run).
   detection:
     if: needs.agent.result == 'success' && needs.agent.outputs.output_types != 'noop'
+  # Audit that requested labels actually landed (a "successful" label call can be recorded as a
+  # suggestion only). Read-only; never blocks.
+  verify_outputs:
+    needs: [agent, safe_outputs]
+    if: always() && needs.safe_outputs.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+      - name: Compare requested and applied safe outputs
+        env:
+          AGENT_OUTPUT: ${{ needs.agent.outputs.output }}
+          TARGET: ${{ github.event.issue.number || github.event.inputs.issue_number }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/verify_outputs.py
 
 pre-agent-steps:
   # Ground-truth isolation, layer 2 (fail-closed): delete evaluation/ground-truth paths even if
