@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -27,7 +28,9 @@ from pathlib import Path
 SANDBOX = "curryriiiice/black-triage-sandbox"
 WORKFLOW = "issue-triage.lock.yml"
 GOLDEN = Path(__file__).resolve().parent.parent
-CASES, RUNS = GOLDEN / "cases", GOLDEN / "runs"
+CASES = GOLDEN / "cases"
+# Round 2+ writes to its own directory so earlier rounds stay intact (GOLDEN_RUNS_DIR=evals/golden/round2/runs).
+RUNS = Path(os.environ["GOLDEN_RUNS_DIR"]).resolve() if os.environ.get("GOLDEN_RUNS_DIR") else GOLDEN / "runs"
 MAPPING = RUNS / "mapping.json"
 
 
@@ -114,6 +117,8 @@ def collect(cid: str, rid: str) -> dict:
                   and (e.get("actor") or {}).get("login") == "github-actions[bot]"]
     comments = json.loads((out / "comments.json").read_text())
     audit_log = a / "triage-audit" / "skill_audit.jsonl"
+    if not audit_log.exists():  # round 2+: artifact keeps the full /tmp path
+        audit_log = a / "triage-audit" / "tmp" / "gh-aw" / "agent" / "triage" / "skill_audit.jsonl"
     events = [json.loads(l) for l in audit_log.read_text().splitlines()] if audit_log.exists() else []
     v = json.loads(view)
     summary = {"case": cid, "issue": n, "run": int(rid), "event": v["event"], "conclusion": v["conclusion"],
@@ -126,6 +131,9 @@ def collect(cid: str, rid: str) -> dict:
                          for e in events if e["event"] == "repro"],
                "duplicate_candidates": None}
     ctx = a / "triage-audit" / "context.json"
+    if not ctx.exists():
+        found = sorted(a.glob("**/context.json"))
+        ctx = found[0] if found else ctx
     if ctx.exists():
         c = json.loads(ctx.read_text())
         summary["duplicate_candidates"] = [(d["number"], d["title"][:60], d["score"]) for d in c["duplicate_candidates"]]

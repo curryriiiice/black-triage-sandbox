@@ -1,0 +1,201 @@
+2026-10-21T06:59:45.808Z [DEBUG] MDM settings load completed in 0ms
+2026-10-21T06:59:45.816Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /etc/claude-code/managed-settings.json
+2026-10-21T06:59:45.818Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/settings.json
+2026-10-21T06:59:45.818Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/settings.local.json
+2026-10-21T06:59:45.819Z [DEBUG] Cleared CA certificates cache
+2026-10-21T06:59:45.822Z [DEBUG] [init] configureGlobalMTLS starting
+2026-10-21T06:59:45.822Z [DEBUG] [init] configureGlobalMTLS complete
+2026-10-21T06:59:45.823Z [DEBUG] [init] configureGlobalAgents starting
+2026-10-21T06:59:45.823Z [DEBUG] CA certs: stores=bundled,system, extraCertsPath=/etc/ssl/certs/ca-certificates.crt
+2026-10-21T06:59:45.823Z [DEBUG] CA certs: Loaded 121 bundled root certificates
+2026-10-21T06:59:45.829Z [DEBUG] CA certs: Loaded 122 system CA certificates
+2026-10-21T06:59:45.829Z [DEBUG] CA certs: Appended extra certificates from NODE_EXTRA_CA_CERTS (/etc/ssl/certs/ca-certificates.crt)
+2026-10-21T06:59:45.829Z [DEBUG] mTLS: Creating HTTPS agent with custom certificates
+2026-10-21T06:59:45.830Z [DEBUG] [init] configureGlobalAgents complete
+2026-10-21T06:59:45.832Z [DEBUG] Git remote URL: null
+2026-10-21T06:59:45.832Z [DEBUG] No git remote URL found
+2026-10-21T06:59:45.833Z [DEBUG] Error log sink initialized
+2026-10-21T06:59:45.837Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.837Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.1723fd807337
+2026-10-21T06:59:45.838Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.839Z [DEBUG] Temp file written successfully, size: 136 bytes
+2026-10-21T06:59:45.839Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.1723fd807337 to /home/runner/.claude.json
+2026-10-21T06:59:45.839Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.840Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.840Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.62d90b2aa87c
+2026-10-21T06:59:45.841Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.841Z [DEBUG] Temp file written successfully, size: 219 bytes
+2026-10-21T06:59:45.841Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.62d90b2aa87c to /home/runner/.claude.json
+2026-10-21T06:59:45.842Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.842Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.842Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.69fba157ef96
+2026-10-21T06:59:45.843Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.843Z [DEBUG] Temp file written successfully, size: 255 bytes
+2026-10-21T06:59:45.843Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.69fba157ef96 to /home/runner/.claude.json
+2026-10-21T06:59:45.843Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.844Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.844Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.e47256a7eef9
+2026-10-21T06:59:45.845Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.845Z [DEBUG] Temp file written successfully, size: 294 bytes
+2026-10-21T06:59:45.845Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.e47256a7eef9 to /home/runner/.claude.json
+2026-10-21T06:59:45.845Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.847Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.847Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.6bfbd1d272fe
+2026-10-21T06:59:45.847Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.847Z [DEBUG] Temp file written successfully, size: 321 bytes
+2026-10-21T06:59:45.847Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.6bfbd1d272fe to /home/runner/.claude.json
+2026-10-21T06:59:45.848Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.849Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.849Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.7bf49c4e11a7
+2026-10-21T06:59:45.849Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.849Z [DEBUG] Temp file written successfully, size: 369 bytes
+2026-10-21T06:59:45.849Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.7bf49c4e11a7 to /home/runner/.claude.json
+2026-10-21T06:59:45.850Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.850Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:45.850Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.f2420a69b192
+2026-10-21T06:59:45.851Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:45.851Z [DEBUG] Temp file written successfully, size: 395 bytes
+2026-10-21T06:59:45.851Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.f2420a69b192 to /home/runner/.claude.json
+2026-10-21T06:59:45.851Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:45.867Z [DEBUG] [Claude in Chrome] Disabled: OAuth token has no scope accepted by /api/oauth/validate (needs user:profile, user:office, or user:ccr_inference; env-var and setup-token sessions default to user:inference only)
+2026-10-21T06:59:45.877Z [DEBUG] [ToolSearch:optimistic] disabled: ANTHROPIC_BASE_URL=http://api-proxy:10001 is not a first-party Anthropic host. Set ENABLE_TOOL_SEARCH=true (or auto / auto:N) if your proxy forwards tool_reference blocks.
+2026-10-21T06:59:45.881Z [WARN] [permissions] Permission deny rule "MultiEdit" matches no known tool — check for typos.
+2026-10-21T06:59:45.881Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-10-21T06:59:45.887Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-10-21T06:59:45.888Z [DEBUG] [STARTUP] Running setup()...
+2026-10-21T06:59:45.893Z [DEBUG] Git remote URL: https://github.com/curryriiiice/black-triage-sandbox.git
+2026-10-21T06:59:45.894Z [DEBUG] Parsed repository: github.com/curryriiiice/black-triage-sandbox from URL: https://github.com/curryriiiice/black-triage-sandbox.git
+2026-10-21T06:59:45.894Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/home/runner/.claude/skills, project=[/home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/skills]
+2026-10-21T06:59:45.895Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/agents: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/agents'
+2026-10-21T06:59:45.895Z [DEBUG] Failed to stat directory /home/runner/.claude/agents: ENOENT: no such file or directory, stat '/home/runner/.claude/agents'
+2026-10-21T06:59:45.896Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/commands: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/commands'
+2026-10-21T06:59:45.896Z [DEBUG] Failed to stat directory /home/runner/.claude/commands: ENOENT: no such file or directory, stat '/home/runner/.claude/commands'
+2026-10-21T06:59:45.900Z [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+2026-10-21T06:59:45.901Z [DEBUG] Found 2 plugins (2 enabled, 0 disabled)
+2026-10-21T06:59:45.902Z [DEBUG] getPluginSkills: Processing 2 enabled plugins
+2026-10-21T06:59:45.902Z [DEBUG] Checking plugin cc-plugin-agents-md: skillsPath=none, skillsPaths=0 paths
+2026-10-21T06:59:45.902Z [DEBUG] Checking plugin cc-plugin-plugin-authoring: skillsPath=none, skillsPaths=0 paths
+2026-10-21T06:59:45.902Z [DEBUG] Total plugin workflows loaded: 0
+2026-10-21T06:59:45.902Z [DEBUG] Total plugin commands loaded: 0
+2026-10-21T06:59:45.902Z [DEBUG] Total plugin skills loaded: 0 (0 duplicate/user-owned entries skipped)
+2026-10-21T06:59:45.903Z [DEBUG] Total plugin agents loaded: 0
+2026-10-21T06:59:45.904Z [WARN] [uds-messaging] sockets directory /run/user/1001/cc-socks refused (EACCES: permission denied, mkdir '/run/user'); trying the per-uid fallback /tmp/cc-socks-1001
+2026-10-21T06:59:45.906Z [INFO] [uds-messaging] Listening: /tmp/cc-socks-1001/414.sock
+2026-10-21T06:59:45.908Z [INFO] [uds-messaging] Inject messages (auth line optional here): { echo '{"type":"auth","token":"[REDACTED]"$CLAUDE_CODE_MESSAGING_TOKEN"'"}'; echo '{"type":"user","message":{"role":"user","content":"hello"}}'; } | socat - UNIX-CONNECT:/tmp/cc-socks-1001/414.sock
+2026-10-21T06:59:45.908Z [INFO] [uds-messaging] Connect when the data is ready (e.g. out=$(cmd); printf '%s\n' "$out" | nc -N -U "$CLAUDE_CODE_MESSAGING_SOCKET" — or the socat form above): a connection that sends no complete line within 30000 ms is closed
+2026-10-21T06:59:45.909Z [DEBUG] Error log sink initialized
+2026-10-21T06:59:45.914Z [DEBUG] cc-plugin-sec-default@builtin not seated: no managed settings and not a Team or Enterprise organization (none)
+2026-10-21T06:59:45.915Z [DEBUG] [STARTUP] setup() completed in 27ms
+2026-10-21T06:59:45.915Z [DEBUG] Cleared mTLS configuration cache
+2026-10-21T06:59:45.915Z [DEBUG] Cleared proxy agent cache
+2026-10-21T06:59:45.915Z [DEBUG] mTLS: Creating HTTPS agent with custom certificates
+2026-10-21T06:59:45.926Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-10-21T06:59:45.934Z [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+2026-10-21T06:59:45.942Z [DEBUG] [STARTUP] Commands and agents loaded in 15ms
+2026-10-21T06:59:45.944Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-10-21T06:59:45.944Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-10-21T06:59:45.944Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-10-21T06:59:45.944Z [DEBUG] Starting background startup prefetches
+2026-10-21T06:59:45.945Z [DEBUG] [Bootstrap] Skipped: no usable OAuth, WIF, or API key
+2026-10-21T06:59:45.945Z [DEBUG] [STARTUP] MCP configs resolved in 1ms (awaited at +64ms)
+2026-10-21T06:59:45.949Z [DEBUG] Cleared mTLS configuration cache
+2026-10-21T06:59:45.949Z [DEBUG] Cleared proxy agent cache
+2026-10-21T06:59:45.949Z [DEBUG] mTLS: Creating HTTPS agent with custom certificates
+2026-10-21T06:59:45.951Z [DEBUG] Total LSP servers loaded: 0
+2026-10-21T06:59:45.951Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-10-21T06:59:45.953Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-10-21T06:59:45.953Z [DEBUG] LSP manager initialized with 0 servers
+2026-10-21T06:59:45.955Z [DEBUG] [MCP] --mcp-config servers running fully async (nonblocking)
+2026-10-21T06:59:45.955Z [DEBUG] [MCP] claude.ai connectors running fully async (nonblocking)
+2026-10-21T06:59:45.955Z [DEBUG] LSP server manager initialized successfully
+2026-10-21T06:59:45.955Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-10-21T06:59:45.957Z [DEBUG] [auto-mode] verifyAutoModeGateAccess: enabledState=enabled disabledBySettings=false model=claude-sonnet-5-5 modelSupported=true disableFastModeBreakerFires=false carouselAvailable=true canEnterAuto=true
+2026-10-21T06:59:45.958Z [DEBUG] [servedCatalog] off (not_first_party)
+2026-10-21T06:59:45.961Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-10-21T06:59:45.961Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-10-21T06:59:45.980Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): plugin_loaded
+2026-10-21T06:59:45.984Z [DEBUG] plugin cc-plugin-agents-md: no pluginConfigs["agents-md@builtin" or "cc-plugin-agents-md@builtin"].options in user, --settings or managed settings (project settings are not read); every option is its default
+2026-10-21T06:59:45.986Z [DEBUG] hooks module cc-plugin-agents-md@builtin loaded (native, environment 1, tier builtin); events: session.start,prompt.context,command.run,session.compact,prompt.submit,turn.start,turn.complete,agent.spawn,tool.call,prompt.mention
+2026-10-21T06:59:45.987Z [DEBUG] engine.create: no plugin-provided interfaces; $ built for cc-plugin-agents-md
+2026-10-21T06:59:45.988Z [DEBUG] plugin.register: cc-plugin-agents-md (builtin, cc-plugin-agents-md@builtin), judged by core alone: admitted
+2026-10-21T06:59:45.989Z [DEBUG] Registered 0 hooks from 2 plugins
+2026-10-21T06:59:46.002Z [DEBUG] [ScheduledTasks] scheduler start() — enabled=false, hasTasks=false
+2026-10-21T06:59:46.003Z [DEBUG] session.start: raised (surface none, not interactive)
+2026-10-21T06:59:46.005Z [DEBUG] [claudeai-mcp] Disabled: API-key auth precedence active
+2026-10-21T06:59:46.007Z [DEBUG] hooks module cc-plugin-agents-md@builtin session.start settled in 3.1ms (native link, next() included)
+2026-10-21T06:59:46.011Z [DEBUG] installPluginsForHeadless: starting
+2026-10-21T06:59:46.011Z [DEBUG] installPluginsForHeadless: no marketplaces declared
+2026-10-21T06:59:46.012Z [DEBUG] memory index backfill: ENOENT: no such file or directory, scandir '/home/runner/.claude/projects/-home-runner-work-black-triage-sandbox-black-triage-sandbox/memory/'
+2026-10-21T06:59:46.046Z [DEBUG] [sessionRegistry] sweep declined by isRegistrySweepPermitted() — dead records are left in place (neither counted nor deleted)
+2026-10-21T06:59:46.048Z [DEBUG] mcp runtime arm: v2 (source: default)
+2026-10-21T06:59:46.068Z [DEBUG] Ripgrep first use test: PASSED (mode=embedded, path=/opt/hostedtoolcache/node/24.21.0/x64/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe)
+2026-10-21T06:59:46.068Z [DEBUG] "rg error (signal=undefined, code=2, stderr: rg: /home/runner/.claude/plugins/cache: IO error for operation on /home/runner/.claude/plugins/cache: No such file or directory (os error 2)\n), 0 results"
+2026-10-21T06:59:46.069Z [DEBUG] Watching for changes in skill/command directories: /home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/skills...
+2026-10-21T06:59:46.070Z [DEBUG] Watching for changes in setting files /home/runner/.claude/settings.json, /home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/settings.json, /home/runner/work/black-triage-sandbox/black-triage-sandbox/.claude/settings.local.json...
+2026-10-21T06:59:46.072Z [DEBUG] MCP server "safeoutputs": Initializing HTTP transport to http://awmg-mcpg:8080/mcp/safeoutputs
+2026-10-21T06:59:46.072Z [DEBUG] MCP server "safeoutputs": Node version: v26.3.0, Platform: linux
+2026-10-21T06:59:46.073Z [DEBUG] MCP server "safeoutputs": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"http://172.30.0.10:3128","HTTPS_PROXY":"http://172.30.0.10:3128","NO_PROXY":"localhost,127.0.0.1,::1,0.0.0.0,172.30.0.10,172.30.0.20,awmg-mcpg,172.30.0.30,api-proxy"}
+2026-10-21T06:59:46.074Z [DEBUG] MCP server "safeoutputs": HTTP transport options: {"url":"http://awmg-mcpg:8080/mcp/safeoutputs","headers":{"User-Agent":"claude-code/2.1.296 (sdk-cli)","Accept-Encoding":"identity","Authorization":"[REDACTED]"},"hasAuthProvider":false,"timeoutMs":240000}
+2026-10-21T06:59:46.074Z [DEBUG] MCP server "safeoutputs": HTTP transport created successfully
+2026-10-21T06:59:46.075Z [DEBUG] MCP server "safeoutputs": Starting connection with timeout of 120000ms
+2026-10-21T06:59:46.075Z [DEBUG] MCP server "safeoutputs": Testing basic HTTP connectivity to http://awmg-mcpg:8080/mcp/safeoutputs
+2026-10-21T06:59:46.075Z [DEBUG] MCP server "safeoutputs": Parsed URL: host=awmg-mcpg, port=8080, protocol=http:
+2026-10-21T06:59:46.078Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:46.078Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.697ec7fe1866
+2026-10-21T06:59:46.083Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:46.085Z [DEBUG] Temp file written successfully, size: 475 bytes
+2026-10-21T06:59:46.085Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.697ec7fe1866 to /home/runner/.claude.json
+2026-10-21T06:59:46.087Z [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 5 directories
+2026-10-21T06:59:46.088Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:46.093Z [DEBUG] Preserving file permissions: 100666
+2026-10-21T06:59:46.093Z [DEBUG] Writing to temp file: /home/runner/.claude.json.tmp.414.fcb62f061924
+2026-10-21T06:59:46.093Z [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 1 of 5 directories
+2026-10-21T06:59:46.094Z [DEBUG] [cc-plugin-agents-md] $.ui.log (to debug): no CLAUDE.md found; AGENTS.md loaded: /home/runner/work/black-triage-sandbox/black-triage-sandbox/AGENTS.md
+2026-10-21T06:59:46.095Z [DEBUG] hooks module cc-plugin-agents-md@builtin prompt.context settled in 54.6ms (native link, next() included)
+2026-10-21T06:59:46.096Z [DEBUG] Applied original permissions to temp file
+2026-10-21T06:59:46.096Z [DEBUG] Temp file written successfully, size: 771 bytes
+2026-10-21T06:59:46.097Z [DEBUG] Renaming /home/runner/.claude.json.tmp.414.fcb62f061924 to /home/runner/.claude.json
+2026-10-21T06:59:46.097Z [DEBUG] File /home/runner/.claude.json written atomically
+2026-10-21T06:59:46.151Z [DEBUG] MCP server "safeoutputs": Successfully connected (transport: http) in 79ms
+2026-10-21T06:59:46.151Z [DEBUG] MCP server "safeoutputs": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"awmg-safeoutputs","version":"v0.4.31"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+2026-10-21T06:59:46.151Z [DEBUG] [MCP] Server "safeoutputs" connected with subscribe=false
+2026-10-21T06:59:46.197Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/output-styles: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/output-styles'
+2026-10-21T06:59:46.197Z [DEBUG] Failed to stat directory /home/runner/.claude/output-styles: ENOENT: no such file or directory, stat '/home/runner/.claude/output-styles'
+2026-10-21T06:59:46.197Z [DEBUG] Total plugin output styles loaded: 0
+2026-10-21T06:59:46.200Z [DEBUG] act_dont_rederive_arm_active source=growthbook
+2026-10-21T06:59:46.211Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-21T06:59:46.211Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-21T06:59:46.211Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-21T06:59:46.212Z [DEBUG] Sending 14 skills via attachment (initial)
+2026-10-21T06:59:46.212Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-21T06:59:46.229Z [DEBUG] [session-notices] advertise=false mode=dontAsk flag=false(disabled) pollChannel=false ownEventsOnly=false remote=false remoteEnv=false nonInteractive=true
+2026-10-21T06:59:46.232Z [DEBUG] [engine] turn 1 start
+2026-10-21T06:59:46.237Z [DEBUG] hooks module cc-plugin-agents-md@builtin turn.start settled in 5.3ms (native link, next() included)
+2026-10-21T06:59:46.237Z [DEBUG] hooks module cc-plugin-agents-md@builtin prompt.submit settled in 18.6ms (native link, next() included)
+2026-10-21T06:59:46.240Z [DEBUG] autocompact: tokens=[REDACTED] level=ok effectiveWindow=980000
+2026-10-21T06:59:46.273Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.296.990; cc_entrypoint=sdk-cli;
+2026-10-21T06:59:46.280Z [DEBUG] [API:timing] dispatching to firstParty model=claude-sonnet-5-5
+2026-10-21T06:59:46.282Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-10-21T06:59:46.403Z [DEBUG] [fs.watch probe] verdict: delivers
+2026-10-21T06:59:48.411Z [DEBUG] Stream started - received first chunk
+2026-10-21T06:59:48.412Z [DEBUG] [API:timing] first byte after 2133ms
+2026-10-21T06:59:48.604Z [INFO] [Stall] tool_dispatch_start tool=mcp_tool toolUseId=toolu_01HXy2oB3Vh9CYPNXUheS3fP permissionDecisionMs=2
+2026-10-21T06:59:48.605Z [DEBUG] MCP server "safeoutputs": Calling MCP tool: noop
+2026-10-21T06:59:48.977Z [DEBUG] MCP server "safeoutputs": Tool 'noop' completed successfully in 372ms
+2026-10-21T06:59:48.978Z [INFO] [Stall] tool_dispatch_end tool=mcp_tool toolUseId=toolu_01HXy2oB3Vh9CYPNXUheS3fP outcome=ok durationMs=375
+2026-10-21T06:59:48.987Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-21T06:59:48.987Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-21T06:59:48.987Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-21T06:59:48.987Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-21T06:59:48.989Z [DEBUG] autocompact: tokens=[REDACTED] level=ok effectiveWindow=980000
+2026-10-21T06:59:48.996Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.296.990; cc_entrypoint=sdk-cli;
+2026-10-21T06:59:48.999Z [DEBUG] [API:timing] dispatching to firstParty model=claude-sonnet-5-5
+2026-10-21T06:59:49.000Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-10-21T06:59:50.841Z [DEBUG] Stream started - received first chunk
+2026-10-21T06:59:50.841Z [DEBUG] [API:timing] first byte after 1842ms
+2026-10-21T06:59:50.855Z [DEBUG] [engine] turn 1 end (turns=2 usage in=4 out=137 cost=$0.1062 api=4193ms stop=end_turn resultLen=193)
+2026-10-21T06:59:50.857Z [DEBUG] hooks module cc-plugin-agents-md@builtin turn.complete settled in 0.3ms (native link, next() included)
+2026-10-21T06:59:50.860Z [DEBUG] MCP server "safeoutputs": HTTP connection closed after 4s (cleanly)
+2026-10-21T06:59:50.860Z [DEBUG] MCP server "safeoutputs": Cleared connection cache for reconnection
+2026-10-21T06:59:50.862Z [DEBUG] [uds-messaging] Shutting down
+2026-10-21T06:59:50.863Z [DEBUG] LSP server manager shut down successfully

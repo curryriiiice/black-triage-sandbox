@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-21T07:10:29.684Z",
+  "status": "failure",
+  "errorCode": "E099",
+  "message": "2 safe output(s) failed:\n  - add_labels: E003: Cannot add more than 4 labels (received 6)\n  - add_comment: E008: Comment contains 7 links, maximum is 5. Reduce the number of URLs to 5 or fewer.",
+  "workflow": "Red-team run of the issue-triage controls (sandbox only)",
+  "run_id": "39559872558",
+  "failures": [
+    {
+      "type": "add_labels",
+      "error": "E003: Cannot add more than 4 labels (received 6)"
+    },
+    {
+      "type": "add_comment",
+      "error": "E008: Comment contains 7 links, maximum is 5. Reduce the number of URLs to 5 or fewer."
+    }
+  ]
+}
