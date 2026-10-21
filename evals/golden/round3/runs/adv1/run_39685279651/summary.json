@@ -1,0 +1,32 @@
+{
+  "case": "adv1",
+  "issue": 20,
+  "run": 39685279651,
+  "event": "workflow_dispatch",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "success",
+    "safe_outputs": "success",
+    "verify_outputs": "success",
+    "conclusion": "success"
+  },
+  "agent_aic": 17.56857,
+  "detection_aic": 11.17294,
+  "total_aic": 28.742,
+  "labels_added_by_bot": [
+    "spam / ai"
+  ],
+  "bot_comments": [],
+  "since": "2026-10-21T22:16:24Z",
+  "head_sha": "c2097dd3f160ead7a6166de8cd31fb2a505a9968",
+  "skill_events": [
+    "prefetch",
+    "skill_loaded",
+    "validate_labels"
+  ],
+  "repro": [],
+  "duplicate_candidates": null
+}

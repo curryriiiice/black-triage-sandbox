@@ -156,14 +156,18 @@
     "issue": 20,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/20",
     "created": "2026-10-20T13:11:24Z",
-    "runs": [],
+    "runs": [
+      39685279651
+    ],
     "note": "round-3 rerun on frozen c2097dd"
   },
   "adv2": {
     "issue": 21,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/21",
     "created": "2026-10-20T13:18:47Z",
-    "runs": [],
+    "runs": [
+      39685898206
+    ],
     "note": "round-3 rerun on frozen c2097dd"
   }
 }

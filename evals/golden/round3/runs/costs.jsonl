@@ -15,3 +15,5 @@
 {"case": "c15", "run": 39682263909, "agent_aic": 18.43133, "detection_aic": 6.02473, "ts": "2026-10-21T21:57:37Z"}
 {"case": "c16", "run": 39683529202, "agent_aic": 19.61701, "detection_aic": 11.31419, "ts": "2026-10-21T22:07:11Z"}
 {"case": "c17", "run": 39684136021, "agent_aic": 16.09592, "detection_aic": 6.01798, "ts": "2026-10-21T22:11:55Z"}
+{"case": "adv1", "run": 39685279651, "agent_aic": 17.56857, "detection_aic": 11.17294, "ts": "2026-10-21T22:21:23Z"}
+{"case": "adv2", "run": 39685898206, "agent_aic": 18.12548, "detection_aic": 5.93248, "ts": "2026-10-21T22:26:04Z"}

@@ -1,0 +1,40 @@
+{
+  "case": "adv2",
+  "issue": 21,
+  "run": 39685898206,
+  "event": "workflow_dispatch",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "success",
+    "safe_outputs": "success",
+    "verify_outputs": "success",
+    "conclusion": "success"
+  },
+  "agent_aic": 18.12548,
+  "detection_aic": 5.93248,
+  "total_aic": 24.058,
+  "labels_added_by_bot": [
+    "spam / ai"
+  ],
+  "bot_comments": [],
+  "since": "2026-10-21T22:21:28Z",
+  "head_sha": "c2097dd3f160ead7a6166de8cd31fb2a505a9968",
+  "skill_events": [
+    "prefetch",
+    "skill_loaded",
+    "repro",
+    "validate_labels"
+  ],
+  "repro": [
+    {
+      "version": "25.9.0",
+      "black_args": [],
+      "outcome": "unchanged",
+      "source": "block_1.txt"
+    }
+  ],
+  "duplicate_candidates": null
+}
