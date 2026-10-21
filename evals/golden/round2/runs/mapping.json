@@ -4,7 +4,8 @@
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/4",
     "created": "2026-10-20T06:52:51Z",
     "runs": [
-      39533215494
+      39533215494,
+      39579181427
     ],
     "note": "round-2 rerun of the round-1 replay issue"
   },
@@ -21,7 +22,9 @@
     "issue": 19,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/19",
     "created": "2026-10-20T13:03:27Z",
-    "runs": [],
+    "runs": [
+      39579821526
+    ],
     "note": "round-2 rerun of the round-1 replay issue"
   }
 }
