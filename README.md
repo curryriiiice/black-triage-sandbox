@@ -18,6 +18,9 @@ nothing here is sent upstream.
 | Review ownership | `.github/CODEOWNERS` |
 | Deterministic CI for the skill and config drift | `.github/workflows/skill-tests.yml` |
 | Golden evaluation (inputs, expected, actual, logs) | `evals/golden/` (reproduce: `evals/golden/README.md`; results: `evals/golden/results.md`, round 1: 15 PASS / 1 PARTIAL / 3 FAIL) |
+| Red-team run of the hard controls (sandbox only) | `.github/workflows/issue-triage-redteam.md`, `evals/redteam/README.md` |
+| Golden drift check (subset rerun + rule diff) | `.github/workflows/golden-drift.yml`, `evals/drift/run_drift.py` |
+| Human sign-off of AI verdicts (PENDING) | `evals/golden/human_review.md` |
 | Design justification, governance, bill of materials | `DESIGN.md` |
 
 ## How it works (one paragraph)
