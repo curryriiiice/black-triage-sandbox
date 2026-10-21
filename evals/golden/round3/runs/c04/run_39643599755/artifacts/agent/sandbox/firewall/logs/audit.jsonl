@@ -1,0 +1,4 @@
+{"_schema":"audit/v0.28.57","timestamp":"2026-10-21T17:26:42.319Z","event":"http_access","client":"172.30.0.30","host":"api.anthropic.com:443","dest":"160.79.104.10:443","method":"CONNECT","status":200,"decision":"TCP_TUNNEL","url":"api.anthropic.com:443"}
+{"_schema":"audit/v0.28.57","timestamp":"2026-10-21T17:26:42.335Z","event":"http_access","client":"172.30.0.30","host":"api.anthropic.com:443","dest":"160.79.104.10:443","method":"CONNECT","status":200,"decision":"TCP_TUNNEL","url":"api.anthropic.com:443"}
+{"_schema":"audit/v0.28.57","timestamp":"2026-10-21T17:26:46.765Z","event":"http_access","client":"::1","host":"-","dest":"-:-","method":"-","status":0,"decision":"NONE_NONE","url":"error:transaction-end-before-headers"}
+{"_schema":"audit/v0.28.57","timestamp":"2026-10-21T17:26:48.799Z","event":"http_access","client":"::1","host":"-","dest":"-:-","method":"-","status":0,"decision":"NONE_NONE","url":"error:transaction-end-before-headers"}

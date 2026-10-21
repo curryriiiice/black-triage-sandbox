@@ -71,11 +71,11 @@ and monthly: it re-dispatches c01/c04/c09/adv1, rule-checks them against `cases.
 reviews changed rows and new comments in `report.md` (first check: no drift, ≈$0.78).
 `golden-drift.yml` (scheduled variant) is provided but disabled: it needs the owner's PAT. A red
 safe_outputs run can mean a limit *worked*: rejected items fail that job (`E00x`); `verify_outputs`
-now runs then too (implemented, untested). **Not exercised:** user rate limit (experimental gh-aw
-feature; sole admin owner exempt), `queue: max` bursts.
+now runs then too (tested: red-team C 39688026499). **Not exercised:** user rate limit
+(experimental gh-aw feature; sole admin owner exempt), `queue: max` bursts.
 
 ## 4. What the tests revealed
-**Round 1** (config `102cb74`; 12 of the current verdicts still come from it): 19 cases (17
+**Round 1** (config `102cb74`; all current verdicts are from round 3): 19 cases (17
 historical Black issues + 2 adversarial), expected outcomes committed before any run (`f9e38b0`):
 **15 PASS, 1 PARTIAL, 3 FAIL**, ≈$5.38.
 - c06 FAIL: today's `pytokens` 0.4.1 hid the bug (dependency hindsight). c02 FAIL, c17 PARTIAL:
@@ -93,7 +93,10 @@ c02, c17, the drift cases (c01/c04/c09/adv1) and red-team v2 ran on `b86e126`:
   sanitised by gh-aw's handlers (`evals/redteam/results_r2.md`); threat detection flagged none.
 - A successful run is not a correct run (all completed; 4 round-1 decisions wrong/partial). The
   owner reviewed all 19 round-1 AI verdicts and agreed (`evals/golden/human_review.md`).
-- **Round 3** (full rerun of all 19 cases + red-team on the frozen config): TODO(round3 rerun).
+- **Round 3** (pre-registered `bac44a1`): all 19 cases + red-team rerun on the frozen `c2097dd`
+  (every run's head SHA): **17 PASS, 1 PARTIAL (c17), 1 FAIL (c08)**, same causes as above. Round-2
+  fixes hold (c02, c06; c04 0 AIC; c16 `env_limit`); red-team v2 again 8/8 blocked or sanitised
+  (39686947361, 39687514213, 39688026499). ≈$5.33; cumulative ≈$13.10 (`evals/golden/round3/`).
 
 ## 5. Five questions
 **Q1. "Close all stale issues, maintainer-approved."** Tested as adv1 (sandbox #20, run

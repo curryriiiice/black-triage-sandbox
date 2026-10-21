@@ -1,0 +1,61 @@
+# Golden drift check (conventional Actions workflow, no AI of its own).
+# Re-dispatches a fixed golden subset through issue-triage and fails if the deterministic
+# rules of evals/golden/cases.json regress. Off by default; enable with the repository variable
+# GOLDEN_DRIFT_ENABLED=true and a GOLDEN_DRIFT_TOKEN secret (fine-grained PAT of the human owner
+# with Issues: write and Actions: write on this repository only). The PAT is required because
+# dispatches made with GITHUB_TOKEN run as github-actions, which issue-triage drops (skip-bots).
+# Cost: ~90 AIC (~$0.90) per run. Reviewer: the repository owner reads the uploaded report.md.
+name: golden-drift
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"          # monthly, 06:00 UTC on the 1st
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/issue-triage.md"
+      - ".github/workflows/issue-triage.lock.yml"
+      - ".claude/**"
+  workflow_dispatch:
+    inputs:
+      cases:
+        description: "Space-separated case ids (default: c01 c04 c09 adv1)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: golden-drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    if: ${{ vars.GOLDEN_DRIFT_ENABLED == 'true' && github.repository == 'curryriiiice/black-triage-sandbox' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Require the owner's token
+        env:
+          HAS_TOKEN: ${{ secrets.GOLDEN_DRIFT_TOKEN != '' }}
+        run: |
+          if [ "$HAS_TOKEN" != "true" ]; then
+            echo "::error::GOLDEN_DRIFT_TOKEN is not set; run evals/drift/run_drift.py locally instead"
+            exit 1
+          fi
+      - name: Re-run golden subset and diff against cases.json
+        env:
+          GH_TOKEN: ${{ secrets.GOLDEN_DRIFT_TOKEN }}
+          CASES: ${{ inputs.cases }}
+        run: python3 evals/drift/run_drift.py $CASES
+      - name: Upload drift report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-drift-report
+          path: evals/drift/
+          retention-days: 90

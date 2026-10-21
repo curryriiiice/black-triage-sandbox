@@ -1,0 +1,12 @@
+{"ts":1792620266381,"event":"TRACK_START","rid":"25a21499-e277-4381-afac-bb39eb501932","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620267298,"event":"TRACK_END","rid":"25a21499-e277-4381-afac-bb39eb501932","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":177,"cache_read":0}
+{"ts":1792620269042,"event":"TRACK_START","rid":"7bc94a3e-1024-4ee6-ab3a-5b7236bf0380","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620269968,"event":"TRACK_END","rid":"7bc94a3e-1024-4ee6-ab3a-5b7236bf0380","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":172,"cache_read":40567}
+{"ts":1792620271309,"event":"TRACK_START","rid":"79a144c3-c2c0-4be5-b1db-eb06ac535362","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620272622,"event":"TRACK_END","rid":"79a144c3-c2c0-4be5-b1db-eb06ac535362","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":287,"cache_read":47997}
+{"ts":1792620282414,"event":"TRACK_START","rid":"a0e94fc0-020a-42d8-9d1c-e248d22ea81d","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620285627,"event":"TRACK_END","rid":"a0e94fc0-020a-42d8-9d1c-e248d22ea81d","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":431,"cache_read":48218}
+{"ts":1792620287022,"event":"TRACK_START","rid":"2d19b997-9027-40d4-a02d-45338a95e880","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620290792,"event":"TRACK_END","rid":"2d19b997-9027-40d4-a02d-45338a95e880","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":636,"cache_read":49779}
+{"ts":1792620294540,"event":"TRACK_START","rid":"19925982-eb10-4ff8-8530-a3e07bd0813b","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620294553,"event":"TRACK_END","rid":"19925982-eb10-4ff8-8530-a3e07bd0813b","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":382,"cache_read":50332}

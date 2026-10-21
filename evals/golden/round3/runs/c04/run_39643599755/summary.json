@@ -1,0 +1,28 @@
+{
+  "case": "c04",
+  "issue": 6,
+  "run": 39643599755,
+  "event": "workflow_dispatch",
+  "conclusion": "success",
+  "jobs": {
+    "pre_activation": "success",
+    "activation": "success",
+    "agent": "success",
+    "detection": "skipped",
+    "conclusion": "success",
+    "safe_outputs": "skipped",
+    "verify_outputs": "skipped"
+  },
+  "agent_aic": 0.0,
+  "detection_aic": 0.0,
+  "total_aic": 0.0,
+  "labels_added_by_bot": [],
+  "bot_comments": [],
+  "since": "2026-10-21T17:25:00Z",
+  "head_sha": "c2097dd3f160ead7a6166de8cd31fb2a505a9968",
+  "skill_events": [
+    "prefetch"
+  ],
+  "repro": [],
+  "duplicate_candidates": null
+}

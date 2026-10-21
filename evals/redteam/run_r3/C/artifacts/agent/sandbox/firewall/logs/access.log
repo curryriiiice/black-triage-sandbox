@@ -1,0 +1,8 @@
+1792622448.160 172.30.0.30:34414 api.anthropic.com:443 160.79.104.10:443 1.1 CONNECT 200 TCP_TUNNEL:HIER_DIRECT api.anthropic.com:443 "-"
+1792622448.188 172.30.0.30:34400 api.anthropic.com:443 160.79.104.10:443 1.1 CONNECT 200 TCP_TUNNEL:HIER_DIRECT api.anthropic.com:443 "-"
+1792622452.721 ::1:53286 - -:- 0.0 - 0 NONE_NONE:HIER_NONE error:transaction-end-before-headers "-"
+1792622454.766 ::1:53288 - -:- 0.0 - 0 NONE_NONE:HIER_NONE error:transaction-end-before-headers "-"
+1792622456.798 ::1:53304 - -:- 0.0 - 0 NONE_NONE:HIER_NONE error:transaction-end-before-headers "-"
+1792622457.107 172.30.0.30:52622 api.anthropic.com:443 160.79.104.10:443 1.1 CONNECT 200 TCP_TUNNEL:HIER_DIRECT api.anthropic.com:443 "-"
+1792622458.827 ::1:53316 - -:- 0.0 - 0 NONE_NONE:HIER_NONE error:transaction-end-before-headers "-"
+1792622459.511 172.30.0.30:52626 api.anthropic.com:443 160.79.104.10:443 1.1 CONNECT 200 TCP_TUNNEL:HIER_DIRECT api.anthropic.com:443 "-"

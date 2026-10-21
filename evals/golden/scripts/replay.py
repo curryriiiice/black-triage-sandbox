@@ -40,7 +40,10 @@ def sh(*args: str, check: bool = True) -> str:
     # (a retry after a lost response could create a duplicate issue).
     tries = 1 if args[:3] == ("gh", "issue", "create") else 4
     for i in range(tries):
-        res = subprocess.run(args, capture_output=True, text=True)
+        try:  # a hung gh call (seen in round 3) must not stall the whole replay
+            res = subprocess.run(args, capture_output=True, text=True, timeout=300)
+        except subprocess.TimeoutExpired:
+            res = subprocess.CompletedProcess(args, 124, "", "timeout")
         if res.returncode == 0 or not check:
             return res.stdout
         time.sleep(15 * (i + 1))
@@ -88,7 +91,8 @@ def _usage(path: Path) -> float:
         return 0.0
 
 
-def collect(cid: str, rid: str) -> dict:
+def collect(cid: str, rid: str, since: str | None = None) -> dict:
+    """`since` (ISO): only bot labels/comments created at or after it are counted (reruns)."""
     m = load_map()
     entry = m[cid]
     n = entry["issue"]
@@ -100,21 +104,23 @@ def collect(cid: str, rid: str) -> dict:
                        ("timeline.json", f"repos/{SANDBOX}/issues/{n}/timeline?per_page=100")]:
         (out / name).write_text(sh("gh", "api", path))
     view = sh("gh", "run", "view", rid, "-R", SANDBOX, "--json",
-              "databaseId,event,status,conclusion,createdAt,updatedAt,url,jobs")
+              "databaseId,event,status,conclusion,createdAt,updatedAt,url,jobs,headSha")
     (rdir / "run_view.json").write_text(view)
     (rdir / "run.log").write_text(sh("gh", "run", "view", rid, "-R", SANDBOX, "--log", check=False))
     sh("gh", "run", "download", rid, "-R", SANDBOX, "-D", str(rdir / "artifacts"), check=False)
     # The repro virtualenvs (~95 MB, PyPI wheels only) stay in the Actions artifact.
     shutil.rmtree(rdir / "artifacts" / "triage-audit" / "venvs", ignore_errors=True)
-    audit = subprocess.run(["gh", "aw", "audit", rid, "--repo", SANDBOX, "-o", f"/tmp/awaudit/{rid}"],
-                           capture_output=True, text=True, cwd="/tmp")
-    (rdir / "gh_aw_audit.md").write_text(audit.stdout + audit.stderr)
+    if os.environ.get("SKIP_AW_AUDIT") != "1":  # slow (downloads comparison baselines); costs come from usage artifacts
+        audit = subprocess.run(["gh", "aw", "audit", rid, "--repo", SANDBOX, "-o", f"/tmp/awaudit/{rid}"],
+                               capture_output=True, text=True, cwd="/tmp")
+        (rdir / "gh_aw_audit.md").write_text(audit.stdout + audit.stderr)
     a = rdir / "artifacts"
     agent_aic = _usage(a / "agent" / "agent_usage.json")
     det_aic = _usage(a / "detection" / "detection_usage.json")
     timeline = json.loads((out / "timeline.json").read_text())
     bot_labels = [e["label"]["name"] for e in timeline if e.get("event") == "labeled"
-                  and (e.get("actor") or {}).get("login") == "github-actions[bot]"]
+                  and (e.get("actor") or {}).get("login") == "github-actions[bot]"
+                  and (since is None or e.get("created_at", "") >= since)]
     comments = json.loads((out / "comments.json").read_text())
     audit_log = a / "triage-audit" / "skill_audit.jsonl"
     if not audit_log.exists():  # round 2+: artifact keeps the full /tmp path
@@ -125,7 +131,9 @@ def collect(cid: str, rid: str) -> dict:
                "jobs": {j["name"]: j["conclusion"] for j in v["jobs"]},
                "agent_aic": agent_aic, "detection_aic": det_aic, "total_aic": round(agent_aic + det_aic, 3),
                "labels_added_by_bot": bot_labels,
-               "bot_comments": [c["body"] for c in comments if c["user"]["login"] == "github-actions[bot]"],
+               "bot_comments": [c["body"] for c in comments if c["user"]["login"] == "github-actions[bot]"
+                                and (since is None or c["created_at"] >= since)],
+               "since": since, "head_sha": v.get("headSha"),
                "skill_events": [e["event"] for e in events],
                "repro": [{k: e.get(k) for k in ("version", "black_args", "outcome", "source")}
                          for e in events if e["event"] == "repro"],
@@ -161,8 +169,13 @@ def _wait_for_new_run(after: str, event: str) -> str:
         new = [r for r in runs if r["event"] == event and r["createdAt"] >= after]
         if new:
             rid = str(sorted(new, key=lambda r: r["createdAt"])[0]["databaseId"])
-            subprocess.run(["gh", "run", "watch", rid, "-R", SANDBOX, "--exit-status"],
-                           capture_output=True, text=True)
+            # poll instead of `gh run watch`, which hung repeatedly in round 3
+            for _ in range(90):
+                st = sh("gh", "run", "view", rid, "-R", SANDBOX, "--json", "status", "--jq", ".status",
+                        check=False).strip()
+                if st == "completed":
+                    break
+                time.sleep(20)
             return rid
         time.sleep(10)
     raise SystemExit("no run appeared")
@@ -175,11 +188,24 @@ def run(case_ids: list[str]) -> None:
         collect(cid, _wait_for_new_run(t0, "issues"))
 
 
+def reset_bot_labels(n: int) -> list[str]:
+    """Remove labels the bot applied (the prefetch skips already-triaged issues); keep template labels."""
+    tl = json.loads(sh("gh", "api", f"repos/{SANDBOX}/issues/{n}/timeline?per_page=100"))
+    bot = {e["label"]["name"] for e in tl if e.get("event") == "labeled"
+           and (e.get("actor") or {}).get("login") == "github-actions[bot]"}
+    cur = {lb["name"] for lb in json.loads(sh("gh", "api", f"repos/{SANDBOX}/issues/{n}"))["labels"]}
+    for lb in sorted(bot & cur):
+        sh("gh", "issue", "edit", str(n), "-R", SANDBOX, "--remove-label", lb)
+    return sorted(bot & cur)
+
+
 def dispatch(cid: str) -> None:
     n = load_map()[cid]["issue"]
+    removed = reset_bot_labels(n)
+    print(f"{cid}: removed bot labels {removed} from #{n}", flush=True)
     t0 = now()
     sh("gh", "workflow", "run", WORKFLOW, "-R", SANDBOX, "-f", f"issue_number={n}")
-    collect(cid, _wait_for_new_run(t0, "workflow_dispatch"))
+    collect(cid, _wait_for_new_run(t0, "workflow_dispatch"), since=t0)
 
 
 if __name__ == "__main__":
@@ -191,4 +217,5 @@ if __name__ == "__main__":
     elif cmd == "run":
         run(args)
     elif cmd == "dispatch":
-        dispatch(args[0])
+        for cid in args:
+            dispatch(cid)

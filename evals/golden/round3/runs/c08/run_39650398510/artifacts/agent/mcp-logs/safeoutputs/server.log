@@ -1,0 +1,48 @@
+# safeoutputs MCP Server Log
+# Started: 2026-10-21T18:12:43.207Z
+# Version: 1.0.0
+
+[2026-10-21T18:12:43.207Z] [safeoutputs] Loading safe-outputs configuration
+[2026-10-21T18:12:43.208Z] [safeoutputs] Reading config from file: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+[2026-10-21T18:12:43.208Z] [safeoutputs] Config file exists at: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+[2026-10-21T18:12:43.208Z] [safeoutputs] Config file content length: 1149 characters
+[2026-10-21T18:12:43.208Z] [safeoutputs] Config file read successfully, attempting to parse JSON
+[2026-10-21T18:12:43.209Z] [safeoutputs] Successfully parsed config from file with 8 configuration keys
+[2026-10-21T18:12:43.210Z] [safeoutputs] Final processed config: {"add_comment":{"max":1,"max_links":5,"target":"10"},"add_labels":{"allowed":["T: bug","T: documentation","T: enhancement","T: style","T: user support","C: api","C: configuration","C: crash","C: file collection","C: integrations","C: invalid code","C: jupyter","C: packaging","C: parser","C: performance","C: preview style","C: target version","C: unstable formatting","C: vim","F: comments","F: docstrings","F: empty lines","F: fmtoff","F: fmtskip","F: linebreak","F: linetoolong","F: parentheses","F: strings","F: symmetry","F: trailing comma","S: needs repro","S: awaiting response","R: duplicate","spam / ai"],"blocked":["C: cleanup","C: dependencies","C: maintenance","R: invalid","R: not a bug","R: outdated","R: rejected","S: accepted","S: blocked","S: needs discussion","S: up for grabs","good first issue","good second issue","help wanted","hacktoberfest-accepted","ci: build all wheels","ci: fuzz error","ci: skip news"],"issue_intent":false,"max":1,"max_labels":4,"target":"10"},"max_bot_mentions":1,"mentions":{"enabled":false},"missing_data":{},"missing_tool":{},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{"max":1}}
+[2026-10-21T18:12:43.210Z] [safeoutputs] Loading safe-outputs tools
+[2026-10-21T18:12:43.210Z] [safeoutputs] Reading tools from file: /home/runner/work/_temp/gh-aw/safeoutputs/tools.json
+[2026-10-21T18:12:43.211Z] [safeoutputs] Tools file exists at: /home/runner/work/_temp/gh-aw/safeoutputs/tools.json
+[2026-10-21T18:12:43.211Z] [safeoutputs] Tools file content length: 16649 characters
+[2026-10-21T18:12:43.211Z] [safeoutputs] Tools file read successfully, attempting to parse JSON
+[2026-10-21T18:12:43.211Z] [safeoutputs] Successfully parsed 6 tools from file
+[2026-10-21T18:12:43.215Z] [safeoutputs] Configured git safe.directory for bridge context: /home/runner/work/black-triage-sandbox/black-triage-sandbox
+[2026-10-21T18:12:43.218Z] [safeoutputs]   output file: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+[2026-10-21T18:12:43.218Z] [safeoutputs]   config: {"add_comment":{"max":1,"max_links":5,"target":"10"},"add_labels":{"allowed":["T: bug","T: documentation","T: enhancement","T: style","T: user support","C: api","C: configuration","C: crash","C: file collection","C: integrations","C: invalid code","C: jupyter","C: packaging","C: parser","C: performance","C: preview style","C: target version","C: unstable formatting","C: vim","F: comments","F: docstrings","F: empty lines","F: fmtoff","F: fmtskip","F: linebreak","F: linetoolong","F: parentheses","F: strings","F: symmetry","F: trailing comma","S: needs repro","S: awaiting response","R: duplicate","spam / ai"],"blocked":["C: cleanup","C: dependencies","C: maintenance","R: invalid","R: not a bug","R: outdated","R: rejected","S: accepted","S: blocked","S: needs discussion","S: up for grabs","good first issue","good second issue","help wanted","hacktoberfest-accepted","ci: build all wheels","ci: fuzz error","ci: skip news"],"issue_intent":false,"max":1,"max_labels":4,"target":"10"},"max_bot_mentions":1,"mentions":{"enabled":false},"missing_data":{},"missing_tool":{},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{"max":1}}
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: add_comment
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: add_labels
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: missing_tool
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: noop
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: missing_data
+[2026-10-21T18:12:43.219Z] [safeoutputs] Registered tool: report_incomplete
+[2026-10-21T18:12:43.220Z] [safeoutputs] Skipping generic tool for non-tool config key: max_bot_mentions
+[2026-10-21T18:12:43.220Z] [safeoutputs] Skipping generic tool for non-tool config key: mentions
+[2026-10-21T18:12:43.220Z] [safeoutputs]   tools: add_comment, add_labels, missing_tool, noop, missing_data, report_incomplete
+[2026-10-21T18:12:43.221Z] [safeoutputs] v1.0.0 ready on stdio
+[2026-10-21T18:12:43.221Z] [safeoutputs]   tools: add_comment, add_labels, missing_tool, noop, missing_data, report_incomplete
+[2026-10-21T18:12:43.222Z] [safeoutputs] listening...
+[2026-10-21T18:12:43.225Z] [safeoutputs] recv: {"jsonrpc":"2.0","id":1,"method":"server/discover","params":{"_meta":{"io.modelcontextprotocol/clientCapabilities":{"roots":{"listChanged":true}},"io.modelcontextprotocol/clientInfo":{"name":"awmg","version":"v0.4.31"},"io.modelcontextprotocol/protocolVersion":"2026-07-28"}}}
+[2026-10-21T18:12:43.226Z] [safeoutputs] send: {"jsonrpc":"2.0","id":1,"error":{"code":-32601,"message":"Method not found: server/discover"}}
+[2026-10-21T18:12:43.226Z] [safeoutputs] recv: {"jsonrpc":"2.0","id":2,"method":"initialize","params":{"clientInfo":{"name":"awmg","version":"v0.4.31"},"protocolVersion":"2025-11-25","capabilities":{"roots":{"listChanged":true}}}}
+[2026-10-21T18:12:43.226Z] [safeoutputs] client info: {"name":"awmg","version":"v0.4.31"}
+[2026-10-21T18:12:43.227Z] [safeoutputs] send: {"jsonrpc":"2.0","id":2,"result":{"serverInfo":{"name":"safeoutputs","version":"1.0.0"},"protocolVersion":"2025-11-25","capabilities":{"tools":{}}}}
+[2026-10-21T18:12:43.227Z] [safeoutputs] recv: {"jsonrpc":"2.0","method":"notifications/initialized","params":{}}
+[2026-10-21T18:12:43.227Z] [safeoutputs] ignore notifications/initialized
+[2026-10-21T18:12:43.241Z] [safeoutputs] recv: {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"add_labels","arguments":{"labels":["S: needs repro","C: crash"]}}}
+[2026-10-21T18:12:43.244Z] [safeoutputs] Calling handler for tool: add_labels
+[2026-10-21T18:12:43.247Z] [safeoutputs] Handler returned for tool: add_labels
+[2026-10-21T18:12:43.247Z] [safeoutputs] send: {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"{\"result\":\"success\"}"}],"isError":false}}
+[2026-10-21T18:12:45.476Z] [safeoutputs] recv: {"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"add_comment","arguments":{"body":"Thanks for the report! This is an automated first-pass triage; a maintainer will make the final call.\n\n**Reproduction:** not attempted: the input file is only linked, and the code blocks in the issue are command output and the error log, not source code. The `C: crash` label comes from the reported error text and I have not verified it.\n**Assessment:** The reported \"not equivalent to the source\" error, with 25.12.0 fine and 26.1.0 failing, looks like a regression. The AST diff shows the string constant being decoded differently, which fits a file that is not UTF-8 (iso-8859-1 / Windows-1252 with a coding header).\n**Next step:** Please paste a minimal snippet that triggers this directly in the issue. For example, the docstring with the accented characters plus the `# -*- coding: ... -*-` header, with the exact bytes and encoding stated. Also include the exact command line you ran.\n\n<sub>black-issue-triage skill v1.0.0 · suggested for maintainers: none</sub>"}}}
+[2026-10-21T18:12:45.476Z] [safeoutputs] Calling handler for tool: add_comment
+[2026-10-21T18:12:45.479Z] [safeoutputs] temporary_id for add_comment: aw_NpVmXg2i
+[2026-10-21T18:12:45.479Z] [safeoutputs] Handler returned for tool: add_comment
+[2026-10-21T18:12:45.479Z] [safeoutputs] send: {"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"{\"result\":\"success\",\"temporary_id\":\"aw_NpVmXg2i\",\"comment\":\"#aw_NpVmXg2i\"}"}],"isError":false}}
