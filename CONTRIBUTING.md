@@ -37,8 +37,9 @@ ways: an AI agent triages every new issue, and the project receives AI-generated
 
 ### 3. Changing the agent
 
-- Changes to `.github/workflows/issue-triage.*`, `.claude/`, or `AGENTS.md` need review
-  from a code owner (`.github/CODEOWNERS`), and the `skill-tests` CI must pass.
+- Changes to `.github/workflows/`, `.claude/`, or `AGENTS.md` go through a PR on the protected
+  `main` branch, and the `skill-tests` check must pass. `.github/CODEOWNERS` names the owner but
+  is informational only: with a sole maintainer, no code-owner approval is required.
 - `main` is protected for everyone, including admins: open a PR; the `skill-tests` check must
   pass. A sole maintainer cannot approve their own PR, so no approving review is required.
 - After a change to the workflow, skill, or model, run the golden drift check
