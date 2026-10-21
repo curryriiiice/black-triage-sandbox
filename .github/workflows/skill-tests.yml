@@ -7,9 +7,8 @@ on:
     branches: [main]
     paths:
       - ".claude/**"
-      - ".github/workflows/issue-triage.md"
-      - ".github/workflows/issue-triage.lock.yml"
-      - ".github/workflows/skill-tests.yml"
+      - ".github/workflows/**"
+      - "evals/redteam/**"
   # Every PR runs the suite: `test` is a required status check on the protected main branch,
   # so a path filter here would leave non-config PRs waiting forever.
   pull_request:

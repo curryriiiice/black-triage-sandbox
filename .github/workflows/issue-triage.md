@@ -67,9 +67,11 @@ safe-outputs:
   add-comment:
     max: 1
     max-links: 5
+    pull-requests: false   # issues-only workflow: no pull-requests: write
     target: ${{ github.event.issue.number || github.event.inputs.issue_number }}
   add-labels:
     max: 1
+    pull-requests: false   # issues-only workflow: no pull-requests: write
     max-labels: 4
     target: ${{ github.event.issue.number || github.event.inputs.issue_number }}
     allowed:
