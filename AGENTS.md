@@ -88,6 +88,8 @@ a-w; the agent has no Edit/Write grant there). The agent's only writable area is
 - Do not edit `.github/workflows/*.lock.yml` by hand. Change the `.md` source and run
   `gh aw compile`.
 - Do not widen `permissions`, `network`, `tools`, or `safe-outputs` in
-  `.github/workflows/issue-triage.md` without a reviewed PR (see `.github/CODEOWNERS`).
+  `.github/workflows/issue-triage.md`. `main` is protected (admins included): every change needs a
+  PR with the `test` check green. After editing `issue-triage.md`, regenerate the red-team variant
+  (`python3 evals/redteam/make_redteam_workflow.py`) and run `gh aw compile`.
 - Do not add the upstream repository as a git remote. Do not open issues, PRs, or comments
   upstream, and do not mention upstream users or issue numbers in anything posted to GitHub.

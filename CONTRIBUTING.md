@@ -39,6 +39,9 @@ ways: an AI agent triages every new issue, and the project receives AI-generated
 
 - Changes to `.github/workflows/issue-triage.*`, `.claude/`, or `AGENTS.md` need review
   from a code owner (`.github/CODEOWNERS`), and the `skill-tests` CI must pass.
-- After a change to the workflow, skill, or model, rerun the golden cases in `evals/golden/`
-  (see `evals/golden/README.md`). Record the results before merging.
+- `main` is protected for everyone, including admins: open a PR; the `skill-tests` check must
+  pass. A sole maintainer cannot approve their own PR, so no approving review is required.
+- After a change to the workflow, skill, or model, run the golden drift check
+  (`python3 evals/drift/run_drift.py`, or the `golden-drift` workflow) and attach its `report.md`
+  to the PR.
 - Never commit secrets. The engine credential lives only in the `ANTHROPIC_API_KEY` Actions secret.
