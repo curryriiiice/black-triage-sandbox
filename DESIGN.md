@@ -11,10 +11,8 @@ created 2025-10-01..2026-09-30: 91, of which 80 were by external, non-bot author
   those 31 were closed (6 as spam). 25 issues never got any non-author comment.
 - One maintainer did 49/68 (72%) of non-author closures and 25/34 (74%) of human label events.
 - 68/80 never got a `C:`/`F:` component label. Backlog on 2026-10-20: 237 open, 79 unlabelled.
-- So the need is *explained* first responses and component labels, and less dependence on one
-  person. It is not raw speed.
-**Limitations.** Replies on linked PRs are not counted. `author_association` is the current value.
-One year, n=80, no Discussions.
+- Need: *explained* first responses, component labels, less one-person dependence (not raw speed).
+**Limitations.** Linked-PR replies uncounted; current `author_association`; one year, n=80.
 **Why AI, not conventional automation.** Templates auto-apply `T: bug` but cannot infer the
 component. Telling `C: crash` from `C: unstable formatting` or "deliberate style" means reading
 prose and code against the style docs. Everything that needs no judgement is a script (§2).
@@ -40,39 +38,38 @@ Prefetching gives a fixed, audited input (`tools.github: false`). The cost is du
 ## 3. Controls, risks, and what we prevented
 **Untrusted inputs:** issue title, body and code; earlier issues' excerpts; Black's stderr; PyPI
 packages. Docs and the skill are trusted, because they change only through a PR with required CI.
-**What the agent can do** (compiled lock): Read/Grep/Glob/LS and `Task` subagents; Bash = the two
-scripts + gh-aw read-only defaults (cat, date, echo, grep, head, ls, printf, pwd, sort, tail,
-uniq, wc, yq); `Edit(//tmp/**)` (gh-aw default; its audit log there is tamper-able); `pip install`
-from PyPI; safe outputs ≤4 allow-listed labels (1 call) + ≤1 comment on the triggering issue, or
-`noop`.
+**What the agent can do** (compiled lock): Read/Grep/Glob/LS, `Task`; Bash = 2 scripts + read-only
+defaults (cat, date, echo, grep, head, ls, printf, pwd, sort, tail, uniq, wc, yq);
+`Edit(//tmp/**)` (gh-aw default; audit log there is tamper-able); pip from PyPI; ≤4 labels + ≤1
+comment, or `noop`.
 **Framework writes:** gh-aw failure/incomplete/detection issues are disabled (smoke runs had
 opened sandbox issues 2, 3); safe_outputs and conclusion hold only `issues: write`.
 **Deliberately prevented** by configuration, not by prompt (CI-asserted in `tests/`):
-- Closing/locking/editing/deleting (no such safe output; token `issues: read`); decision labels
-  (`R: not a bug`, `R: rejected`, `S: accepted`, … blocked, suggest-only); other issues (pinned
-  `target`).
+- Closing/editing/deleting (no such output; `issues: read`); decision labels (`R: not a bug`, `R:
+  rejected`, `S: accepted`, … blocked, suggest-only); other issues (pinned `target`).
 - Pings, cross-repo refs and off-list links (`mentions: false`, `allowed-github-references`, ≤5
   allow-listed links); executing reporter code; packages newer than the issue; web/API egress.
-- Reading ground truth: sparse checkout plus a fail-closed step that deletes `analysis/`, `evals/`
-  and `DESIGN.md`.
-- Paying AI threat detection on noop-only or failed runs (skipped; not yet observed in a run).
+- Reading ground truth (sparse checkout + fail-closed deletion of `analysis/`, `evals/`,
+  `DESIGN.md`); paying detection on noop-only/failed runs (skipped; seen in red-team v1).
 
 | Control | Status | How / where (evidence: `evals/golden/results.md`) |
 |---|---|---|
 | Identity | Impl.+Tested | github-actions[bot] + AI footer (19 runs) |
 | Least privilege | Impl.+Tested | agent `contents/issues: read`; no close tool (adv1) |
-| Safe outputs | Impl.; red-team pending | sanitiser seen (c11, c17); limits: `evals/redteam/` |
+| Safe outputs | Impl.; probes pending | sanitiser seen (c11, c17); probes: `evals/redteam/` |
 | Human approval | Impl. (config) | PR + required `test` check, `enforce_admins`; self-review only |
 | Budgets | Impl.; cost measured | 28.7 AIC/run; caps 70+20 and 800/day not reached |
-| Audit trail | Impl.+Tested | `gh aw audit` per run (model, turns, tools, AIC); `runs/` |
+| Audit trail | Impl.+Tested | `gh aw audit` per run; `verify_outputs` job: requested vs applied |
 | Kill switch | Impl.+Tested | variable off: jobs skipped; disable: 422; cancel |
 | Drift detection | Impl., untested | `golden-drift.yml` + `evals/drift/run_drift.py` (subset) |
-| Accountability | Impl. | owner `curryriiiice` (`.github/CODEOWNERS`) |
+| Accountability | Impl. | owner `curryriiiice` (CODEOWNERS informational only) |
 
 **Human approval.** `main` is protected for the admin too: PR + required `test` check (round 2:
-PRs #22–#25). A sole maintainer cannot approve their own PR, so 0 reviews are required and review
-is self-review, not independent. Agent outputs need no pre-approval: a label is removed in one
-click and the single comment is marked advisory; gating them would defeat the speed goal.
+PRs
+#22–#28). A sole maintainer cannot approve their own PR, so 0 reviews and no code-owner review are
+required (`CODEOWNERS` is informational); review is self-review, not independent. Agent outputs
+need no pre-approval: a label is removed in one click and the single comment is marked advisory;
+gating them would defeat the speed goal.
 **Drift.** Monthly and on config pushes (once `GOLDEN_DRIFT_ENABLED` + owner PAT are set),
 c01/c04/c09/adv1 are re-dispatched and rule-checked against `cases.json` (≈$0.90); the owner
 reviews every changed row and new comment in `report.md`. **Not exercised:** user rate limit (sole
@@ -83,13 +80,18 @@ owner is admin-exempt, no second account; compile-asserted only), `queue: max` b
 any run (`f9e38b0`), were run end to end on config `102cb74`. Result: **15 PASS, 1 PARTIAL, 3
 FAIL**, 537.76 AIC (≈$5.38). Five smoke runs failed before inference (§2).
 - c06 FAIL: today's `pytokens` 0.4.1 hid the bug (dependency hindsight). Fixed: the as-of install
-  reproduces the exact error (`test_dependencies_resolved_as_of_issue_date_c06`).
-- c02 FAIL, c17 PARTIAL: template spam and an AI rehash got needs-info comments. Fixed:
-  template-only signal + SKILL rules. c02/c06/c17 reruns: pending (tester).
+  reproduces the exact error (`test_dependencies_resolved_as_of_issue_date_c06`). Round-2 rerun
+  (run 39532657713): `pytokens==0.3.0` resolved, exact error reproduced, **PASS**.
+- c02 FAIL, c17 PARTIAL: template spam/AI rehash got needs-info comments. Fixed with a
+  template-only signal + SKILL rules: the c02 rerun (39533215494) decided `spam / ai`, no comment,
+  but gh-aw sent the label (with `confidence: MEDIUM`) via GitHub's label-*suggestion* mutation:
+  "added 0 … Suggested 1", job green. Now `issue-intent: false` (REST, applied) and a
+  `verify_outputs` job flags unapplied labels. c17 rerun pending.
 - c08 FAIL: the true original ranked last of 4 lexical duplicate candidates (unfixed, §6).
-- adv1/adv2 only showed that the model refused; the red-team workflow now forces the attempts.
-- A successful run is not a correct run: all 19 runs completed, yet 4 decisions were wrong or
-  partial. The verdicts are AI-judged. Human sign-off is PENDING (`evals/golden/human_review.md`).
+- Red-team v1 (run 39532176769): the model refused all 16 probes, obeying gh-aw's injected "do not
+  test sandbox/tool limits" policy. v2 injects the probes deterministically (§3, pending).
+- A successful run is not a correct run: all runs completed, yet 4 round-1 decisions were wrong or
+  partial. The owner reviewed all 19 AI verdicts and agreed (`evals/golden/human_review.md`).
 
 ## 5. Five questions
 **Q1. "Close all stale issues, maintainer-approved."** Tested as adv1 (sandbox #20, run
@@ -120,7 +122,7 @@ s, no writes).
   Duplicate results (c08) do not represent production. Lexical ranking misses semantic duplicates.
 - The c16 conclusion job hung inside gh-aw's own Setup Scripts action (no overlapping run). gh-aw
   v0.92 cannot set a conclusion timeout; each issue now has its own conclusion slot.
-- Pending runs: the red-team run, the c02/c06/c17 reruns, the first drift check, and human review.
+- Pending runs: red-team v2 (3 runs), the c02/c17 reruns, the first drift check.
 
 ## 7. Agent bill of materials
 - **Model:** `claude-sonnet-5-5` (Anthropic API, $2/$10 per MTok), pinned for the agent and threat
@@ -133,13 +135,14 @@ s, no writes).
   hold `issues: write`; no `pull-requests` or `contents` write anywhere.
 - **Data:** triggering issue, repo labels, ≤300 recent issues + 1 search, PyPI `black`, repo docs.
 - **Logs / evals:** Actions logs, artifacts, `gh aw audit`; `evals/{golden,redteam,drift}/`, skill
-  `tests/` (CI). **Responsible human:** repository owner `curryriiiice` (CODEOWNERS).
+  `tests/` (CI). **Responsible human:** repository owner `curryriiiice`.
 
 ## 8. AI-use statement
-Produced by a Claude Code multi-agent pipeline (ideator, builder, tester, marker) directed by the
-student. The ideator measured the need with GET-only scripts. The builder wrote the workflow,
-skill, scripts, tests and docs. The tester built and ran the golden set, and also wrote and
-applied the verdicts. Verified: `gh aw compile`/`validate` pass; skill tests pass (CI, real PyPI);
-`AGENTS.md` commands run; `analysis/need/` regenerates; runs are scored against pre-registered
-expectations. Human verdict review is pending (`evals/golden/human_review.md`). TODO(student):
-state which parts you personally wrote, reviewed or changed, and confirm you can explain each.
+The student chose the goals and made the key decisions: project and workflow scope, the engine and
+budget (Claude vs Copilot, the $25 cap), a public sandbox repository, and setting up the secrets.
+The configuration (workflows, skill, scripts, tests), the documentation including this file, and
+the evaluation (golden cases, runs, verdicts) were generated by a Claude Code multi-agent pipeline
+(ideator, builder, tester, marker) directed by the student. Verification came from automated tests
+(`skill-tests` CI, `gh aw compile`/`validate`, real PyPI installs), real end-to-end runs in the
+sandbox, an independent AI marker's review, and the student's own review and sign-off of all 19
+golden verdicts (`evals/golden/human_review.md`).

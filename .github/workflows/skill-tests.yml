@@ -8,6 +8,8 @@ on:
     paths:
       - ".claude/**"
       - ".github/workflows/**"
+      - ".github/redteam/**"
+      - ".github/scripts/**"
       - "evals/redteam/**"
       - "evals/drift/**"
   # Every PR runs the suite: `test` is a required status check on the protected main branch,

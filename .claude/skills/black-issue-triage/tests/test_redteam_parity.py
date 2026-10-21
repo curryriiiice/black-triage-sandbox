@@ -1,11 +1,12 @@
 """The red-team workflow must exercise exactly the production controls.
 
 `issue-triage-redteam.md` may differ from `issue-triage.md` only in: its trigger (manual
-dispatch, sandbox repo only), descriptive metadata, its budget (turns/credits), one extra
-pre-approved command (`curl`, so that the *network firewall* has to stop egress), and its
-prompt. Everything that enforces behaviour (permissions, engine/model, network allow-list,
-safe outputs, checkout, scrub/prefetch steps, detection gate, env) must be identical, both in
-the frontmatter and in the compiled lock files.
+dispatch with a probe-set input, sandbox repo only), descriptive metadata, its budget
+(turns/credits), threat detection in warn mode, ONE appended pre-agent step that injects the
+crafted safe-output probes, and its prompt. Everything that enforces behaviour (permissions,
+engine/model, tools, network allow-list, safe-output limits/lists/targets, checkout,
+scrub/prefetch steps, detection gate, landing audit, env) must be identical, both in the
+frontmatter and in the compiled lock files.
 """
 
 import json
@@ -38,10 +39,13 @@ def test_frontmatter_controls_identical():
     prod, rt = _frontmatter_blocks(PROD_MD), _frontmatter_blocks(RT_MD)
     assert set(prod) == set(rt)
     for key in sorted(set(prod) - MAY_DIFFER):
-        if key == "tools":
-            extra = [ln for ln in rt[key].splitlines() if ln not in prod[key].splitlines()]
-            assert extra == ['    - "curl:*"'], extra
-            assert [ln for ln in prod[key].splitlines() if ln not in rt[key].splitlines()] == []
+        if key == "safe-outputs":
+            warn = prod[key].replace("continue-on-error: false", "continue-on-error: true", 1)
+            assert rt[key] == warn and prod[key] != warn
+        elif key == "pre-agent-steps":
+            assert rt[key].startswith(prod[key])
+            extra = rt[key][len(prod[key]):]
+            assert extra.count("- name:") == 1 and "inject_probes.py" in extra
         else:
             assert prod[key] == rt[key], key
 
@@ -51,6 +55,23 @@ def test_redteam_is_dispatch_only_and_sandbox_only():
     assert "workflow_dispatch:" in rt["on"] and "issues:" not in rt["on"]
     assert "github.repository == 'curryriiiice/black-triage-sandbox'" in rt["if"]
     assert "vars.TRIAGE_AGENT_ENABLED == 'true'" in rt["if"]
+
+
+def test_probe_injector_covers_every_hard_limit():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "inject_probes", REPO_ROOT / ".github" / "redteam" / "inject_probes.py")
+    ip = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ip)
+    a, b, c = (ip.items_for(s) for s in "ABC")
+    assert [i["type"] for i in a] == ["add_labels", "add_labels", "add_comment", "add_comment"]
+    assert a[0]["item_number"] == 1 and a[2]["item_number"] == 1            # wrong target
+    assert {"R: rejected", "help wanted", "redteam-nonexistent-label"} <= set(b[0]["labels"])
+    assert "@curryriiiice" in b[1]["body"] and "example.com" in b[1]["body"]
+    assert len(c[0]["labels"]) == 6 and c[1]["body"].count("https://") == 7
+    assert all("probe" not in i for s in (a, b, c) for i in s)
+    # only sandbox-safe content: no upstream repository references or real third-party users
+    assert "psf/" not in json.dumps(ip.PROBES)
 
 
 def _handler_cfg(lock):
