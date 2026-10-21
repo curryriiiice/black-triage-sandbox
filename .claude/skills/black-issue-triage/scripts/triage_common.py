@@ -20,22 +20,45 @@ MARKER = f"[{SKILL_NAME} v{SKILL_VERSION}]"
 
 # Agent-writable work dir: audit log and throw-away repro virtualenvs.
 DEFAULT_TRIAGE_DIR = Path(os.environ.get("TRIAGE_DIR", "/tmp/gh-aw/agent/triage"))
-# Trusted context written by the pre-agent step (issue, code blocks, release list). It lives in
-# the workspace, where the agent has no Edit/Write grant, and is made read-only (chmod a-w).
-DEFAULT_CONTEXT_DIR = Path(os.environ.get("TRIAGE_CONTEXT_DIR")
-                           or Path(os.environ.get("GITHUB_WORKSPACE", ".")) / ".triage-context")
+# Fixed work dir under GitHub Actions (no CLI or env override).
+ACTIONS_WORK_DIR = Path("/tmp/gh-aw/agent/triage")
+# The trusted context (issue, code blocks, release list) is written by the pre-agent prefetch to
+# $GITHUB_WORKSPACE/.triage-context: no agent Edit/Write grant there, chmod a-w, and under Actions
+# the scripts accept no other location (see resolve_dirs).
 
 
 def resolve_dirs(triage_dir: str | None, context_dir: str | None) -> tuple[Path, Path]:
-    """(work dir, context dir). An explicit --triage-dir alone means "both in one dir" (tests)."""
+    """(work dir, context dir).
+
+    Under GitHub Actions (GITHUB_ACTIONS=true, i.e. in the agent sandbox) command-line overrides
+    are IGNORED: the agent could otherwise point the scripts at a context it wrote itself under
+    /tmp (e.g. a fake release list), bypassing the hindsight guard. The context dir must then be
+    exactly `$GITHUB_WORKSPACE/.triage-context` (the read-only prefetch output); anything else
+    fails closed. Outside Actions (local runs, unit tests) an explicit --triage-dir alone means
+    "both in one dir".
+    """
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        workspace = os.environ.get("GITHUB_WORKSPACE")
+        if not workspace:
+            raise SystemExit(f"{MARKER} GITHUB_WORKSPACE is not set; refusing to run")
+        trusted = (Path(workspace) / ".triage-context").resolve()
+        ctx = Path(os.environ.get("TRIAGE_CONTEXT_DIR") or trusted).resolve()
+        if ctx != trusted:
+            raise SystemExit(f"{MARKER} context dir {ctx} is not the trusted {trusted}; refusing")
+        if triage_dir or context_dir:
+            print(f"{MARKER} note: --triage-dir/--context-dir are ignored under GitHub Actions")
+        return ACTIONS_WORK_DIR.resolve(), ctx
     work = Path(triage_dir) if triage_dir else DEFAULT_TRIAGE_DIR
     if context_dir:
         ctx = Path(context_dir)
     elif triage_dir and not os.environ.get("TRIAGE_CONTEXT_DIR"):
         ctx = work
     else:
-        ctx = DEFAULT_CONTEXT_DIR
+        ctx = Path(os.environ.get("TRIAGE_CONTEXT_DIR")
+                   or Path(os.environ.get("GITHUB_WORKSPACE", ".")) / ".triage-context")
     return work.resolve(), ctx.resolve()
+
+
 SKILL_DIR = Path(__file__).resolve().parent.parent
 CONFIG_DIR = SKILL_DIR / "config"
 
