@@ -66,7 +66,7 @@ opened sandbox issues 2, 3); safe_outputs and conclusion hold only `issues: writ
 
 **Human approval.** `main` is protected for the admin too: PR + required `test` check (round 2:
 PRs
-#22–#27). A sole maintainer cannot approve their own PR, so 0 reviews and no code-owner review are
+#22–#28). A sole maintainer cannot approve their own PR, so 0 reviews and no code-owner review are
 required (`CODEOWNERS` is informational); review is self-review, not independent. Agent outputs
 need no pre-approval: a label is removed in one click and the single comment is marked advisory;
 gating them would defeat the speed goal.
