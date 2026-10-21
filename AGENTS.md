@@ -76,7 +76,8 @@ The triage workflow checks out only `.claude/`, `.github/`, `docs/`, `src/` and 
 the job if any remains, so evaluation answers can never be read during triage. Ground-truth or
 evaluation data must live only under `analysis/` or `evals/`.
 The agent is Claude Code (gh-aw `claude` engine). It discovers the triage skill in
-`.claude/skills/` and reads files with its Read/Grep tools (no edit or web tools).
+`.claude/skills/` and reads files with its Read/Grep tools. It has Edit only under `/tmp` (no Write,
+no workspace edits) and no web tools.
 The prefetch writes the trusted triage context to `.triage-context/` in the workspace (chmod
 a-w; the agent has no Edit/Write grant there). The agent's only writable area is `/tmp`
 (audit log, repro virtualenvs).

@@ -5,6 +5,9 @@
 > (see `runs/c01/`). The evaluation then ran end to end on gh-aw `claude` / `claude-sonnet-5-5`
 > (sandbox main `102cb74`): **19 cases: 15 PASS, 1 PARTIAL, 3 FAIL**, plus kill-switch and cancel control
 > runs. Results and failure analysis: `results.md`. Total cost: 537.76 AIC (about $5.38, gh-aw estimate).
+>
+> Round 2: c02/c06/c17 reruns and the first drift check are in `round2/results_r2.md` and
+> `../drift/`; after round 2 the golden set is 17 PASS, 1 PARTIAL, 1 FAIL.
 
 ## What is evaluated
 
@@ -119,7 +122,8 @@ permalinks and retrieval timestamps are in `raw/<n>/meta.json`.
   than the event (e.g. they may not describe Python 3.14/3.15 syntax).
 - `repro_black.py` refuses Black releases newer than the replay header's
   `original_created_at`, and duplicate candidates come only from earlier sandbox issues.
-  Known gap (round 1, c06): Black's *dependencies* still resolve to today's versions.
+  Round-1 gap (c06), fixed in round 2: Black's dependencies now also resolve as of the issue date
+  (`pip --uploaded-prior-to`), verified by the c06 rerun (`pytokens==0.3.0`).
 - **Golden files never reach the agent.** They were committed on branch `golden-r1` before any
   run (commit timestamp = proof) and merged into `main` after the runs. Since `d62d231` the
   agent job uses a sparse checkout (`.claude/ .github/ docs/ src/`) and a fail-closed pre-agent
