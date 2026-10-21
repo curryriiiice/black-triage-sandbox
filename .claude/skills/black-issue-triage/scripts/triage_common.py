@@ -18,7 +18,24 @@ SKILL_VERSION = "1.0.0"
 # Printed by every script so skill use is visible in the agent transcript / Actions logs.
 MARKER = f"[{SKILL_NAME} v{SKILL_VERSION}]"
 
+# Agent-writable work dir: audit log and throw-away repro virtualenvs.
 DEFAULT_TRIAGE_DIR = Path(os.environ.get("TRIAGE_DIR", "/tmp/gh-aw/agent/triage"))
+# Trusted context written by the pre-agent step (issue, code blocks, release list). It lives in
+# the workspace, where the agent has no Edit/Write grant, and is made read-only (chmod a-w).
+DEFAULT_CONTEXT_DIR = Path(os.environ.get("TRIAGE_CONTEXT_DIR")
+                           or Path(os.environ.get("GITHUB_WORKSPACE", ".")) / ".triage-context")
+
+
+def resolve_dirs(triage_dir: str | None, context_dir: str | None) -> tuple[Path, Path]:
+    """(work dir, context dir). An explicit --triage-dir alone means "both in one dir" (tests)."""
+    work = Path(triage_dir) if triage_dir else DEFAULT_TRIAGE_DIR
+    if context_dir:
+        ctx = Path(context_dir)
+    elif triage_dir and not os.environ.get("TRIAGE_CONTEXT_DIR"):
+        ctx = work
+    else:
+        ctx = DEFAULT_CONTEXT_DIR
+    return work.resolve(), ctx.resolve()
 SKILL_DIR = Path(__file__).resolve().parent.parent
 CONFIG_DIR = SKILL_DIR / "config"
 

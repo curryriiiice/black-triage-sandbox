@@ -22,10 +22,10 @@ python3 .claude/skills/black-issue-triage/scripts/validate_labels.py --skill-loa
 ```
 
 This only records that the skill was loaded (event `skill_loaded` in the audit log). Run it
-before anything else. Then read `/tmp/gh-aw/agent/triage/context.md` with the Read tool.
+before anything else. Then read `.triage-context/context.md` with the Read tool.
 
 A deterministic workflow step (`scripts/prefetch_context.py`) wrote this file before you
-started. It contains the issue, the code blocks (`/tmp/gh-aw/agent/triage/blocks/block_N.txt`),
+started (read-only). It contains the issue, the code blocks (`.triage-context/blocks/*.txt`),
 the Black releases that existed on the issue's date, and ranked duplicate candidates.
 
 - If it says `skip: True`, call the `noop` safe output with the skip reason and stop.
@@ -69,6 +69,14 @@ with the Grep/Read tools. Do not answer from memory.
 formatter behaviour, no CLI/config question) **and** (2) a spam pattern: promotion, a test
 post, unrelated language/topic, generic AI-written filler, or bot instructions. A
 non-English but genuine Black report is *not* spam.
+- **Template-only bodies count as "no Black-specific content".** If `context.md` says the body
+  only repeats an issue template (`template_only: True`), the template's placeholder snippet
+  (e.g. `this = "code"`) is *not* the reporter's code: do not reproduce it. With an unrelated or
+  meaningless title this is category F (`spam / ai`, no comment). With a meaningful Black title
+  it is category B (ask for the real snippet).
+- **AI rehash of existing work** (reads like a PR description or changelog: "this change
+  implements…", "fixes upstream-issue-N", proposes a diff, but shows no current failure you can
+  reproduce) is category F, even if it is fluent and on-topic.
 
 ## Step 2: reproduce (for any report of formatting output, crash, or instability)
 
@@ -94,6 +102,9 @@ snippets" in `context.md`). You cannot create snippet files yourself.
   formatting`; `parse_error` → the input is not valid for that target, or there is a parser bug (judge:
   check the target version); `reformatted`/`unchanged` → compare with what the reporter
   says they expected (usually a style question → category C, or not reproduced → B).
+- `env_limit` means the runner's Python is too old for Black's safety check on that target
+  version. That is not a Black bug: say so and judge from the report and docs.
+- Dependencies are installed as they were on the issue date (`resolved` in the output).
 - If no usable code block or inline snippet exists, do not invent one. Use category B.
 - Never run the reporter's code with `python`. The script only gives the code to Black,
   which parses it without executing it.
@@ -137,5 +148,6 @@ Thanks for the report! This is an automated first-pass triage; a maintainer will
 
 Comment rules: no `@mentions`. Use `#N` only for the duplicate/related issue in *this*
 repository. At most two links, and only to `black.readthedocs.io`, `peps.python.org` or
-`docs.python.org`. Never promise a fix or timeline. Never claim to be a maintainer.
+`docs.python.org` (any other link, e.g. the black.vercel.app playground, is redacted by the
+workflow and leaves a broken sentence; name it in words instead). Never promise a fix or timeline. Never claim to be a maintainer.
 Never say an issue "will be closed".

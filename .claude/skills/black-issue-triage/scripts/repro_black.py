@@ -22,6 +22,7 @@ import argparse
 import difflib
 import json
 import os
+import re
 import subprocess
 import sys
 import venv
@@ -29,7 +30,7 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from triage_common import DEFAULT_TRIAGE_DIR, MARKER, audit, load_json, parse_version  # noqa: E402
+from triage_common import MARKER, audit, load_json, parse_version, resolve_dirs  # noqa: E402
 
 PIP_TIMEOUT = 180
 BLACK_TIMEOUT = 60
@@ -42,6 +43,7 @@ SUGGESTED_LABELS = {
     "invalid_code": ["C: invalid code"],
     "unstable": ["C: unstable formatting"],
     "parse_error": ["C: parser"],
+    "env_limit": [],
     "reformatted": [],
     "unchanged": [],
 }
@@ -92,6 +94,11 @@ def classify(rc: int, stderr: str, src: str, out: str) -> str:
     if rc == 0:
         return "unchanged" if out == src else "reformatted"
     low = stderr.lower()
+    # Black's AST safety check runs on the repro interpreter (runner Python), which cannot parse
+    # syntax from newer Python versions (round-1 case c16).
+    if re.search(r"python 3\.\d+ cannot parse code formatted for python", low) or \
+            "failed to parse source file ast" in low or "older python version" in low:
+        return "env_limit"
     if "cannot parse" in low:
         return "parse_error"
     if "second pass" in low or "unstable formatting" in low:
@@ -111,28 +118,46 @@ def resolve_version(requested: str, ctx: dict[str, Any] | None) -> tuple[str | N
         return (latest, None) if latest else (None, "no release list in context.json")
     if parse_version(requested) is None:
         return None, f"{requested!r} is not a final Black release number"
-    if known:
-        norm = {parse_version(v): v for v in known}
-        if parse_version(requested) not in norm:
-            return None, (f"Black {requested} had not been released when the issue was opened "
-                          f"(latest then: {known[-1]}); refusing to use hindsight")
-        return norm[parse_version(requested)], None
-    return requested, None
+    if not known:  # fail closed: without the trusted release list we cannot rule out hindsight
+        return None, "no trusted release list in context.json; refusing to run"
+    norm = {parse_version(v): v for v in known}
+    if parse_version(requested) not in norm:
+        return None, (f"Black {requested} had not been released when the issue was opened "
+                      f"(latest then: {known[-1]}); refusing to use hindsight")
+    return norm[parse_version(requested)], None
 
 
-def ensure_black(version: str, triage_dir: Path) -> Path:
-    env_dir = triage_dir / "venvs" / f"black-{version}"
+def cutoff_of(ctx: dict[str, Any] | None) -> str | None:
+    """ISO timestamp of the issue's creation: no package uploaded later may be installed."""
+    created = ((ctx or {}).get("issue") or {}).get("created_at")
+    return created if created and len(created) >= 10 else None
+
+
+def ensure_black(version: str, work_dir: Path, cutoff: str) -> tuple[Path, list[str]]:
+    """Install black==version and ALL its dependencies as they were on `cutoff`.
+
+    pip >= 26 supports `--uploaded-prior-to`, which ignores every file uploaded after the
+    cutoff, so Black's dependencies (e.g. pytokens) resolve to the versions a reporter had on
+    the issue date instead of today's (round-1 case c06). pip itself is upgraded first; it is
+    tooling, not part of the code under test.
+    """
+    tag = re.sub(r"[^0-9T]", "", cutoff)[:13]
+    env_dir = work_dir / "venvs" / f"black-{version}-asof-{tag}"
     exe = env_dir / "bin" / "black"
-    if exe.exists():
-        return exe
-    venv.EnvBuilder(with_pip=True, clear=True).create(env_dir)
-    reqs = [f"black=={version}"]
-    if parse_version(version) < (22, 3, 0):
-        reqs.append("click<8.1")  # old Black releases break with click>=8.1
-    cmd = [str(env_dir / "bin" / "python"), "-m", "pip", "install", "--quiet",
-           "--disable-pip-version-check", "--only-binary=:all:", *reqs]
-    subprocess.run(cmd, check=True, timeout=PIP_TIMEOUT, capture_output=True, text=True)
-    return exe
+    py = env_dir / "bin" / "python"
+    if not exe.exists():
+        venv.EnvBuilder(with_pip=True, clear=True).create(env_dir)
+        base = [str(py), "-m", "pip", "install", "--quiet", "--disable-pip-version-check"]
+        subprocess.run([*base, "--upgrade", "pip>=26"], check=True, timeout=PIP_TIMEOUT,
+                       capture_output=True, text=True)
+        subprocess.run([*base, "--only-binary=:all:", "--uploaded-prior-to", cutoff,
+                        f"black=={version}"], check=True, timeout=PIP_TIMEOUT,
+                       capture_output=True, text=True)
+    freeze = subprocess.run([str(py), "-m", "pip", "freeze", "--disable-pip-version-check"],
+                            capture_output=True, text=True, timeout=60).stdout.split()
+    return exe, freeze
+
+
 
 
 def run_black(exe: Path, args: list[str], src: str) -> tuple[int, str, str]:
@@ -164,7 +189,6 @@ def main(argv: list[str] | None = None) -> int:
     src_group = ap.add_mutually_exclusive_group(required=True)
     src_group.add_argument("--block", type=int, help="fenced code block number from context.md")
     src_group.add_argument("--inline", type=int, help="inline code snippet number from context.md")
-    src_group.add_argument("--snippet-file", help="file under the triage dir holding the code")
     ap.add_argument("--version", required=True, help="exact Black release, or 'as-of'")
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--unstable", action="store_true")
@@ -174,20 +198,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("-S", "--skip-string-normalization", action="store_true")
     ap.add_argument("-C", "--skip-magic-trailing-comma", action="store_true")
     ap.add_argument("--pyi", action="store_true")
-    ap.add_argument("--triage-dir", default=str(DEFAULT_TRIAGE_DIR))
+    ap.add_argument("--triage-dir", help="work dir for audit log and venvs")
+    ap.add_argument("--context-dir", help="trusted, read-only context dir from the prefetch")
     ns = ap.parse_args(argv)
-    triage_dir = Path(ns.triage_dir).resolve()  # Black runs from an isolated cwd
-    ctx = load_json(triage_dir / "context.json")
+    triage_dir, context_dir = resolve_dirs(ns.triage_dir, ns.context_dir)
+    ctx = load_json(context_dir / "context.json")
     black_args = build_black_args(ns)
 
+    # Only code extracted by the deterministic prefetch can be reproduced (no agent-made files).
     if ns.block is not None:
-        src_path = triage_dir / "blocks" / f"block_{ns.block}.txt"
-    elif ns.inline is not None:
-        src_path = triage_dir / "blocks" / f"inline_{ns.inline}.txt"
+        src_path = context_dir / "blocks" / f"block_{ns.block}.txt"
     else:
-        src_path = Path(ns.snippet_file).resolve()
-        if triage_dir.resolve() not in src_path.parents:
-            raise SystemExit(f"{MARKER} snippet file must live under {triage_dir}")
+        src_path = context_dir / "blocks" / f"inline_{ns.inline}.txt"
     if not src_path.is_file():
         raise SystemExit(f"{MARKER} no such code block/snippet: {src_path}")
     src = src_path.read_text(encoding="utf-8")
@@ -196,12 +218,16 @@ def main(argv: list[str] | None = None) -> int:
                               "requested_version": ns.version, "black_args": black_args,
                               "executed_snippet": False}
     version, err = resolve_version(ns.version, ctx)
+    cutoff = cutoff_of(ctx)
+    if not err and not cutoff:
+        err = "no issue creation date in context.json; refusing to resolve dependencies"
     if err:
         result.update(outcome="refused", error=err)
     else:
         result["version"] = version
         try:
-            exe = ensure_black(version, triage_dir)
+            exe, freeze = ensure_black(version, triage_dir, cutoff)
+            result.update(dependency_cutoff=cutoff, resolved=freeze)
             rc, out, stderr = run_black(exe, black_args, src)
             outcome = classify(rc, stderr, src, out)
             result.update(exit_code=rc, stderr=stderr[-2000:], diff=udiff(src, out, "input",
@@ -228,6 +254,9 @@ def main(argv: list[str] | None = None) -> int:
                     if outcome == "parse_error":
                         outcome = "crash"
                     suggested = list(SUGGESTED_LABELS.get(outcome, [])) + ["C: preview style"]
+            if outcome == "env_limit":
+                result["note"] = ("Black's safety check needs a newer Python than the repro "
+                                  "interpreter; this is an environment limit, not a Black bug")
             result["outcome"] = outcome
             result["suggested_labels"] = suggested
         except subprocess.CalledProcessError as exc:
@@ -236,7 +265,8 @@ def main(argv: list[str] | None = None) -> int:
             result.update(outcome="timeout", error=f"timed out: {exc.cmd[:2]}")
     audit(triage_dir, "repro", **{k: result.get(k) for k in
                                   ("source", "requested_version", "version", "black_args",
-                                   "outcome", "exit_code", "error")})
+                                   "outcome", "exit_code", "error", "dependency_cutoff",
+                                   "resolved")})
     print(f"{MARKER} repro outcome: {result.get('outcome')}")
     print(json.dumps(result, indent=2))
     return 0 if result.get("outcome") not in {"refused", "install_failed", "timeout"} else 2

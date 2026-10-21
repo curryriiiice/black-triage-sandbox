@@ -75,6 +75,9 @@ the job if any remains, so evaluation answers can never be read during triage. G
 evaluation data must live only under `analysis/` or `evals/`.
 The agent is Claude Code (gh-aw `claude` engine). It discovers the triage skill in
 `.claude/skills/` and reads files with its Read/Grep tools (no edit or web tools).
+The prefetch writes the trusted triage context to `.triage-context/` in the workspace (chmod
+a-w; the agent has no Edit/Write grant there). The agent's only writable area is `/tmp`
+(audit log, repro virtualenvs).
 
 ## Forbidden changes
 

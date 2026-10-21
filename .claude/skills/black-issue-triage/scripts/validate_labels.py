@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from triage_common import DEFAULT_TRIAGE_DIR, MARKER, audit, load_json, load_label_policy  # noqa: E402
+from triage_common import MARKER, audit, load_json, load_label_policy, resolve_dirs  # noqa: E402
 
 REPRO_OUTCOME_FOR = {
     "C: crash": {"crash", "not_equivalent", "invalid_code"},
@@ -110,15 +110,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--duplicate-of", type=int)
     ap.add_argument("--skill-loaded", action="store_true",
                     help="record that the agent loaded SKILL.md (step 0) and exit")
-    ap.add_argument("--triage-dir", default=str(DEFAULT_TRIAGE_DIR))
+    ap.add_argument("--triage-dir", help="work dir holding the audit log")
+    ap.add_argument("--context-dir", help="trusted, read-only context dir from the prefetch")
     ns = ap.parse_args(argv)
-    triage_dir = Path(ns.triage_dir)
+    triage_dir, context_dir = resolve_dirs(ns.triage_dir, ns.context_dir)
     if ns.skill_loaded:
         audit(triage_dir, "skill_loaded", engine=os.environ.get("GH_AW_ENGINE_ID")
               or os.environ.get("GH_AW_INFO_ENGINE_ID"))
         print(f"{MARKER} skill loaded")
         return 0
-    ctx = load_json(triage_dir / "context.json")
+    ctx = load_json(context_dir / "context.json")
     if ctx is None:
         print(f"{MARKER} warning: no context.json; repository label checks skipped")
     res = validate(ns.labels, ctx, load_label_policy(), repro_outcomes(triage_dir),
