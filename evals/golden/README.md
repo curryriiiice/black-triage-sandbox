@@ -8,6 +8,9 @@
 >
 > Round 2: c02/c06/c17 reruns and the first drift check are in `round2/results_r2.md` and
 > `../drift/`; after round 2 the golden set is 17 PASS, 1 PARTIAL, 1 FAIL.
+> Round 3 (final): all 19 cases and red-team A/B/C were rerun on the frozen config `c2097dd`, pre-registered in
+> `round3/expected_r3.md`. Result: **17 PASS, 1 PARTIAL (c17), 1 FAIL (c08)**, see `round3/results_r3.md`.
+> Re-run any case with `GOLDEN_RUNS_DIR=<dir> python3 -I evals/golden/scripts/replay.py dispatch <case> ...`.
 
 ## What is evaluated
 
