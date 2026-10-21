@@ -1,0 +1,10 @@
+{"ts":1792620547199,"event":"TRACK_START","rid":"844bae05-78f8-472a-8c80-f1a9947568df","provider":"anthropic","path":"/v1/models","streaming":false,"ct":"application/json","ce":"gzip","status":200}
+{"ts":1792620547203,"event":"TRACK_END","rid":"844bae05-78f8-472a-8c80-f1a9947568df","result":"no_usage","streaming":false,"bytes":839,"overflow":false,"ct":"application/json","ce":"gzip"}
+{"ts":1792620548811,"event":"TRACK_START","rid":"31cdf32b-1994-4361-aac4-e4c090201555","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620549591,"event":"TRACK_END","rid":"31cdf32b-1994-4361-aac4-e4c090201555","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":177,"cache_read":0}
+{"ts":1792620550515,"event":"TRACK_START","rid":"ee89f579-6295-4cc2-93d1-3b6c6ece7a49","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620552267,"event":"TRACK_END","rid":"ee89f579-6295-4cc2-93d1-3b6c6ece7a49","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":303,"cache_read":40567}
+{"ts":1792620553435,"event":"TRACK_START","rid":"d5f47ce2-c137-4ba4-a158-d40abb5e17d0","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620555830,"event":"TRACK_END","rid":"d5f47ce2-c137-4ba4-a158-d40abb5e17d0","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":465,"cache_read":47756}
+{"ts":1792620558471,"event":"TRACK_START","rid":"411aea7f-bbce-4721-9a2d-3bc91000aa87","provider":"anthropic","path":"/v1/messages?beta=true","streaming":true,"ct":"text/event-stream; charset=utf-8","ce":"gzip","status":200}
+{"ts":1792620558485,"event":"TRACK_END","rid":"411aea7f-bbce-4721-9a2d-3bc91000aa87","result":"ok","streaming":true,"model":"claude-sonnet-5-5","input":2,"output":215,"cache_read":48193}
