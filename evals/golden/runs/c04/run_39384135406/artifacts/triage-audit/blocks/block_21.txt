@@ -1,4 +1,0 @@
-a[CR]
-b[LF]
-c[CR][LF]
-#1[CR][LF]

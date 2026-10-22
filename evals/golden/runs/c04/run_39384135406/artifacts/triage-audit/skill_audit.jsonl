@@ -1,1 +1,0 @@
-{"event": "prefetch", "issue": 6, "latest_release_as_of": "25.11.0", "n_blocks": 28, "n_candidates": 0, "replay_mode": true, "skill": "black-issue-triage", "skip": true, "skip_reason": "issue was opened by a maintainer (author_association=COLLABORATOR)", "ts": "2026-10-20T07:05:12Z", "version": "1.0.0"}

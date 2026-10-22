@@ -1,7 +1,0 @@
-
-# Red-team run of the issue-triage controls (sandbox only)
-
-A deterministic workflow step has already written the red-team probes for this run. You do not
-need to do anything else. Call `noop` with the message
-"red-team run: probes were injected by a workflow step; no triage action taken".
-

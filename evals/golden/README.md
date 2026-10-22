@@ -1,15 +1,10 @@
 # Golden evaluation: reproduction instructions
 
-> Status (round 1, tester): expected outcomes were committed on 2026-10-20T03:27:10Z (`f9e38b0`),
-> before any agent run. Five smoke runs failed before inference because of credential/engine problems
-> (see `runs/c01/`). The evaluation then ran end to end on gh-aw `claude` / `claude-sonnet-5-5`
-> (sandbox main `102cb74`): **19 cases: 15 PASS, 1 PARTIAL, 3 FAIL**, plus kill-switch and cancel control
-> runs. Results and failure analysis: `results.md`. Total cost: 537.76 AIC (about $5.38, gh-aw estimate).
->
-> Round 2: c02/c06/c17 reruns and the first drift check are in `round2/results_r2.md` and
-> `../drift/`; after round 2 the golden set is 17 PASS, 1 PARTIAL, 1 FAIL.
-> Round 3 (final): all 19 cases and red-team A/B/C were rerun on the frozen config `c2097dd`, pre-registered in
-> `round3/expected_r3.md`. Result: **17 PASS, 1 PARTIAL (c17), 1 FAIL (c08)**, see `round3/results_r3.md`.
+> **Status:** the expected outcomes (`cases.json`) were committed on 2026-10-20T03:27:10Z (`f9e38b0`), before any
+> agent run; the run procedure was pre-registered in `preregistration.md` (`bac44a1`) before the first scored run.
+> All 19 cases and red-team sets A/B/C ran end to end on the frozen config `c2097dd` (gh-aw `claude`,
+> `claude-sonnet-5-5`): **17 PASS, 1 PARTIAL (c17), 1 FAIL (c08)**; see `results.md`, `../redteam/results.md`,
+> and the owner's sign-off in `human_review.md`. Cost: 533.29 AIC (about $5.33, gh-aw estimate).
 > Re-run any case with `GOLDEN_RUNS_DIR=<dir> python3 -I evals/golden/scripts/replay.py dispatch <case> ...`.
 
 ## What is evaluated
@@ -21,7 +16,7 @@ expected outcome that was written down **before** the run.
 
 ## One-time setup (sandbox only)
 
-1. Actions secret `ANTHROPIC_API_KEY` (a workspace-scoped key for gh-aw's `claude` engine, model `claude-sonnet-5-5`). The round-1 smoke runs 3–5 temporarily used the `copilot` engine with `COPILOT_GITHUB_TOKEN`.
+1. Actions secret `ANTHROPIC_API_KEY` (a workspace-scoped key for gh-aw's `claude` engine, model `claude-sonnet-5-5`). (During development some smoke runs used gh-aw's `copilot` engine with `COPILOT_GITHUB_TOKEN`.)
 2. Repository variables:
    - `TRIAGE_AGENT_ENABLED=true`: the kill switch. Any other value, or deleting it, stops all runs.
    - `TRIAGE_REPLAY_MODE=true`: lets the prefetch step read the replay header (below).
@@ -61,8 +56,8 @@ replay in chronological order and seed any "original" issue before its duplicate
 - Creating the issue fires `issues: opened`. To re-run one issue:
   `gh workflow run issue-triage.lock.yml -R curryriiiice/black-triage-sandbox -f issue_number=<N>`.
 - Outputs: `gh issue view <N> --json labels,comments`.
-- Run logs: `gh aw logs issue-triage` and `gh aw audit <run-id>` (model, turns, tool calls,
-  firewall log, AI credits). Workflow artifacts `triage-audit` (`context.json`, `context.md`,
+- Run logs: the run's artifacts and `run.log` (`gh aw audit <run-id>` adds a summary when it does not
+  hang). Workflow artifacts `triage-audit` (`context.json`, `context.md`,
   `skill_audit.jsonl`, `skill_evidence.json`) and `agent` (transcript).
 - Skill-use evidence: the run's step summary section `[black-issue-triage v1.0.0] skill
   evidence`, the marker lines in the agent log, and the `black-issue-triage skill v1.0.0`
@@ -79,7 +74,9 @@ replay in chronological order and seed any "original" issue before its duplicate
 | `cases/<case_id>/replay_{title.txt,body.md,labels.json}` | Exactly what is posted to the sandbox |
 | `scripts/` | `fetch_upstream.py` (GET-only snapshot), `build_cases.py` (pre-event reconstruction + neutralisation), `render_expected.py`, `replay.py` (create sandbox issues / collect outputs) |
 | `runs/` | `mapping.json` (case -> issue -> runs), `costs.jsonl`, and per case: issue/comments/timeline and per run `run.log`, `run_view.json`, `gh_aw_audit.md`, `summary.json`, `artifacts/` (the repro virtualenvs inside `triage-audit` are omitted: about 95 MB of PyPI wheels per run, still in the Actions artifact for 30 days) |
+| `preregistration.md` | Configuration and procedure fixed before the first scored run (`bac44a1`) |
 | `results.md` | Expected vs actual for every case, pass/fail, failure analysis, controls, cost |
+| `human_review.md` | The owner's sign-off of all 19 verdicts |
 | `judgements.json` | Tester's manual verdicts and explanations (input to `results.md`) |
 
 ## Cases
@@ -125,12 +122,11 @@ permalinks and retrieval timestamps are in `raw/<n>/meta.json`.
   than the event (e.g. they may not describe Python 3.14/3.15 syntax).
 - `repro_black.py` refuses Black releases newer than the replay header's
   `original_created_at`, and duplicate candidates come only from earlier sandbox issues.
-  Round-1 gap (c06), fixed in round 2: Black's dependencies now also resolve as of the issue date
-  (`pip --uploaded-prior-to`), verified by the c06 rerun (`pytokens==0.3.0`).
-- **Golden files never reach the agent.** They were committed on branch `golden-r1` before any
-  run (commit timestamp = proof) and merged into `main` after the runs. Since `d62d231` the
-  agent job uses a sparse checkout (`.claude/ .github/ docs/ src/`) and a fail-closed pre-agent
-  step deletes `analysis/`, `evals/` and `DESIGN.md`. No round-1 transcript reads those paths.
+  Black's dependencies also resolve as of the issue date (`pip --uploaded-prior-to`); c06 confirms
+  it (`pytokens==0.3.0`, the version current on the issue date).
+- **Golden files never reach the agent.** The agent job uses a sparse checkout (`.claude/ .github/
+  docs/ src/`) and a fail-closed pre-agent step deletes `analysis/`, `evals/` and `DESIGN.md`. No
+  transcript reads those paths.
 
 ### Neutralisation (hard rule: no backlinks or pings to upstream or real people)
 

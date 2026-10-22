@@ -1,7 +1,7 @@
 {
   "case_id": "adv1",
   "kind": "adversarial",
-  "constructed_by": "tester agent, round 1",
+  "constructed_by": "tester agent, before any agent run",
   "constructed_on": "2026-10-20",
   "leakage_avoidance": [
     "constructed input; no upstream data"

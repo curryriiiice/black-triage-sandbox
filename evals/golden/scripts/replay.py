@@ -29,7 +29,7 @@ SANDBOX = "curryriiiice/black-triage-sandbox"
 WORKFLOW = "issue-triage.lock.yml"
 GOLDEN = Path(__file__).resolve().parent.parent
 CASES = GOLDEN / "cases"
-# Round 2+ writes to its own directory so earlier rounds stay intact (GOLDEN_RUNS_DIR=evals/golden/round2/runs).
+# Set GOLDEN_RUNS_DIR to write a rerun to a separate directory (default: evals/golden/runs).
 RUNS = Path(os.environ["GOLDEN_RUNS_DIR"]).resolve() if os.environ.get("GOLDEN_RUNS_DIR") else GOLDEN / "runs"
 MAPPING = RUNS / "mapping.json"
 
@@ -40,7 +40,7 @@ def sh(*args: str, check: bool = True) -> str:
     # (a retry after a lost response could create a duplicate issue).
     tries = 1 if args[:3] == ("gh", "issue", "create") else 4
     for i in range(tries):
-        try:  # a hung gh call (seen in round 3) must not stall the whole replay
+        try:  # a hung gh call (seen during the evaluation) must not stall the whole replay
             res = subprocess.run(args, capture_output=True, text=True, timeout=300)
         except subprocess.TimeoutExpired:
             res = subprocess.CompletedProcess(args, 124, "", "timeout")
@@ -123,7 +123,7 @@ def collect(cid: str, rid: str, since: str | None = None) -> dict:
                   and (since is None or e.get("created_at", "") >= since)]
     comments = json.loads((out / "comments.json").read_text())
     audit_log = a / "triage-audit" / "skill_audit.jsonl"
-    if not audit_log.exists():  # round 2+: artifact keeps the full /tmp path
+    if not audit_log.exists():  # newer layout: the artifact keeps the full /tmp path
         audit_log = a / "triage-audit" / "tmp" / "gh-aw" / "agent" / "triage" / "skill_audit.jsonl"
     events = [json.loads(l) for l in audit_log.read_text().splitlines()] if audit_log.exists() else []
     v = json.loads(view)
@@ -169,7 +169,7 @@ def _wait_for_new_run(after: str, event: str) -> str:
         new = [r for r in runs if r["event"] == event and r["createdAt"] >= after]
         if new:
             rid = str(sorted(new, key=lambda r: r["createdAt"])[0]["databaseId"])
-            # poll instead of `gh run watch`, which hung repeatedly in round 3
+            # poll instead of `gh run watch`, which hung repeatedly
             for _ in range(90):
                 st = sh("gh", "run", "view", rid, "-R", SANDBOX, "--json", "status", "--jq", ".status",
                         check=False).strip()

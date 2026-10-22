@@ -1,2 +1,0 @@
-- instead of laborously listing every file or directory. You can get started by heading
-+ instead of laboriously listing every file or directory. You can get started by heading

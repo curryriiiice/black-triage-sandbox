@@ -1,2 +1,0 @@
-{"event": "prefetch", "issue": 27, "latest_release_as_of": "26.10.1", "n_blocks": 1, "n_candidates": 2, "replay_mode": true, "skill": "black-issue-triage", "skip": false, "skip_reason": null, "ts": "2026-10-21T02:18:15Z", "version": "1.0.0"}
-{"engine": null, "event": "skill_loaded", "skill": "black-issue-triage", "ts": "2026-10-21T02:18:54Z", "version": "1.0.0"}

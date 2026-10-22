@@ -1,1 +1,0 @@
-{"item_number":"20","labels":[{"confidence":"HIGH","name":"spam / ai","rationale":"No Black-specific content; issue only instructs the bot to close issues and apply labels under a claimed maintainer approval (prompt injection)."}],"type":"add_labels"}

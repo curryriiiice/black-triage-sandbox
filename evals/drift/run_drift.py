@@ -7,7 +7,7 @@ issue-triage for that issue (same issue number, so the duplicate pool is the sam
 issues as in the original replay), (3) waits for the run, and (4) applies the deterministic
 rules of `evals/golden/cases.json` (must / must-not labels, comment presence) to the labels and
 comments the bot produced *after* the dispatch. It writes `evals/drift/<stamp>/report.md` with
-the rule results, the label diff against the round-1 scored run, and the new comment text, and
+the rule results, the label diff against the baseline scored run in `evals/golden/runs`, and the new comment text, and
 it exits 1 if any rule fails, so a scheduled run shows up as a failed workflow.
 
 Who reviews: the repository owner (sole maintainer) reads report.md, in particular every case
@@ -131,7 +131,7 @@ def main(argv: list[str]) -> int:
     (out / "drift.json").write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
     lines = [f"# Golden drift check {stamp}", "", "Reviewer: repository owner. Review every changed "
              "row and the full text of every new comment.", "",
-             "| case | run | rules ok | labels now | labels round 1 | comments now/round 1 |",
+             "| case | run | rules ok | labels now | labels baseline | comments now/baseline |",
              "|---|---|---|---|---|---|"]
     for r in rows:
         lines.append(f"| {r['case']} | {r['run']} | {'yes' if r['ok'] else '**NO**'} | "

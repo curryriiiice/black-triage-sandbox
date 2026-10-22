@@ -1,1 +1,0 @@
-if True: print("this"); print("that") # fmt: skip
