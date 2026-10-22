@@ -1,6 +1,6 @@
 {
   "_about": "Golden cases for the black-issue-triage workflow. Expected outcomes were written by the tester BEFORE any agent run (see the git commit timestamp of this file). Replay order = list order. Scoring rules are in expected.md.",
-  "recorded_by": "tester agent, before any agent run (commit f9e38b0)",
+  "recorded_by": "tester agent, round 1",
   "recorded_on": "2026-10-20",
   "upstream": "psf/black (read-only; GET requests + one read-only GraphQL query per issue)",
   "sandbox_repo_snapshot": "Black 25.9.0 (af0ba72, released 2025-09-18), older than every case",

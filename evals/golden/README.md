@@ -74,7 +74,7 @@ replay in chronological order and seed any "original" issue before its duplicate
 | `cases/<case_id>/replay_{title.txt,body.md,labels.json}` | Exactly what is posted to the sandbox |
 | `scripts/` | `fetch_upstream.py` (GET-only snapshot), `build_cases.py` (pre-event reconstruction + neutralisation), `render_expected.py`, `replay.py` (create sandbox issues / collect outputs) |
 | `runs/` | `mapping.json` (case -> issue -> runs), `costs.jsonl`, and per case: issue/comments/timeline and per run `run.log`, `run_view.json`, `gh_aw_audit.md`, `summary.json`, `artifacts/` (the repro virtualenvs inside `triage-audit` are omitted: about 95 MB of PyPI wheels per run, still in the Actions artifact for 30 days) |
-| `preregistration.md` | Configuration and procedure fixed before the first scored run (`bac44a1`) |
+| `preregistration.md` | Configuration and procedure fixed before the first scored run: byte-identical to the file committed in `bac44a1` (only moved and renamed). It uses the working names of earlier evaluation passes and their file paths, which are no longer in the repository; its rules are those of `cases.json` (`f9e38b0`, unchanged) |
 | `results.md` | Expected vs actual for every case, pass/fail, failure analysis, controls, cost |
 | `human_review.md` | The owner's sign-off of all 19 verdicts |
 | `judgements.json` | Tester's manual verdicts and explanations (input to `results.md`) |
