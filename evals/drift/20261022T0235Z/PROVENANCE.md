@@ -18,3 +18,10 @@
   were made. The only difference from the original output is the header wording of two columns, which now says
   "baseline" for the comparison columns; all data rows and comments are identical. The earlier check mentioned
   above (`20261021T0955Z`) was removed from the repository and remains in git history.
+- **Baseline source:** the "baseline" columns compare against the first scored run of each case on an earlier
+  development config (`102cb74`; e.g. c01 → run 39382131218). That evidence was removed from this commit but remains
+  in git history and in the sandbox's Actions history. For these four cases, the baseline labels are identical to the
+  frozen-config golden runs in `../../golden/runs/`, so the no-drift conclusion is the same against either baseline.
+- **Owner review:** the repository owner (`curryriiiice`) reviewed `report.md` on 2026-10-23 and found no
+  drift and no problem with the new comment text. This note was written up by Claude Code at the owner's
+  direction.
