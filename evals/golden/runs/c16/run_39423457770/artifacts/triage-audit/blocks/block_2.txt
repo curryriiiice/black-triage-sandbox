@@ -1,1 +1,0 @@
-$ black --target-version py314 bug.py

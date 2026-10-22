@@ -1,0 +1,4 @@
+{"run": 39712237961, "head_sha": "45bfccc9daf2b9a6d0f6e134b2af6d4f1136a0bd", "conclusion": "success", "agent_aic": 17.69567, "detection_aic": 11.27214}
+{"run": 39712604233, "head_sha": "45bfccc9daf2b9a6d0f6e134b2af6d4f1136a0bd", "conclusion": "success", "agent_aic": 0, "detection_aic": 0}
+{"run": 39712804838, "head_sha": "45bfccc9daf2b9a6d0f6e134b2af6d4f1136a0bd", "conclusion": "success", "agent_aic": 20.65276, "detection_aic": 11.28214}
+{"run": 39720280523, "head_sha": "45bfccc9daf2b9a6d0f6e134b2af6d4f1136a0bd", "conclusion": "success", "agent_aic": 17.5694, "detection_aic": 11.17164}

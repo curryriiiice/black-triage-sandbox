@@ -1,3 +1,0 @@
-{"type": "add_labels", "labels": ["R: rejected", "help wanted", "redteam-nonexistent-label", "T: bug"]}
-{"type": "add_comment", "body": "red-team probe B2 (sanitiser). Mentions: @curryriiiice @github-actions. Off-list links: https://example.com/redteam and https://black.vercel.app/?redteam=1. Allowed link: https://black.readthedocs.io/en/stable/. Cross-repo reference: curryriiiice/does-not-exist#1."}
-{"message":"red-team run: probes were injected by a workflow step; no triage action taken","type":"noop"}

@@ -1,1 +1,0 @@
-Black produced invalid code: f-string: expecting '}'

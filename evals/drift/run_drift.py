@@ -7,7 +7,7 @@ issue-triage for that issue (same issue number, so the duplicate pool is the sam
 issues as in the original replay), (3) waits for the run, and (4) applies the deterministic
 rules of `evals/golden/cases.json` (must / must-not labels, comment presence) to the labels and
 comments the bot produced *after* the dispatch. It writes `evals/drift/<stamp>/report.md` with
-the rule results, the label diff against the round-1 scored run, and the new comment text, and
+the rule results, the label diff against the baseline scored run in `evals/golden/runs`, and the new comment text, and
 it exits 1 if any rule fails, so a scheduled run shows up as a failed workflow.
 
 Who reviews: the repository owner (sole maintainer) reads report.md, in particular every case
@@ -17,7 +17,8 @@ cover labels and comment presence; comment quality is the owner's judgement.
 Cost: about 29 AIC (~$0.29) per model run; the default subset (c01, c04, c09, adv1) is ~3 model
 runs plus one deterministic skip, so ~90 AIC (~$0.90) per drift check.
 
-Usage: python3 evals/drift/run_drift.py [CASE ...]     (needs `gh` authenticated as a human
+Usage: python3 evals/drift/run_drift.py [CASE ...]
+       python3 evals/drift/run_drift.py --render evals/drift/<stamp>   (offline re-render)     (needs `gh` authenticated as a human
        maintainer of the sandbox: a dispatch by github-actions would be dropped by skip-bots)
 All writes go only to the sandbox repository.
 """
@@ -107,7 +108,29 @@ def baseline(cid: str, mapping: dict) -> dict:
     return {"run": rid, "labels": s["labels_added_by_bot"], "comments": len(s["bot_comments"])}
 
 
+def render_report(rows: list[dict], stamp: str) -> str:
+    """report.md from the rows recorded in drift.json (no API calls)."""
+    lines = [f"# Golden drift check {stamp}", "", "Reviewer: repository owner. Review every changed "
+             "row and the full text of every new comment.", "",
+             "| case | run | rules ok | labels now | labels baseline | comments now/baseline |",
+             "|---|---|---|---|---|---|"]
+    for r in rows:
+        lines.append(f"| {r['case']} | {r['run']} | {'yes' if r['ok'] else '**NO**'} | "
+                     f"{r['added']} | {r['baseline']['labels']} | {r['comments']}/"
+                     f"{r['baseline']['comments']} |")
+    for r in rows:
+        for c in r["new_comments"]:
+            lines += ["", f"## {r['case']} new comment", "", c]
+    return "\n".join(lines) + "\n"
+
+
 def main(argv: list[str]) -> int:
+    if argv[:1] == ["--render"]:   # re-render report.md from an existing drift.json, offline
+        d = Path(argv[1])
+        rows = json.loads((d / "drift.json").read_text())
+        (d / "report.md").write_text(render_report(rows, d.name))
+        print(f"re-rendered {d}/report.md from drift.json")
+        return 0
     subset = argv or SUBSET
     cases = {c["case_id"]: c for c in json.loads((GOLDEN / "cases.json").read_text())["cases"]}
     mapping = json.loads((GOLDEN / "runs" / "mapping.json").read_text())
@@ -129,18 +152,7 @@ def main(argv: list[str]) -> int:
                      "new_comments": comments})
         print(f"{cid}: run {rid} ok={res['ok']} labels={res['added']} comments={res['comments']}")
     (out / "drift.json").write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
-    lines = [f"# Golden drift check {stamp}", "", "Reviewer: repository owner. Review every changed "
-             "row and the full text of every new comment.", "",
-             "| case | run | rules ok | labels now | labels round 1 | comments now/round 1 |",
-             "|---|---|---|---|---|---|"]
-    for r in rows:
-        lines.append(f"| {r['case']} | {r['run']} | {'yes' if r['ok'] else '**NO**'} | "
-                     f"{r['added']} | {r['baseline']['labels']} | {r['comments']}/"
-                     f"{r['baseline']['comments']} |")
-    for r in rows:
-        for c in r["new_comments"]:
-            lines += ["", f"## {r['case']} new comment", "", c]
-    (out / "report.md").write_text("\n".join(lines) + "\n")
+    (out / "report.md").write_text(render_report(rows, stamp))
     print(f"wrote {out.relative_to(ROOT)}/report.md")
     return 1 if failed else 0
 

@@ -4,175 +4,170 @@
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
     "created": "2026-10-20T03:39:00Z",
     "runs": [
-      39365404649,
-      39366138602,
-      39378909956,
-      39379635338,
-      39380550220,
-      39382131218
+      39635287753
     ],
-    "note": "smoke tests, not scored. 39365404649: HTTP 400 key not scoped to a workspace. 39366138602 (workflow_dispatch, workspace-scoped key): 'Credit balance is too low'. Model never produced output. 39378909956 (copilot engine, gpt-5-mini, main df45028): HTTP 401 from api.githubcopilot.com /models: 'Personal Access Token does not have \"Copilot Requests\" permission'. Model never called. 39379635338 (regenerated PAT with Copilot Requests): auth OK, but 'gpt-5-mini' is not in the live model catalog (model not supported); Copilot not started. 39380550220 (claude-sonnet-5.5, main c5341dd): alias resolved, but POST /chat/completions returned 400 model_not_supported; the catalog marks the model 'not enabled in the Copilot model picker'."
+    "note": "rerun on frozen c2097dd"
   },
   "c02": {
     "issue": 4,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/4",
     "created": "2026-10-20T06:52:51Z",
     "runs": [
-      39382982080
-    ]
+      39638641623
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c03": {
     "issue": 5,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/5",
     "created": "2026-10-20T06:58:16Z",
     "runs": [
-      39383526605
-    ]
+      39641161912
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c04": {
     "issue": 6,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/6",
     "created": "2026-10-20T07:04:02Z",
     "runs": [
-      39384135406
-    ]
+      39643599755
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c05": {
     "issue": 7,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/7",
     "created": "2026-10-20T07:09:44Z",
     "runs": [
-      39384728673
-    ]
+      39646481840
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c06": {
     "issue": 8,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/8",
     "created": "2026-10-20T07:16:25Z",
     "runs": [
-      39385440507
-    ]
+      39648875960
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c07": {
     "issue": 9,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/9",
     "created": "2026-10-20T07:24:40Z",
     "runs": [
-      39386326346
-    ]
+      39649674670
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c08": {
     "issue": 10,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/10",
     "created": "2026-10-20T07:31:39Z",
     "runs": [
-      39387093944
-    ]
+      39650398510
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c09": {
     "issue": 11,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/11",
     "created": "2026-10-20T07:39:17Z",
     "runs": [
-      39387936173
-    ]
+      39651069327
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c10": {
     "issue": 12,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/12",
     "created": "2026-10-20T07:46:54Z",
     "runs": [
-      39388800712
-    ]
+      39651853470
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c11": {
     "issue": 13,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/13",
     "created": "2026-10-20T07:57:03Z",
     "runs": [
-      39389948324
-    ]
+      39653113514
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c12": {
     "issue": 14,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/14",
     "created": "2026-10-20T08:05:52Z",
     "runs": [
-      39390962974
-    ]
+      39654112953
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c13": {
     "issue": 15,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/15",
     "created": "2026-10-20T08:13:12Z",
     "runs": [
-      39391822915
-    ]
+      39680313353
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c14": {
     "issue": 16,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/16",
     "created": "2026-10-20T11:28:53Z",
     "runs": [
-      39415249113
-    ]
+      39681673991
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c15": {
     "issue": 17,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/17",
     "created": "2026-10-20T12:28:54Z",
     "runs": [
-      39422578196
-    ]
+      39682263909
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c16": {
     "issue": 18,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/18",
     "created": "2026-10-20T12:35:32Z",
     "runs": [
-      39423457770
-    ]
+      39683529202
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "c17": {
     "issue": 19,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/19",
     "created": "2026-10-20T13:03:27Z",
     "runs": [
-      39427186919
-    ]
+      39684136021
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "adv1": {
     "issue": 20,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/20",
     "created": "2026-10-20T13:11:24Z",
     "runs": [
-      39428288663
-    ]
+      39685279651
+    ],
+    "note": "rerun on frozen c2097dd"
   },
   "adv2": {
     "issue": 21,
     "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/21",
     "created": "2026-10-20T13:18:47Z",
     "runs": [
-      39429318955
-    ]
-  },
-  "ctl-killswitch-off": {
-    "issue": 1,
-    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
-    "created": "2026-10-20T14:07:14Z",
-    "runs": [
-      39436369666
+      39685898206
     ],
-    "note": "control: TRIAGE_AGENT_ENABLED=false then dispatch on #1; expect all jobs skipped"
-  },
-  "ctl-cancel": {
-    "issue": 1,
-    "url": "https://github.com/curryriiiice/black-triage-sandbox/issues/1",
-    "created": "2026-10-20T14:08:30Z",
-    "runs": [
-      39436536448
-    ],
-    "note": "control: switch true, dispatch on #1, gh run cancel while the agent job is in_progress"
+    "note": "rerun on frozen c2097dd"
   }
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tester driver for red-team v2: run probe sets sequentially on one target and collect evidence.
+"""Tester driver for the red-team workflow: run probe sets sequentially on one target and collect evidence.
 
 Usage: python3 -I evals/redteam/run_redteam_sets.py TARGET OUT_DIR SET [SET ...]
 For each set: snapshot #1 and TARGET, dispatch issue-triage-redteam with the probe set, wait,
@@ -42,7 +42,7 @@ def snap(d: Path, n: int) -> None:
 
 def main():
     target, out, sets = int(sys.argv[1]), Path(sys.argv[2]), sys.argv[3:]
-    if "--reset-target" in sets:  # remove the bot's labels from the target first (round 3)
+    if "--reset-target" in sets:  # remove the bot's labels from the target first
         sets = [x for x in sets if x != "--reset-target"]
         tl = json.loads(sh("gh", "api", f"repos/{S}/issues/{target}/timeline?per_page=100"))
         bot = {e["label"]["name"] for e in tl if e.get("event") == "labeled"
@@ -65,7 +65,7 @@ def main():
                 rid = str(new[-1]["databaseId"])
                 break
             time.sleep(10)
-        for _ in range(90):  # poll; `gh run watch` hung repeatedly in round 3
+        for _ in range(90):  # poll; `gh run watch` hung repeatedly during the evaluation
             if sh("gh", "run", "view", rid, "-R", S, "--json", "status", "--jq", ".status", check=False).strip() == "completed":
                 break
             time.sleep(20)

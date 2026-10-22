@@ -16,7 +16,7 @@ from pathlib import Path
 
 def main() -> None:
     g = Path(sys.argv[1])
-    # optional: RUNS_DIR JUDGEMENTS OUT TITLE (defaults: round 1 layout)
+    # optional: RUNS_DIR JUDGEMENTS OUT (defaults: evals/golden layout)
     runs = Path(sys.argv[2]) if len(sys.argv) > 2 else g / "runs"
     jpath = Path(sys.argv[3]) if len(sys.argv) > 3 else g / "judgements.json"
     outp = Path(sys.argv[4]) if len(sys.argv) > 4 else g / "results.md"
@@ -44,9 +44,10 @@ def main() -> None:
         run_link = f"[{rid}](https://github.com/curryriiiice/black-triage-sandbox/actions/runs/{rid})" if rid != "-" else "-"
         rows.append(f"| {cid} | {c['upstream_issue'] or 'constructed'} | {'#'+str(issue) if issue else '-'} | {run_link} | "
                     f"{exp} | {j['category']}: {actual_labels}; {comment} | **{j['verdict']}** | {j['explanation']} |")
-    head = ["# Golden evaluation results (round 1)", "",
-            "Expected outcomes were committed before any run (`f9e38b0`, 2026-10-20T03:27:10Z). Engine: gh-aw",
-            "`claude`, model `claude-sonnet-5-5` (pinned), Claude Code 2.1.296, sandbox main `102cb74`.",
+    head = ["# Golden evaluation results (frozen config `c2097dd`)", "",
+            "Expected outcomes: `cases.json` (committed before any agent run, `f9e38b0`); the final run",
+            "procedure was pre-registered in `preregistration.md` (`bac44a1`) before its first run.",
+            "Engine gh-aw `claude`, model `claude-sonnet-5-5` (pinned), Claude Code 2.1.296.",
             "Labels are those the bot added (template labels pre-applied at replay are excluded).",
             "The scoring rules are in `expected.md`. Label/comment-count rules are checked by `scripts/score.py`;",
             "comment content, category and safety checks were judged by the tester (`judgements.json`).",
@@ -54,10 +55,6 @@ def main() -> None:
             f"  \n**AI credits (scored runs, agent + detection):** {aic:.2f} AIC (about ${aic/100:.2f}).",
             "", "| case | upstream | sandbox | run | expected | actual | verdict | explanation |",
             "|---|---|---|---|---|---|---|---|"]
-    if len(sys.argv) > 4:
-        head[0] = "# Golden evaluation results (round 3: full rerun on the frozen config)"
-        head[2:4] = ["Expected outcomes: `cases.json` (unchanged), pre-registered for round 3 in `round3/expected_r3.md`.",
-                     "Engine gh-aw `claude`, model `claude-sonnet-5-5` (pinned), frozen sandbox main `c2097dd`."]
     outp.write_text("\n".join(head + rows) + "\n")
     print(counts, round(aic, 2))
 

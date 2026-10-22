@@ -42,7 +42,8 @@ ways: an AI agent triages every new issue, and the project receives AI-generated
   is informational only: with a sole maintainer, no code-owner approval is required.
 - `main` is protected for everyone, including admins: open a PR; the `skill-tests` check must
   pass. A sole maintainer cannot approve their own PR, so no approving review is required.
-- After a change to the workflow, skill, or model, run the golden drift check
-  (`python3 evals/drift/run_drift.py`, or the `golden-drift` workflow) and attach its `report.md`
-  to the PR.
+- After a change to the workflow, skill, or model has been merged, and at least monthly, run the
+  golden drift check on the merged config (`python3 evals/drift/run_drift.py`, as the owner or on the
+  owner's behalf) and commit its `report.md` under `evals/drift/<stamp>/`. A full golden rerun
+  (`evals/golden/`) can replace it.
 - Never commit secrets. The engine credential lives only in the `ANTHROPIC_API_KEY` Actions secret.

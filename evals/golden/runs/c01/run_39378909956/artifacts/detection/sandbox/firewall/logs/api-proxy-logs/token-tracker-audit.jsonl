@@ -1,4 +1,0 @@
-{"ts":1792476812292,"event":"TRACK_START","rid":"639a45f8-6703-4a29-9ba4-a56ac1b0cbc7","provider":"copilot","path":"/models","streaming":false,"ct":"text/plain; charset=utf-8","ce":"(none)","status":401}
-{"ts":1792476812295,"event":"TRACK_END","rid":"639a45f8-6703-4a29-9ba4-a56ac1b0cbc7","result":"skip_status","status":401}
-{"ts":1792476812464,"event":"TRACK_START","rid":"afa0194e-ce3c-4bf2-bd65-5d0e5fd35ee8","provider":"copilot","path":"/models","streaming":false,"ct":"text/plain; charset=utf-8","ce":"(none)","status":401}
-{"ts":1792476812465,"event":"TRACK_END","rid":"afa0194e-ce3c-4bf2-bd65-5d0e5fd35ee8","result":"skip_status","status":401}

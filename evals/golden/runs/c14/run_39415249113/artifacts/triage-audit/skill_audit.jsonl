@@ -1,5 +1,0 @@
-{"event": "prefetch", "issue": 16, "latest_release_as_of": "26.3.1", "n_blocks": 3, "n_candidates": 0, "replay_mode": true, "skill": "black-issue-triage", "skip": false, "skip_reason": null, "ts": "2026-10-20T11:29:53Z", "version": "1.0.0"}
-{"engine": null, "event": "skill_loaded", "skill": "black-issue-triage", "ts": "2026-10-20T11:30:35Z", "version": "1.0.0"}
-{"black_args": [], "error": null, "event": "repro", "exit_code": 0, "outcome": "unchanged", "requested_version": "as-of", "skill": "black-issue-triage", "source": "inline_1.txt", "ts": "2026-10-20T11:30:41Z", "version": "26.3.1"}
-{"black_args": [], "error": null, "event": "repro", "exit_code": 0, "outcome": "unchanged", "requested_version": "as-of", "skill": "black-issue-triage", "source": "inline_2.txt", "ts": "2026-10-20T11:30:42Z", "version": "26.3.1"}
-{"duplicate_of": null, "errors": [], "event": "validate_labels", "final_labels": ["S: needs repro"], "ok": true, "proposed": ["T: bug", "S: needs repro"], "skill": "black-issue-triage", "ts": "2026-10-20T11:30:44Z", "version": "1.0.0"}
