@@ -59,8 +59,8 @@ sandbox issues 2, 3); safe_outputs and conclusion hold only `issues: write`.
 | Human approval | Impl. (config) | PR + required `test` check, `enforce_admins`; self-review only |
 | Budgets | Impl.; cost measured | 28.7 AIC/run; caps 70+20 and 800/day not reached |
 | Audit trail | Impl.+Tested | run artifacts, `run.log`, `verify_outputs` (`gh aw audit` hung) |
-| Kill switch | Impl.+Tested | on `c2097dd`: TODO(final-evidence) (`evals/controls/`) |
-| Drift detection | Impl.+Tested (manual) | `run_drift.py` on `c2097dd`: TODO(final-evidence) |
+| Kill switch | Impl.+Tested | off: jobs skipped (39711822071); cancel: no writes (39711889875) |
+| Drift detection | Impl.+Tested (manual) | `run_drift.py` on frozen config: 4/4 pass, no drift |
 | Accountability | Impl. | owner `curryriiiice` (CODEOWNERS informational only) |
 
 **Human approval.** `main` needs a PR + green `test` check, admin included (sandbox PRs 22–26,
@@ -69,8 +69,10 @@ outputs need no pre-approval: labels are one-click reversible, the one comment i
 **Drift** is the manual `evals/drift/run_drift.py` after every merged config/model change and
 monthly (`CONTRIBUTING.md`): it re-dispatches c01/c04/c09/adv1, rule-checks them against
 `cases.json`, and the owner reviews changed rows and new comments in `report.md`. On the frozen
-config it was run by the Claude Code tester agent on the owner's behalf: TODO(final-evidence)
-(`evals/drift/<stamp>/`). The scheduled `golden-drift.yml` is provided but disabled (needs the
+config it was run by the Claude Code tester agent on the owner's behalf, with the owner's
+credentials: 4/4 rules pass, labels identical to the baseline, 89.64 AIC
+(`evals/drift/20261022T0235Z/`; runs on head `45bfccc`, whose `.github/`/`.claude/` equal `c2097dd`,
+as do the kill-switch tests). The scheduled `golden-drift.yml` is provided but disabled (needs the
 owner's PAT). The audit record is the run artifacts plus `verify_outputs`, as `gh aw audit` often
 hung. A red safe_outputs run can mean a limit *worked* (`E00x`); `verify_outputs` runs then too
 (red-team C 39688026499). **Not exercised:** user rate limit (experimental gh-aw feature; sole admin
@@ -113,7 +115,9 @@ detection flagged none of the red-team probes, so it is not counted), tamper wit
 log, read the sparse workspace, burn ≤90 AIC. It cannot close/edit, touch other issues, get a token.
 **Q5. Stop it from a phone.** Browser → Settings → Variables: `TRIAGE_AGENT_ENABLED` ≠ `true`, or
 disable the workflow (→ 422); running jobs: Actions → Cancel. Tested with `gh` CLI calls equivalent
-to the web UI, not on a phone: TODO(final-evidence).
+to the web UI, not on a phone (`evals/controls/`): variable off → all jobs skipped in 3 s
+(39711822071); cancel → agent stopped ≈46 s later, detection/safe outputs never ran, nothing posted,
+no detection billed (39711889875).
 
 ## 6. Unresolved
 - Model-training hindsight: issues from 2025–26 and their fixes may be in the model's weights (c10

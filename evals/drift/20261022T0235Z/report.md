@@ -2,7 +2,7 @@
 
 Reviewer: repository owner. Review every changed row and the full text of every new comment.
 
-| case | run | rules ok | labels now | labels round 1 | comments now/round 1 |
+| case | run | rules ok | labels now | labels baseline | comments now/baseline |
 |---|---|---|---|---|---|
 | c01 | 39712237961 | yes | ['C: crash', 'C: preview style', 'F: fmtskip', 'T: bug'] | ['C: crash', 'C: preview style', 'F: fmtskip', 'T: bug'] | 1/1 |
 | c04 | 39712604233 | yes | [] | [] | 0/0 |

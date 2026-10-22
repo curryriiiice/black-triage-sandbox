@@ -13,3 +13,8 @@
 - `report.md` is the script's unedited output. Its column header wording comes from the script.
 - One `gh run watch` call (c09) stalled locally after its run had completed, and recovered by itself. This had no effect on the
   runs.
+- **Re-rendered (builder, after the runs):** `report.md` was regenerated offline from this folder's unchanged
+  `drift.json` with `python3 evals/drift/run_drift.py --render evals/drift/20261022T0235Z`. No new runs or API calls
+  were made. The only difference from the original output is the header wording of two columns, which now says
+  "baseline" for the comparison columns; all data rows and comments are identical. The earlier check mentioned
+  above (`20261021T0955Z`) was removed from the repository and remains in git history.
